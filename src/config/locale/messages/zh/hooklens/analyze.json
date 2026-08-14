@@ -1,10 +1,10 @@
 {
   "metadata": {
     "title": "分析 — HookLens",
-    "description": "上传或选择 App 截图，准备标注成瘾区域。"
+    "description": "上传或选择 App 截图，并标注容易让人上瘾的界面区域。"
   },
   "title": "分析截图",
-  "description": "上传截图或选择线框示例。标注工具将在下一步加入。",
+  "description": "上传截图或选择线框示例，然后在成瘾区域拖拽画框。",
   "upload": "上传截图",
   "upload_hint": "PNG 或 JPG，仅保存在本次浏览器会话",
   "samples_heading": "或选择示例",
@@ -13,5 +13,18 @@
   "app_name_label": "App 名称（可选）",
   "app_name_placeholder": "例如：信息流 App",
   "clear": "清空",
-  "coming_next": "下一步：在成瘾区域画框并生成 Report。"
+  "draw_hint": "在图上拖拽即可标注钩子",
+  "annotations_heading": "标注列表",
+  "annotations_count": "{count}",
+  "annotations_need_image": "请先加载图片。",
+  "annotations_empty": "还没有框 — 请在截图上拖拽。",
+  "hook_type": "钩子类型",
+  "note_label": "为什么让人上瘾",
+  "note_placeholder": "用一句话说明",
+  "severity_label": "严重度",
+  "severity_1": "1 — 轻微",
+  "severity_2": "2 — 中等",
+  "severity_3": "3 — 强烈",
+  "delete_annotation": "删除标注",
+  "coming_next": "下一步：根据这些标注生成可分享的 Addiction Report。"
 }

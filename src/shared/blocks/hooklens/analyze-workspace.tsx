@@ -1,13 +1,29 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import { ImageIcon, Upload, X } from 'lucide-react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { ImageIcon, Trash2, Upload, X } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 
+import { getHookPattern, HOOK_PATTERNS } from '@/config/hooklens/hooks';
 import { HOOKLENS_SAMPLES } from '@/config/hooklens/samples';
+import {
+  Annotation,
+  AnnotationRect,
+  createAnnotationId,
+} from '@/config/hooklens/types';
+import { ScreenshotAnnotator } from '@/shared/blocks/hooklens/screenshot-annotator';
+import { Badge } from '@/shared/components/ui/badge';
 import { Button } from '@/shared/components/ui/button';
 import { Input } from '@/shared/components/ui/input';
 import { Label } from '@/shared/components/ui/label';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/shared/components/ui/select';
+import { Textarea } from '@/shared/components/ui/textarea';
 import { cn } from '@/shared/lib/utils';
 
 type ActiveImage = {
@@ -25,6 +41,13 @@ export function AnalyzeWorkspace() {
 
   const [image, setImage] = useState<ActiveImage | null>(null);
   const [appName, setAppName] = useState('');
+  const [annotations, setAnnotations] = useState<Annotation[]>([]);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+
+  const selected = useMemo(
+    () => annotations.find((a) => a.id === selectedId) ?? null,
+    [annotations, selectedId]
+  );
 
   useEffect(() => {
     return () => {
@@ -41,6 +64,11 @@ export function AnalyzeWorkspace() {
     }
   };
 
+  const resetAnnotations = () => {
+    setAnnotations([]);
+    setSelectedId(null);
+  };
+
   const selectSample = (sampleId: string) => {
     const sample = HOOKLENS_SAMPLES.find((s) => s.id === sampleId);
     if (!sample) return;
@@ -51,6 +79,7 @@ export function AnalyzeWorkspace() {
       sampleId: sample.id,
     });
     setAppName(isZh ? sample.appNameZh : sample.appNameEn);
+    resetAnnotations();
   };
 
   const onFileChange = (file: File | undefined) => {
@@ -62,13 +91,58 @@ export function AnalyzeWorkspace() {
     if (!appName.trim()) {
       setAppName(file.name.replace(/\.[^.]+$/, ''));
     }
+    resetAnnotations();
   };
 
   const clearAll = () => {
     clearObjectUrl();
     setImage(null);
     setAppName('');
+    resetAnnotations();
     if (inputRef.current) inputRef.current.value = '';
+  };
+
+  const onCreate = (rect: AnnotationRect) => {
+    const hook = HOOK_PATTERNS[0];
+    const ann: Annotation = {
+      id: createAnnotationId(),
+      hookId: hook.id,
+      label: isZh ? hook.nameZh : hook.nameEn,
+      note: '',
+      severity: 2,
+      rect,
+    };
+    setAnnotations((prev) => [...prev, ann]);
+    setSelectedId(ann.id);
+  };
+
+  const updateSelected = (patch: Partial<Annotation>) => {
+    if (!selectedId) return;
+    setAnnotations((prev) =>
+      prev.map((a) => {
+        if (a.id !== selectedId) return a;
+        const next = { ...a, ...patch };
+        if (patch.hookId) {
+          const hook = getHookPattern(patch.hookId);
+          if (hook) {
+            next.label = isZh ? hook.nameZh : hook.nameEn;
+          }
+        }
+        return next;
+      })
+    );
+  };
+
+  const removeSelected = () => {
+    if (!selectedId) return;
+    setAnnotations((prev) => prev.filter((a) => a.id !== selectedId));
+    setSelectedId(null);
+  };
+
+  const hookName = (id: string) => {
+    const hook = getHookPattern(id);
+    if (!hook) return id;
+    return isZh ? hook.nameZh : hook.nameEn;
   };
 
   return (
@@ -82,7 +156,7 @@ export function AnalyzeWorkspace() {
         </p>
       </header>
 
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_280px]">
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px]">
         <div className="space-y-4">
           <div className="flex flex-wrap items-center gap-3">
             <input
@@ -107,26 +181,22 @@ export function AnalyzeWorkspace() {
             </span>
           </div>
 
-          <div
-            className={cn(
-              'bg-muted/40 relative flex min-h-[420px] items-center justify-center overflow-hidden rounded-xl border border-dashed',
-              image && 'border-solid bg-background'
-            )}
-          >
-            {image ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={image.url}
-                alt={t('current_image')}
-                className="max-h-[70vh] w-full object-contain"
-              />
-            ) : (
-              <div className="text-muted-foreground flex flex-col items-center gap-3 px-6 text-center">
-                <ImageIcon className="size-10 opacity-50" />
-                <p>{t('canvas_empty')}</p>
-              </div>
-            )}
-          </div>
+          {image ? (
+            <ScreenshotAnnotator
+              imageUrl={image.url}
+              imageAlt={t('current_image')}
+              annotations={annotations}
+              selectedId={selectedId}
+              onSelect={setSelectedId}
+              onCreate={onCreate}
+              drawHint={t('draw_hint')}
+            />
+          ) : (
+            <div className="bg-muted/40 flex min-h-[420px] flex-col items-center justify-center gap-3 rounded-xl border border-dashed px-6 text-center">
+              <ImageIcon className="text-muted-foreground size-10 opacity-50" />
+              <p className="text-muted-foreground">{t('canvas_empty')}</p>
+            </div>
+          )}
 
           <p className="text-muted-foreground text-sm">{t('coming_next')}</p>
         </div>
@@ -146,7 +216,7 @@ export function AnalyzeWorkspace() {
             <h2 className="text-sm font-medium">{t('samples_heading')}</h2>
             <ul className="space-y-2">
               {HOOKLENS_SAMPLES.map((sample) => {
-                const selected = image?.sampleId === sample.id;
+                const isSelected = image?.sampleId === sample.id;
                 return (
                   <li key={sample.id}>
                     <button
@@ -154,7 +224,7 @@ export function AnalyzeWorkspace() {
                       onClick={() => selectSample(sample.id)}
                       className={cn(
                         'hover:bg-muted/60 flex w-full items-center gap-3 rounded-lg border p-2 text-left transition-colors',
-                        selected && 'border-primary bg-muted/40'
+                        isSelected && 'border-primary bg-muted/40'
                       )}
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -176,6 +246,117 @@ export function AnalyzeWorkspace() {
                 );
               })}
             </ul>
+          </div>
+
+          <div className="space-y-3 border-t pt-4">
+            <div className="flex items-center justify-between gap-2">
+              <h2 className="text-sm font-medium">{t('annotations_heading')}</h2>
+              <Badge variant="secondary">
+                {t('annotations_count', { count: annotations.length })}
+              </Badge>
+            </div>
+
+            {!image && (
+              <p className="text-muted-foreground text-xs">
+                {t('annotations_need_image')}
+              </p>
+            )}
+
+            {image && annotations.length === 0 && (
+              <p className="text-muted-foreground text-xs">
+                {t('annotations_empty')}
+              </p>
+            )}
+
+            <ul className="max-h-40 space-y-1 overflow-y-auto">
+              {annotations.map((ann, index) => (
+                <li key={ann.id}>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedId(ann.id)}
+                    className={cn(
+                      'hover:bg-muted/60 flex w-full items-center gap-2 rounded-md border px-2 py-1.5 text-left text-sm',
+                      selectedId === ann.id && 'border-primary bg-muted/50'
+                    )}
+                  >
+                    <span className="bg-amber-500 flex size-5 shrink-0 items-center justify-center rounded text-[10px] font-medium text-white">
+                      {index + 1}
+                    </span>
+                    <span className="truncate">{hookName(ann.hookId)}</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+
+            {selected && (
+              <div className="space-y-3 rounded-lg border p-3">
+                <div className="space-y-2">
+                  <Label>{t('hook_type')}</Label>
+                  <Select
+                    value={selected.hookId}
+                    onValueChange={(value) =>
+                      updateSelected({
+                        hookId: value as Annotation['hookId'],
+                      })
+                    }
+                  >
+                    <SelectTrigger className="w-full">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {HOOK_PATTERNS.map((hook) => (
+                        <SelectItem key={hook.id} value={hook.id}>
+                          {isZh ? hook.nameZh : hook.nameEn}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="hooklens-note">{t('note_label')}</Label>
+                  <Textarea
+                    id="hooklens-note"
+                    value={selected.note}
+                    onChange={(e) => updateSelected({ note: e.target.value })}
+                    placeholder={t('note_placeholder')}
+                    rows={3}
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label>{t('severity_label')}</Label>
+                  <Select
+                    value={String(selected.severity)}
+                    onValueChange={(value) =>
+                      updateSelected({
+                        severity: Number(value) as 1 | 2 | 3,
+                      })
+                    }
+                  >
+                    <SelectTrigger className="w-full">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="1">{t('severity_1')}</SelectItem>
+                      <SelectItem value="2">{t('severity_2')}</SelectItem>
+                      <SelectItem value="3">{t('severity_3')}</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  className="w-full"
+                  onClick={removeSelected}
+                >
+                  <Trash2 className="size-4" />
+                  {t('delete_annotation')}
+                </Button>
+              </div>
+            )}
           </div>
         </aside>
       </div>

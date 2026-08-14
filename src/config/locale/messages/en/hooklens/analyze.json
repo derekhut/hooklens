@@ -1,10 +1,10 @@
 {
   "metadata": {
     "title": "Analyze — HookLens",
-    "description": "Upload or pick an app screenshot and prepare addiction annotations."
+    "description": "Upload or pick an app screenshot and annotate addictive UI regions."
   },
   "title": "Analyze screenshot",
-  "description": "Upload a screenshot or pick a wireframe sample. Annotation tools come next.",
+  "description": "Upload a screenshot or pick a wireframe sample, then drag boxes onto addictive regions.",
   "upload": "Upload screenshot",
   "upload_hint": "PNG or JPG, stays in this browser session",
   "samples_heading": "Or pick a sample",
@@ -13,5 +13,18 @@
   "app_name_label": "App name (optional)",
   "app_name_placeholder": "e.g. Feed App",
   "clear": "Clear",
-  "coming_next": "Next: draw boxes on addictive regions and generate a report."
+  "draw_hint": "Drag on the image to mark a hook",
+  "annotations_heading": "Annotations",
+  "annotations_count": "{count}",
+  "annotations_need_image": "Load an image first.",
+  "annotations_empty": "No boxes yet — drag on the screenshot.",
+  "hook_type": "Hook type",
+  "note_label": "Why this is addictive",
+  "note_placeholder": "One sentence in plain language",
+  "severity_label": "Severity",
+  "severity_1": "1 — Mild",
+  "severity_2": "2 — Medium",
+  "severity_3": "3 — Strong",
+  "delete_annotation": "Delete box",
+  "coming_next": "Next: generate a shareable Addiction Report from these annotations."
 }
