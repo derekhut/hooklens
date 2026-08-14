@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "HookLens 演示 — 90 秒路径与 Demo Lock",
-    "description": "如何安全跑 Reddit Twin 演示：脚本路径、Demo Lock 清单，以及公开演示前的备份录屏。"
+    "title": "HookLens 演示 — 截图到报告",
+    "description": "约两分钟演示 HookLens：选示例、标注钩子、生成报告。"
   },
   "page": {
     "title": "演示",
@@ -9,14 +9,14 @@
     "sections": {
       "hero": {
         "id": "hero",
-        "title": "90 秒到「原来是这个勾住我」",
-        "highlight_text": "90 秒",
-        "description": "在 Reddit 上实时高亮，再切 Twin 排毒。给朋友或评委看之前，先录好备份。",
+        "title": "两分钟到「原来是这个勾住我」",
+        "highlight_text": "两分钟",
+        "description": "无需扩展。打开分析、标注示例截图、生成报告——再问哪些钩子最黏人。",
         "buttons": [
           {
-            "title": "产品首页",
-            "url": "/hooklens",
-            "icon": "Eye",
+            "title": "开始分析",
+            "url": "/analyze",
+            "icon": "ScanSearch",
             "variant": "default"
           },
           {
@@ -28,64 +28,64 @@
         ],
         "show_avatars": false,
         "image": {
-          "src": "https://picsum.photos/seed/hooklens-demo-hero/1200/800",
-          "alt": "demo",
-          "width": 1200,
-          "height": 800
+          "src": "/imgs/hooklens/samples/feed.svg",
+          "alt": "演示示例",
+          "width": 390,
+          "height": 844
         }
       },
       "media": {
         "block": "features-media",
         "id": "media",
         "title": "你应该看到什么",
-        "description": "真实 Twin 录屏上线前的占位图。信息流上的标注，以及排毒态下的「信息流暂停（尽力）」横幅。",
+        "description": "画布上的线框示例、成瘾区域上的琥珀色标注框，以及带摘要与发现列表的报告页。",
         "image": {
-          "src": "https://picsum.photos/seed/hooklens-demo-media/1200/800",
-          "alt": "twin overlay placeholder"
+          "src": "/imgs/hooklens/samples/social.svg",
+          "alt": "标注示例"
         }
       },
       "steps": {
         "block": "features-step",
         "id": "steps",
-        "title": "脚本路径 + Demo Lock",
-        "description": "v0 唯一支持的现场路径。任一冒烟失败 → 播放备份录屏。",
+        "title": "演示脚本路径",
+        "description": "给朋友和评委固定走这条路径。跳过任何需要安装的步骤。",
         "image": {
-          "src": "https://picsum.photos/seed/hooklens-demo-steps/1200/800",
-          "alt": "steps"
+          "src": "/imgs/hooklens/samples/video.svg",
+          "alt": "步骤"
         },
         "image_position": "left",
         "text_align": "center",
         "items": [
           {
-            "title": "加载已解压扩展",
-            "description": "同一 Chrome 配置、已登录 Reddit。MV3 构建完成后加载扩展。",
+            "title": "打开分析",
+            "description": "进入 /analyze。在侧栏选择「无限信息流」或其他示例。",
             "image": {
-              "src": "https://picsum.photos/seed/demo-s1/800/600",
-              "alt": "load"
+              "src": "/imgs/hooklens/samples/feed.svg",
+              "alt": "打开"
             }
           },
           {
-            "title": "首页：无限滚动 + 红点",
-            "description": "打开 reddit.com 首页，确认无限滚动与收件箱红点标注。",
+            "title": "画 2–3 个框",
+            "description": "标出滚动、红点或自动播放区域。设置钩子类型与一句话说明。",
             "image": {
-              "src": "https://picsum.photos/seed/demo-s2/800/600",
-              "alt": "home"
+              "src": "/imgs/hooklens/samples/social.svg",
+              "alt": "画框"
             }
           },
           {
-            "title": "切换排毒态",
-            "description": "红点隐藏，出现「信息流暂停（尽力）」横幅。若仍在加载，口头说明。",
+            "title": "生成报告",
+            "description": "点击「生成 Report」。一起读摘要与发现列表。",
             "image": {
-              "src": "https://picsum.photos/seed/demo-s3/800/600",
-              "alt": "detox"
+              "src": "/imgs/hooklens/samples/video.svg",
+              "alt": "报告"
             }
           },
           {
-            "title": "固定帖 + 提问",
-            "description": "打开固定视频/帖子看自动播放与相关推荐。问：凌晨一点开哪一版？公开演示前录完整路径备份。",
+            "title": "问一个问题",
+            "description": "凌晨一点哪个钩子还会勾住你？可选打开 /apps 看更干净的替代。",
             "image": {
-              "src": "https://picsum.photos/seed/demo-s4/800/600",
-              "alt": "ask"
+              "src": "/imgs/hooklens/samples/feed.svg",
+              "alt": "提问"
             }
           }
         ],
@@ -93,28 +93,34 @@
       },
       "faq": {
         "id": "faq",
-        "title": "Demo Lock 常见问题",
+        "title": "演示常见问题",
         "items": [
           {
-            "question": "今天早上选择器坏了怎么办？",
-            "answer": "不要现场硬撑。放备份录屏，下次演示前重新钉选择器。"
+            "question": "报告页显示找不到——为什么？",
+            "answer": "演示报告只存在本浏览器。请在同一设备重新生成，或继续走分析流程演示。"
           },
           {
-            "question": "扩展已经在本站提供下载了吗？",
-            "answer": "还没有。本页先写清路径；MV3 包在后续功能交付。"
+            "question": "还需要 Chrome「加载已解压的扩展程序」吗？",
+            "answer": "不需要。本演示完全是网页路径。"
           }
         ]
       },
       "cta": {
         "id": "cta",
-        "title": "逛逛更干净的应用",
-        "description": "扩展落地前，先看示意用的干净替代目录。",
+        "title": "现在就跑一遍",
+        "description": "在示例上标两个钩子并打开报告。",
         "buttons": [
           {
-            "title": "打开 /apps",
+            "title": "去分析",
+            "url": "/analyze",
+            "icon": "ScanSearch",
+            "variant": "default"
+          },
+          {
+            "title": "浏览 /apps",
             "url": "/apps",
             "icon": "Box",
-            "variant": "default"
+            "variant": "outline"
           }
         ],
         "className": "bg-muted"

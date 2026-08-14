@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "ShipAny Template Two",
-    "description": "ShipAny is a NextJS boilerplate for building AI SaaS startups. Ship Fast with a variety of templates and components.",
-    "keywords": "shipany, shipany-boilerplate, shipany-template-two-demo"
+    "title": "HookLens — Annotate addictive app design",
+    "description": "Upload app screenshots, label addiction hooks, and generate a readable Addiction Report.",
+    "keywords": "HookLens, addiction design, dark patterns, infinite scroll, screenshot annotation"
   },
   "sign": {
     "sign_in_title": "Sign In",

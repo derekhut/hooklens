@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "HookLens demo — 90-second path & Demo Lock",
-    "description": "How to run the Reddit Twin demo safely: scripted path, Demo Lock checklist, and backup recording before any public show."
+    "title": "HookLens demo — screenshot to report",
+    "description": "How to demo HookLens in about two minutes: pick a sample, annotate hooks, generate a report."
   },
   "page": {
     "title": "Demo",
@@ -9,14 +9,14 @@
     "sections": {
       "hero": {
         "id": "hero",
-        "title": "90 seconds to oh that's what got me",
-        "highlight_text": "90 seconds",
-        "description": "Live highlighter on Reddit, then Twin detox. Film a backup before you demo to friends or judges.",
+        "title": "Two minutes to oh that's what got me",
+        "highlight_text": "Two minutes",
+        "description": "No extension. Open Analyze, mark a sample screenshot, generate a report — then ask which hooks felt most sticky.",
         "buttons": [
           {
-            "title": "Product home",
-            "url": "/hooklens",
-            "icon": "Eye",
+            "title": "Start Analyze",
+            "url": "/analyze",
+            "icon": "ScanSearch",
             "variant": "default"
           },
           {
@@ -28,63 +28,63 @@
         ],
         "show_avatars": false,
         "image": {
-          "src": "https://picsum.photos/seed/hooklens-demo-hero/1200/800",
-          "alt": "demo",
-          "width": 1200,
-          "height": 800
+          "src": "/imgs/hooklens/samples/feed.svg",
+          "alt": "demo sample",
+          "width": 390,
+          "height": 844
         }
       },
       "media": {
         "block": "features-media",
         "id": "media",
         "title": "What you should see",
-        "description": "Placeholder visual until the real Twin recording ships. Labels on the feed, then Detoxed with a Feed pause best-effort banner.",
+        "description": "A wireframe sample on the canvas, amber boxes on addictive regions, then a report page with summary and findings.",
         "image": {
-          "src": "https://picsum.photos/seed/hooklens-demo-media/1200/800",
-          "alt": "twin overlay placeholder"
+          "src": "/imgs/hooklens/samples/social.svg",
+          "alt": "annotation sample"
         }
       },
       "steps": {
         "block": "features-step",
         "id": "steps",
-        "title": "Scripted path + Demo Lock",
-        "description": "Only supported live path for v0. Fail any smoke check → play the backup recording.",
+        "title": "Scripted demo path",
+        "description": "Keep this path for friends and judges. Skip anything that needs an install.",
         "image": {
-          "src": "https://picsum.photos/seed/hooklens-demo-steps/1200/800",
+          "src": "/imgs/hooklens/samples/video.svg",
           "alt": "steps"
         },
         "image_position": "left",
         "text_align": "center",
         "items": [
           {
-            "title": "Load unpacked",
-            "description": "Same Chrome profile, logged into Reddit. Extension loaded after MV3 build.",
+            "title": "Open Analyze",
+            "description": "Go to /analyze. Pick Infinite feed or another sample from the sidebar.",
             "image": {
-              "src": "https://picsum.photos/seed/demo-s1/800/600",
-              "alt": "load"
+              "src": "/imgs/hooklens/samples/feed.svg",
+              "alt": "open"
             }
           },
           {
-            "title": "Home: infinite + badge",
-            "description": "Open reddit.com home. Confirm infinite scroll and inbox badge labels.",
+            "title": "Draw 2–3 boxes",
+            "description": "Mark scroll, badge, or autoplay regions. Set hook type and a one-line note.",
             "image": {
-              "src": "https://picsum.photos/seed/demo-s2/800/600",
-              "alt": "home"
+              "src": "/imgs/hooklens/samples/social.svg",
+              "alt": "boxes"
             }
           },
           {
-            "title": "Toggle Detoxed",
-            "description": "Badge hidden. Feed pause best-effort banner. Narrate if scroll still loads.",
+            "title": "Generate Report",
+            "description": "Click Generate Report. Read the summary and findings list together.",
             "image": {
-              "src": "https://picsum.photos/seed/demo-s3/800/600",
-              "alt": "detox"
+              "src": "/imgs/hooklens/samples/video.svg",
+              "alt": "report"
             }
           },
           {
-            "title": "Pinned post + ask",
-            "description": "Open the pinned video/post URL for autoplay and related labels. Ask: which mode at 1am? Film backup of this whole path before any public show.",
+            "title": "Ask one question",
+            "description": "Which hook would still get you at 1am? Optionally open /apps for cleaner alternatives.",
             "image": {
-              "src": "https://picsum.photos/seed/demo-s4/800/600",
+              "src": "/imgs/hooklens/samples/feed.svg",
               "alt": "ask"
             }
           }
@@ -93,28 +93,34 @@
       },
       "faq": {
         "id": "faq",
-        "title": "Demo Lock FAQ",
+        "title": "Demo FAQ",
         "items": [
           {
-            "question": "Selectors broke this morning — what now?",
-            "answer": "Do not wing it live. Use the backup recording and re-pin selectors before the next show."
+            "question": "The report page says not found — why?",
+            "answer": "Demo reports live in this browser only. Generate again on the same device, or stick to the Analyze walkthrough."
           },
           {
-            "question": "Is the Chrome extension on this site yet?",
-            "answer": "Not yet. This page documents the path; the MV3 package ships in a later feature."
+            "question": "Do I need Chrome Load unpacked?",
+            "answer": "No. This demo is entirely web-based."
           }
         ]
       },
       "cta": {
         "id": "cta",
-        "title": "Browse cleaner apps",
-        "description": "While the extension lands, explore the illustrative clean-alternatives directory.",
+        "title": "Run it now",
+        "description": "Mark two hooks on a sample and open the report.",
         "buttons": [
           {
-            "title": "Open /apps",
+            "title": "Go to Analyze",
+            "url": "/analyze",
+            "icon": "ScanSearch",
+            "variant": "default"
+          },
+          {
+            "title": "Browse /apps",
             "url": "/apps",
             "icon": "Box",
-            "variant": "default"
+            "variant": "outline"
           }
         ],
         "className": "bg-muted"

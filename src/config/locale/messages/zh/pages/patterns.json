@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "钩子百科 — 成瘾机制标注",
-    "description": "HookLens 在信息流上标注的注意力钩子词典：无限滚动、红点、相关推荐、自动播放。"
+    "description": "HookLens 标注截图时使用的注意力钩子词典：无限滚动、红点、相关推荐、自动播放。"
   },
   "page": {
     "title": "钩子百科",
@@ -11,12 +11,12 @@
         "id": "hero",
         "title": "给让你继续滑的钩子起名字",
         "highlight_text": "钩子",
-        "description": "这些是注意力 / 成瘾机制，不是结账页暗黑模式。HookLens 在信息流上标注它们；本页是共用词典。",
+        "description": "这些是注意力 / 成瘾机制，不是结账页暗黑模式。HookLens 在你标注截图时使用它们；本页是共用词典。",
         "buttons": [
           {
-            "title": "返回 HookLens",
-            "icon": "Eye",
-            "url": "/hooklens",
+            "title": "打开分析",
+            "icon": "ScanSearch",
+            "url": "/analyze",
             "variant": "default"
           },
           {
@@ -39,11 +39,11 @@
         "id": "patterns",
         "title": "v0 承诺钩子",
         "label": "分类",
-        "description": "与 Reddit 演示路径对齐。排毒行为在真实站点上为尽力而为。",
+        "description": "与分析页标注下拉同源。在截图上标注时请用这些名称。",
         "items": [
           {
             "title": "无限滚动",
-            "description": "没有终点——信息流持续增长。排毒：显示「信息流暂停（尽力）」横幅，并尝试阻止继续加载。",
+            "description": "没有终点——信息流持续增长。在截图上：框住无尽列表或「加载更多」区域。",
             "icon": "Infinity",
             "image": {
               "src": "https://picsum.photos/seed/hook-infinite/800/600",
@@ -52,7 +52,7 @@
           },
           {
             "title": "未读 / 收件箱红点",
-            "description": "红色计数与未读样式把你拉回去点开。排毒：用 CSS 隐藏红点区域。",
+            "description": "红色计数与未读样式把你拉回去点开。在截图上：框住红点或通知胶囊。",
             "icon": "Bell",
             "image": {
               "src": "https://picsum.photos/seed/hook-badge/800/600",
@@ -61,7 +61,7 @@
           },
           {
             "title": "相关 / 继续浏览",
-            "description": "相似帖与继续模块打开又一个兔子洞。排毒：灰显或隐藏该模块。",
+            "description": "相似帖与继续模块打开又一个兔子洞。在截图上：框住相关推荐栏。",
             "icon": "GitBranch",
             "image": {
               "src": "https://picsum.photos/seed/hook-related/800/600",
@@ -70,7 +70,7 @@
           },
           {
             "title": "自动播放 / 页内视频",
-            "description": "零决策继续看。演示里绑在固定视频帖。排毒：Twin 模式下暂停视频。",
+            "description": "零决策继续看。在截图上：框住自动播放播放器或「下一条」条带。",
             "icon": "Play",
             "image": {
               "src": "https://picsum.photos/seed/hook-autoplay/800/600",
@@ -90,19 +90,19 @@
           },
           {
             "question": "以后还会加更多钩子吗？",
-            "answer": "会。排序栏、可变奖励等是 Reddit Twin 演示稳定后的延伸项。"
+            "answer": "会。排序栏、可变奖励等是截图演示稳定后的延伸项。"
           }
         ]
       },
       "cta": {
         "id": "cta",
-        "title": "看产品故事",
-        "description": "HookLens 落地页说明 Twin 模式与 90 秒演示路径。",
+        "title": "在分析里用这本词典",
+        "description": "选一张示例截图，标上这些钩子，再生成报告。",
         "buttons": [
           {
-            "title": "打开 HookLens",
-            "url": "/hooklens",
-            "icon": "Eye",
+            "title": "打开分析",
+            "url": "/analyze",
+            "icon": "ScanSearch",
             "variant": "default"
           }
         ],

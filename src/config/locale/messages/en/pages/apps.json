@@ -9,7 +9,7 @@
       "showcases": {
         "id": "showcases",
         "title": "Compare without the hooks",
-        "description": "Early directory for HookLens. Listings are illustrative — verify before you rely on them. Tags in the description mean hooks the product claims to avoid.",
+        "description": "Early directory for HookLens. Listings are illustrative — verify before you rely on them. After a report, come here for products that claim fewer hooks.",
         "groups": [
           {
             "name": "all",
@@ -36,7 +36,7 @@
           {
             "title": "Example: Chronological social",
             "description": "No: infinite algorithmic For You · No: streak guilt — placeholder listing",
-            "url": "/hooklens",
+            "url": "/analyze",
             "target": "_self",
             "image": {
               "src": "https://picsum.photos/seed/clean-social/800/600",
@@ -47,7 +47,7 @@
           {
             "title": "Example: Finite video queue",
             "description": "No: autoplay next-up · No: infinite scroll — placeholder listing",
-            "url": "/hooklens",
+            "url": "/analyze",
             "target": "_self",
             "image": {
               "src": "https://picsum.photos/seed/clean-video/800/600",
@@ -80,7 +80,7 @@
           {
             "title": "HookLens itself",
             "description": "Labels hooks instead of blocking — product home",
-            "url": "/hooklens",
+            "url": "/analyze",
             "target": "_self",
             "image": {
               "src": "https://picsum.photos/seed/clean-hooklens/800/600",

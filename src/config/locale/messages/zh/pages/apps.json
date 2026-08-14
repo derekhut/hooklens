@@ -9,7 +9,7 @@
       "showcases": {
         "id": "showcases",
         "title": "去掉钩子再对比",
-        "description": "HookLens 早期目录。条目为示意——采纳前请自行核实。描述里的「无：…」表示该产品宣称避开的钩子。",
+        "description": "HookLens 早期目录。条目为示意——采纳前请自行核实。看完报告后来这里找宣称少钩子的产品。",
         "groups": [
           {
             "name": "all",
@@ -36,7 +36,7 @@
           {
             "title": "示例：按时间线的社交",
             "description": "无：算法 For You 无限流 · 无：连续打卡愧疚 — 示意条目",
-            "url": "/hooklens",
+            "url": "/analyze",
             "target": "_self",
             "image": {
               "src": "https://picsum.photos/seed/clean-social/800/600",
@@ -47,7 +47,7 @@
           {
             "title": "示例：有限视频队列",
             "description": "无：自动连播 · 无：无限滚动 — 示意条目",
-            "url": "/hooklens",
+            "url": "/analyze",
             "target": "_self",
             "image": {
               "src": "https://picsum.photos/seed/clean-video/800/600",
@@ -79,8 +79,8 @@
           },
           {
             "title": "HookLens 本站",
-            "description": "标注钩子而不是拦截 — 产品首页",
-            "url": "/hooklens",
+            "description": "标注钩子而不是拦截 — 打开分析工具",
+            "url": "/analyze",
             "target": "_self",
             "image": {
               "src": "https://picsum.photos/seed/clean-hooklens/800/600",

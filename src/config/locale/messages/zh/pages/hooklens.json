@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "HookLens — 看见让你上瘾的设计",
-    "description": "在信息流上直接标注成瘾机制，而不是再装一个 Screen Time。双视图：上瘾态 vs 排毒态。"
+    "title": "HookLens — 产品故事",
+    "description": "在 App 截图上标注成瘾设计并生成成瘾报告。不是屏幕时间，也不是封锁工具。"
   },
   "page": {
     "title": "HookLens",
@@ -16,26 +16,26 @@
     "sections": {
       "hero": {
         "id": "hero",
-        "title": "看见让你继续滑的钩子",
-        "highlight_text": "钩子",
-        "description": "HookLens 在信息流上直接标注成瘾设计——无限滚动、红点焦虑、自动播放、相关推荐陷阱。<br/>不是 Screen Time，不是拦截器，是给陷阱贴上名字。",
+        "title": "给陷阱贴上名牌",
+        "highlight_text": "陷阱",
+        "description": "HookLens 帮你在截图上标注成瘾界面——无限滚动、红点、自动播放、相关推荐——并生成可读报告。<br/>不是屏幕时间，也不是封锁工具。",
         "announcement": {
-          "badge": "v0",
-          "title": "黑客松演示：Reddit 白名单 + Twin 切换",
-          "url": "/hooklens"
+          "badge": "网页",
+          "title": "演示路径：分析 → 标注 → 报告",
+          "url": "/analyze"
         },
         "buttons": [
           {
-            "title": "怎么用",
-            "icon": "Zap",
-            "url": "#usage",
+            "title": "打开分析",
+            "icon": "ScanSearch",
+            "url": "/analyze",
             "target": "_self",
             "variant": "default"
           },
           {
-            "title": "这不是什么",
-            "icon": "BookOpenText",
-            "url": "#faq",
+            "title": "如何演示",
+            "icon": "Play",
+            "url": "/demo",
             "target": "_self",
             "variant": "outline"
           }
@@ -43,52 +43,52 @@
         "show_avatars": false,
         "show_award": false,
         "image": {
-          "src": "https://picsum.photos/seed/hooklens-hero/1200/800",
-          "alt": "HookLens 标注示意",
-          "width": 1200,
-          "height": 800
+          "src": "/imgs/hooklens/samples/feed.svg",
+          "alt": "HookLens 线框示例",
+          "width": 390,
+          "height": 844
         },
         "background_image": {
-          "src": "https://picsum.photos/seed/hooklens-bg/1600/900",
-          "alt": "background"
+          "src": "https://picsum.photos/seed/hooklens-story-bg-zh/1600/900",
+          "alt": "背景"
         }
       },
       "introduce": {
         "block": "features-list",
         "id": "introduce",
-        "title": "标签贴在陷阱上",
+        "title": "把陷阱标出来",
         "label": "产品",
-        "description": "打开真实信息流，贴纸说出机制名字。切换到排毒态，感受同一页安静下来的感觉。",
+        "description": "把「这个 App 很上瘾」变成两分钟内能指给别人看的框与说明。",
         "image": {
-          "src": "https://picsum.photos/seed/hooklens-introduce/1200/800",
-          "alt": "introduce"
+          "src": "/imgs/hooklens/samples/social.svg",
+          "alt": "介绍"
         },
         "items": [
           {
-            "title": "实时高亮",
-            "description": "在无限滚动、红点焦虑、相关推荐、自动播放出现的位置标注——不是周报里的一串分钟数。",
-            "icon": "Sparkles",
+            "title": "截图工作台",
+            "description": "上传截图或选线框示例——演示无需安装扩展。",
+            "icon": "Upload",
             "image": {
-              "src": "https://picsum.photos/seed/hooklens-i1/800/600",
-              "alt": "highlighter"
+              "src": "/imgs/hooklens/samples/feed.svg",
+              "alt": "工作台"
             }
           },
           {
-            "title": "上瘾 ↔ 排毒",
-            "description": "同一批已加载内容。互动诱饵被弱化。无限滚动若只能尽力而为，会显示「信息流暂停（尽力）」横幅。",
-            "icon": "ToggleLeft",
+            "title": "共用钩子词典",
+            "description": "与「钩子词典」同源：无限滚动、红点、相关推荐、自动播放。",
+            "icon": "BookOpenText",
             "image": {
-              "src": "https://picsum.photos/seed/hooklens-i2/800/600",
-              "alt": "twin"
+              "src": "/imgs/hooklens/samples/social.svg",
+              "alt": "词典"
             }
           },
           {
-            "title": "为那一声「哇」而做",
-            "description": "成功标准：刷到停不下来的朋友在 90 秒内说出「原来是这个勾住我」。",
-            "icon": "Heart",
+            "title": "成瘾报告",
+            "description": "摘要、带框截图与发现列表——再链到词典与更干净的应用。",
+            "icon": "FileText",
             "image": {
-              "src": "https://picsum.photos/seed/hooklens-i3/800/600",
-              "alt": "recognition"
+              "src": "/imgs/hooklens/samples/video.svg",
+              "alt": "报告"
             }
           }
         ],
@@ -97,35 +97,35 @@
       "benefits": {
         "block": "features-accordion",
         "id": "benefits",
-        "title": "为什么不是 Screen Time？",
+        "title": "为什么不是屏幕时间？",
         "label": "差异",
-        "description": "拦截器切断访问。HookLens 给机制命名，让你能选择——并最终找到去掉这些钩子的产品。",
+        "description": "封锁工具切断访问。HookLens 给机制起名，让人能选择——并找到少装这些钩子的产品。",
         "items": [
           {
-            "title": "说出机制名字",
-            "description": "可变奖励、连续打卡愧疚、无限信息流——可以指给朋友看的语言，而不只是计时器。",
+            "title": "给机制起名",
+            "description": "可变奖励、无尽信息流、红点焦虑——能讲给朋友听的语言，而不只是计时器。",
             "icon": "Tag",
             "image": {
-              "src": "https://picsum.photos/seed/hooklens-b1/800/600",
-              "alt": "mechanism"
+              "src": "/imgs/hooklens/samples/feed.svg",
+              "alt": "机制"
             }
           },
           {
-            "title": "双视图对比",
-            "description": "一键感受差异。也是本站后续「干净替代目录」的预告。",
-            "icon": "Columns2",
+            "title": "浏览器即可演示",
+            "description": "评委或朋友打开网站、分析截图、阅读报告——无需安装步骤。",
+            "icon": "Globe",
             "image": {
-              "src": "https://picsum.photos/seed/hooklens-b2/800/600",
-              "alt": "compare"
+              "src": "/imgs/hooklens/samples/social.svg",
+              "alt": "网页"
             }
           },
           {
-            "title": "本地扩展",
-            "description": "v0 计划在浏览器本地分析。演示高亮器不需要账号。",
-            "icon": "Shield",
+            "title": "通向更干净的 App",
+            "description": "报告之后，可浏览示意性的干净替代目录。",
+            "icon": "Box",
             "image": {
-              "src": "https://picsum.photos/seed/hooklens-b3/800/600",
-              "alt": "privacy"
+              "src": "/imgs/hooklens/samples/video.svg",
+              "alt": "应用"
             }
           }
         ]
@@ -133,45 +133,37 @@
       "usage": {
         "block": "features-step",
         "id": "usage",
-        "title": "90 秒演示路径",
-        "description": "周末 v0 聚焦 Reddit。钩子百科与干净应用目录会按功能逐个上线。",
+        "title": "产品流程",
+        "description": "本站端到端讲述的故事。",
         "image": {
-          "src": "https://picsum.photos/seed/hooklens-usage/1200/800",
-          "alt": "usage"
+          "src": "/imgs/hooklens/samples/feed.svg",
+          "alt": "用法"
         },
         "image_position": "left",
         "text_align": "center",
         "items": [
           {
-            "title": "加载扩展",
-            "description": "MV3 构建完成后用 Chrome「加载已解压的扩展程序」。公开演示前先过 Demo Lock 清单。",
+            "title": "选择截图",
+            "description": "线框示例或自己的 PNG/JPG。",
             "image": {
-              "src": "https://picsum.photos/seed/hooklens-u1/800/600",
-              "alt": "load"
+              "src": "/imgs/hooklens/samples/feed.svg",
+              "alt": "选择"
             }
           },
           {
-            "title": "打开 Reddit 首页",
-            "description": "看到无限滚动与收件箱红点焦虑的标注。",
+            "title": "标注钩子",
+            "description": "拖拽画框、选类型、写为什么把人拉回去。",
             "image": {
-              "src": "https://picsum.photos/seed/hooklens-u2/800/600",
-              "alt": "home"
+              "src": "/imgs/hooklens/samples/social.svg",
+              "alt": "标注"
             }
           },
           {
-            "title": "切换排毒态",
-            "description": "隐藏红点、显示「信息流暂停（尽力）」横幅，再打开固定帖子看相关推荐与自动播放。",
+            "title": "生成报告",
+            "description": "用清晰发现列表完成「原来是这个勾住我」的时刻。",
             "image": {
-              "src": "https://picsum.photos/seed/hooklens-u3/800/600",
-              "alt": "detox"
-            }
-          },
-          {
-            "title": "只问一句",
-            "description": "凌晨一点你会开哪一版？记下对方原话。",
-            "image": {
-              "src": "https://picsum.photos/seed/hooklens-u4/800/600",
-              "alt": "ask"
+              "src": "/imgs/hooklens/samples/video.svg",
+              "alt": "报告"
             }
           }
         ],
@@ -180,36 +172,42 @@
       "faq": {
         "id": "faq",
         "title": "常见问题",
-        "description": "第一个周末的直白回答。",
+        "description": "演示相关的直接回答。",
         "items": [
           {
-            "question": "这是 Screen Time 或应用拦截器吗？",
-            "answer": "不是。那些切断访问。HookLens 在现场标注成瘾 UI 模式，让你看见陷阱。"
+            "question": "这是屏幕时间或封锁 App 吗？",
+            "answer": "不是。那些切断访问。HookLens 在截图上标注成瘾界面，让你看见陷阱。"
           },
           {
-            "question": "能用于任意网站吗？",
-            "answer": "v0 不行。黑客松楔子是 Reddit 白名单演示。通用扫描是长期目标。"
+            "question": "需要浏览器扩展吗？",
+            "answer": "本演示不需要。分析在浏览器里完成。扩展是远期可选。"
           },
           {
-            "question": "会上传我的浏览数据吗？",
-            "answer": "计划中的扩展在浏览器本地分析。本营销站不需要你的 Reddit 登录态。"
+            "question": "报告存在哪里？",
+            "answer": "演示版存在本浏览器本地存储。云端分享链接是后续升级。"
           },
           {
-            "question": "什么是 Twin 模式？",
-            "answer": "上瘾态保留钩子标注。排毒态弱化当前视口里的互动诱饵；无限滚动会诚实显示「信息流暂停」横幅。"
+            "question": "和暗黑模式检测工具有何不同？",
+            "answer": "只是表亲。那些抓结账套路。HookLens 关注信息流与社交界面上的习惯机制。"
           }
         ]
       },
       "cta": {
         "id": "cta",
-        "title": "下一步：本站上的钩子百科与干净应用",
-        "description": "本页先上线。钩子百科、干净替代目录与 Chrome 扩展会按功能逐个交付。",
+        "title": "试试工作台",
+        "description": "标两个钩子，生成一份报告。",
         "buttons": [
           {
-            "title": "返回首页",
+            "title": "分析",
+            "url": "/analyze",
+            "icon": "ScanSearch",
+            "variant": "default"
+          },
+          {
+            "title": "首页",
             "url": "/",
             "icon": "Home",
-            "variant": "default"
+            "variant": "outline"
           }
         ],
         "className": "bg-muted"

@@ -11,12 +11,12 @@
         "id": "hero",
         "title": "Name the hooks that keep you scrolling",
         "highlight_text": "hooks",
-        "description": "These are attention / addiction mechanisms — not checkout dark patterns. HookLens labels them on the feed; this page is the shared dictionary.",
+        "description": "These are attention / addiction mechanisms — not checkout dark patterns. HookLens labels them when you annotate screenshots; this page is the shared dictionary.",
         "buttons": [
           {
-            "title": "Back to HookLens",
-            "icon": "Eye",
-            "url": "/hooklens",
+            "title": "Open Analyze",
+            "icon": "ScanSearch",
+            "url": "/analyze",
             "variant": "default"
           },
           {
@@ -39,11 +39,11 @@
         "id": "patterns",
         "title": "Committed hooks (v0)",
         "label": "Taxonomy",
-        "description": "Aligned with the Reddit demo path. Detox behavior is best-effort on live sites.",
+        "description": "Same options as the Analyze annotation picker. Use these names when you mark a screenshot.",
         "items": [
           {
             "title": "Infinite scroll",
-            "description": "No landing, no done — the feed keeps growing. Detox: Feed pause (best effort) banner + try to mute further load.",
+            "description": "No landing, no done — the feed keeps growing. On a screenshot: box the endless list or “loading more” chrome.",
             "icon": "Infinity",
             "image": {
               "src": "https://picsum.photos/seed/hook-infinite/800/600",
@@ -52,7 +52,7 @@
           },
           {
             "title": "Unread / inbox badge",
-            "description": "Red counts and unread chrome that pull you back open. Detox: css-hide the badge chrome.",
+            "description": "Red counts and unread chrome that pull you back open. On a screenshot: box the badge or notification pill.",
             "icon": "Bell",
             "image": {
               "src": "https://picsum.photos/seed/hook-badge/800/600",
@@ -61,7 +61,7 @@
           },
           {
             "title": "Related / continue chrome",
-            "description": "Similar posts and continue modules that start another rabbit hole. Detox: css-grey or hide the module.",
+            "description": "Similar posts and continue modules that start another rabbit hole. On a screenshot: box the related rail.",
             "icon": "GitBranch",
             "image": {
               "src": "https://picsum.photos/seed/hook-related/800/600",
@@ -70,7 +70,7 @@
           },
           {
             "title": "Autoplay / inline video",
-            "description": "Zero decision to continue watching. Opportunistic on a pinned demo URL. Detox: pause video under Twin mode.",
+            "description": "Zero decision to continue watching. On a screenshot: box the autoplaying player or next-up strip.",
             "icon": "Play",
             "image": {
               "src": "https://picsum.photos/seed/hook-autoplay/800/600",
@@ -90,19 +90,19 @@
           },
           {
             "question": "Will more hooks appear here?",
-            "answer": "Yes — ranking chrome and variable-reward drip are stretch items after the Reddit twin demo is solid."
+            "answer": "Yes — ranking chrome and variable-reward drip are stretch items after the screenshot demo is solid."
           }
         ]
       },
       "cta": {
         "id": "cta",
-        "title": "See the product story",
-        "description": "HookLens landing explains Twin mode and the 90-second demo path.",
+        "title": "Use the dictionary in Analyze",
+        "description": "Pick a sample screenshot and label these hooks, then generate a report.",
         "buttons": [
           {
-            "title": "Open HookLens",
-            "url": "/hooklens",
-            "icon": "Eye",
+            "title": "Open Analyze",
+            "url": "/analyze",
+            "icon": "ScanSearch",
             "variant": "default"
           }
         ],

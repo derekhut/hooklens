@@ -1,13 +1,6 @@
-import Link from 'next/link';
-
-import { Button } from '@/shared/components/ui/button';
-
+/**
+ * Template attribution badge — disabled for HookLens product demo.
+ */
 export function BuiltWith() {
-  return (
-    <Button asChild variant="outline" size="sm" className="hover:bg-primary/10">
-      <Link href="https://shipany.ai" target="_blank">
-        Built with ❤️ ShipAny
-      </Link>
-    </Button>
-  );
+  return null;
 }
