@@ -1,0 +1,219 @@
+{
+  "metadata": {
+    "title": "HookLens — See the hooks that keep you scrolling",
+    "description": "Label addictive design in place — not another Screen Time blocker. Twin view: addicted vs detoxed."
+  },
+  "page": {
+    "title": "HookLens",
+    "show_sections": [
+      "hero",
+      "introduce",
+      "benefits",
+      "usage",
+      "faq",
+      "cta"
+    ],
+    "sections": {
+      "hero": {
+        "id": "hero",
+        "title": "See the hooks that keep you scrolling",
+        "highlight_text": "hooks",
+        "description": "HookLens labels addictive design on the feed itself — infinite scroll, badges, autoplay, rabbit holes.<br/>Not Screen Time. Not a blocker. A name tag on the trap.",
+        "announcement": {
+          "badge": "v0",
+          "title": "Hackathon demo: Reddit allowlist + Twin toggle",
+          "url": "/hooklens"
+        },
+        "buttons": [
+          {
+            "title": "How it works",
+            "icon": "Zap",
+            "url": "#usage",
+            "target": "_self",
+            "variant": "default"
+          },
+          {
+            "title": "What this is not",
+            "icon": "BookOpenText",
+            "url": "#faq",
+            "target": "_self",
+            "variant": "outline"
+          }
+        ],
+        "show_avatars": false,
+        "show_award": false,
+        "image": {
+          "src": "https://picsum.photos/seed/hooklens-hero/1200/800",
+          "alt": "HookLens overlay concept",
+          "width": 1200,
+          "height": 800
+        },
+        "background_image": {
+          "src": "https://picsum.photos/seed/hooklens-bg/1600/900",
+          "alt": "background"
+        }
+      },
+      "introduce": {
+        "block": "features-list",
+        "id": "introduce",
+        "title": "Labels on the trap",
+        "label": "Product",
+        "description": "Open a real feed. Stickers name the mechanism. Toggle Detoxed and feel how quiet the same page becomes.",
+        "image": {
+          "src": "https://picsum.photos/seed/hooklens-introduce/1200/800",
+          "alt": "introduce"
+        },
+        "items": [
+          {
+            "title": "Live highlighter",
+            "description": "Marks infinite scroll, badge anxiety, related rabbit holes, and autoplay where they live — not in a weekly report.",
+            "icon": "Sparkles",
+            "image": {
+              "src": "https://picsum.photos/seed/hooklens-i1/800/600",
+              "alt": "highlighter"
+            }
+          },
+          {
+            "title": "Addicted ↔ Detoxed",
+            "description": "Same loaded posts. Engagement chrome muted. A Feed pause banner when infinite scroll can only be best-effort.",
+            "icon": "ToggleLeft",
+            "image": {
+              "src": "https://picsum.photos/seed/hooklens-i2/800/600",
+              "alt": "twin"
+            }
+          },
+          {
+            "title": "Built for the whoa",
+            "description": "Success is a doomscroll friend saying oh that's what got me in under 90 seconds.",
+            "icon": "Heart",
+            "image": {
+              "src": "https://picsum.photos/seed/hooklens-i3/800/600",
+              "alt": "recognition"
+            }
+          }
+        ],
+        "className": "bg-muted"
+      },
+      "benefits": {
+        "block": "features-accordion",
+        "id": "benefits",
+        "title": "Why not Screen Time?",
+        "label": "Difference",
+        "description": "Blockers cut access. HookLens names the machinery so you can choose — and later find products that ship without those hooks.",
+        "items": [
+          {
+            "title": "Name the mechanism",
+            "description": "Variable reward, streak guilt, infinite feed — language you can show a friend, not just a timer.",
+            "icon": "Tag",
+            "image": {
+              "src": "https://picsum.photos/seed/hooklens-b1/800/600",
+              "alt": "mechanism"
+            }
+          },
+          {
+            "title": "Twin comparison",
+            "description": "Feel the difference with one toggle. Preview of a clean-alternatives directory still to come on this site.",
+            "icon": "Columns2",
+            "image": {
+              "src": "https://picsum.photos/seed/hooklens-b2/800/600",
+              "alt": "compare"
+            }
+          },
+          {
+            "title": "Privacy-local extension",
+            "description": "v0 scans on-device in the browser. No account required to demo the highlighter.",
+            "icon": "Shield",
+            "image": {
+              "src": "https://picsum.photos/seed/hooklens-b3/800/600",
+              "alt": "privacy"
+            }
+          }
+        ]
+      },
+      "usage": {
+        "block": "features-step",
+        "id": "usage",
+        "title": "90-second demo path",
+        "description": "Weekend v0 focuses on Reddit. Site pages for patterns and clean apps come next.",
+        "image": {
+          "src": "https://picsum.photos/seed/hooklens-usage/1200/800",
+          "alt": "usage"
+        },
+        "image_position": "left",
+        "text_align": "center",
+        "items": [
+          {
+            "title": "Load the extension",
+            "description": "Chrome Load unpacked after the MV3 build ships. Demo Lock checklist before any public show.",
+            "image": {
+              "src": "https://picsum.photos/seed/hooklens-u1/800/600",
+              "alt": "load"
+            }
+          },
+          {
+            "title": "Open Reddit home",
+            "description": "See labels on infinite scroll and inbox badge anxiety.",
+            "image": {
+              "src": "https://picsum.photos/seed/hooklens-u2/800/600",
+              "alt": "home"
+            }
+          },
+          {
+            "title": "Toggle Detoxed",
+            "description": "Hide badge chrome, show Feed pause best-effort banner, then open a pinned post for related and autoplay.",
+            "image": {
+              "src": "https://picsum.photos/seed/hooklens-u3/800/600",
+              "alt": "detox"
+            }
+          },
+          {
+            "title": "Ask one question",
+            "description": "Which mode would you open at 1am? Write down their exact words.",
+            "image": {
+              "src": "https://picsum.photos/seed/hooklens-u4/800/600",
+              "alt": "ask"
+            }
+          }
+        ],
+        "className": "bg-muted"
+      },
+      "faq": {
+        "id": "faq",
+        "title": "FAQ",
+        "description": "Straight answers for the first weekend.",
+        "items": [
+          {
+            "question": "Is this Screen Time or an app blocker?",
+            "answer": "No. Those cut access. HookLens labels the addictive UI patterns in place so you can see the trap."
+          },
+          {
+            "question": "Does it work on every site?",
+            "answer": "Not in v0. The hackathon wedge is an allowlisted Reddit demo. Universal scan is the long-term story."
+          },
+          {
+            "question": "Do you upload my browsing data?",
+            "answer": "The planned extension analyzes locally in the browser. This marketing site does not need your Reddit session."
+          },
+          {
+            "question": "What is Twin mode?",
+            "answer": "Addicted keeps labels on the hooks. Detoxed mutes engagement chrome on the currently loaded viewport, with an honest Feed pause banner for infinite scroll."
+          }
+        ]
+      },
+      "cta": {
+        "id": "cta",
+        "title": "Next: patterns & clean apps on this site",
+        "description": "This page ships first. Pattern encyclopedia, clean alternatives directory, and the Chrome extension follow one feature at a time.",
+        "buttons": [
+          {
+            "title": "Back to home",
+            "url": "/",
+            "icon": "Home",
+            "variant": "default"
+          }
+        ],
+        "className": "bg-muted"
+      }
+    }
+  }
+}
