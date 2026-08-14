@@ -1,0 +1,113 @@
+{
+  "metadata": {
+    "title": "钩子百科 — 成瘾机制标注",
+    "description": "HookLens 在信息流上标注的注意力钩子词典：无限滚动、红点、相关推荐、自动播放。"
+  },
+  "page": {
+    "title": "钩子百科",
+    "show_sections": ["hero", "patterns", "faq", "cta"],
+    "sections": {
+      "hero": {
+        "id": "hero",
+        "title": "给让你继续滑的钩子起名字",
+        "highlight_text": "钩子",
+        "description": "这些是注意力 / 成瘾机制，不是结账页暗黑模式。HookLens 在信息流上标注它们；本页是共用词典。",
+        "buttons": [
+          {
+            "title": "返回 HookLens",
+            "icon": "Eye",
+            "url": "/hooklens",
+            "variant": "default"
+          },
+          {
+            "title": "首页",
+            "icon": "Home",
+            "url": "/",
+            "variant": "outline"
+          }
+        ],
+        "show_avatars": false,
+        "image": {
+          "src": "https://picsum.photos/seed/hooklens-patterns-hero/1200/800",
+          "alt": "hook patterns",
+          "width": 1200,
+          "height": 800
+        }
+      },
+      "patterns": {
+        "block": "features-accordion",
+        "id": "patterns",
+        "title": "v0 承诺钩子",
+        "label": "分类",
+        "description": "与 Reddit 演示路径对齐。排毒行为在真实站点上为尽力而为。",
+        "items": [
+          {
+            "title": "无限滚动",
+            "description": "没有终点——信息流持续增长。排毒：显示「信息流暂停（尽力）」横幅，并尝试阻止继续加载。",
+            "icon": "Infinity",
+            "image": {
+              "src": "https://picsum.photos/seed/hook-infinite/800/600",
+              "alt": "infinite scroll"
+            }
+          },
+          {
+            "title": "未读 / 收件箱红点",
+            "description": "红色计数与未读样式把你拉回去点开。排毒：用 CSS 隐藏红点区域。",
+            "icon": "Bell",
+            "image": {
+              "src": "https://picsum.photos/seed/hook-badge/800/600",
+              "alt": "badge"
+            }
+          },
+          {
+            "title": "相关 / 继续浏览",
+            "description": "相似帖与继续模块打开又一个兔子洞。排毒：灰显或隐藏该模块。",
+            "icon": "GitBranch",
+            "image": {
+              "src": "https://picsum.photos/seed/hook-related/800/600",
+              "alt": "related"
+            }
+          },
+          {
+            "title": "自动播放 / 页内视频",
+            "description": "零决策继续看。演示里绑在固定视频帖。排毒：Twin 模式下暂停视频。",
+            "icon": "Play",
+            "image": {
+              "src": "https://picsum.photos/seed/hook-autoplay/800/600",
+              "alt": "autoplay"
+            }
+          }
+        ],
+        "className": "bg-muted"
+      },
+      "faq": {
+        "id": "faq",
+        "title": "常见问题",
+        "items": [
+          {
+            "question": "这和暗黑模式检测器一样吗？",
+            "answer": "只是近亲。那些工具抓结账骗局（假倒计时、羞辱式确认）。这份清单是信息流上的习惯机器。"
+          },
+          {
+            "question": "以后还会加更多钩子吗？",
+            "answer": "会。排序栏、可变奖励等是 Reddit Twin 演示稳定后的延伸项。"
+          }
+        ]
+      },
+      "cta": {
+        "id": "cta",
+        "title": "看产品故事",
+        "description": "HookLens 落地页说明 Twin 模式与 90 秒演示路径。",
+        "buttons": [
+          {
+            "title": "打开 HookLens",
+            "url": "/hooklens",
+            "icon": "Eye",
+            "variant": "default"
+          }
+        ],
+        "className": "bg-muted"
+      }
+    }
+  }
+}

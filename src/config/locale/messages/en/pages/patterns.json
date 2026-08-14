@@ -1,0 +1,113 @@
+{
+  "metadata": {
+    "title": "Hook patterns — addiction mechanisms labeled",
+    "description": "A short encyclopedia of attention hooks HookLens marks on feeds: infinite scroll, badges, related rabbit holes, autoplay."
+  },
+  "page": {
+    "title": "Hook patterns",
+    "show_sections": ["hero", "patterns", "faq", "cta"],
+    "sections": {
+      "hero": {
+        "id": "hero",
+        "title": "Name the hooks that keep you scrolling",
+        "highlight_text": "hooks",
+        "description": "These are attention / addiction mechanisms — not checkout dark patterns. HookLens labels them on the feed; this page is the shared dictionary.",
+        "buttons": [
+          {
+            "title": "Back to HookLens",
+            "icon": "Eye",
+            "url": "/hooklens",
+            "variant": "default"
+          },
+          {
+            "title": "Home",
+            "icon": "Home",
+            "url": "/",
+            "variant": "outline"
+          }
+        ],
+        "show_avatars": false,
+        "image": {
+          "src": "https://picsum.photos/seed/hooklens-patterns-hero/1200/800",
+          "alt": "hook patterns",
+          "width": 1200,
+          "height": 800
+        }
+      },
+      "patterns": {
+        "block": "features-accordion",
+        "id": "patterns",
+        "title": "Committed hooks (v0)",
+        "label": "Taxonomy",
+        "description": "Aligned with the Reddit demo path. Detox behavior is best-effort on live sites.",
+        "items": [
+          {
+            "title": "Infinite scroll",
+            "description": "No landing, no done — the feed keeps growing. Detox: Feed pause (best effort) banner + try to mute further load.",
+            "icon": "Infinity",
+            "image": {
+              "src": "https://picsum.photos/seed/hook-infinite/800/600",
+              "alt": "infinite scroll"
+            }
+          },
+          {
+            "title": "Unread / inbox badge",
+            "description": "Red counts and unread chrome that pull you back open. Detox: css-hide the badge chrome.",
+            "icon": "Bell",
+            "image": {
+              "src": "https://picsum.photos/seed/hook-badge/800/600",
+              "alt": "badge"
+            }
+          },
+          {
+            "title": "Related / continue chrome",
+            "description": "Similar posts and continue modules that start another rabbit hole. Detox: css-grey or hide the module.",
+            "icon": "GitBranch",
+            "image": {
+              "src": "https://picsum.photos/seed/hook-related/800/600",
+              "alt": "related"
+            }
+          },
+          {
+            "title": "Autoplay / inline video",
+            "description": "Zero decision to continue watching. Opportunistic on a pinned demo URL. Detox: pause video under Twin mode.",
+            "icon": "Play",
+            "image": {
+              "src": "https://picsum.photos/seed/hook-autoplay/800/600",
+              "alt": "autoplay"
+            }
+          }
+        ],
+        "className": "bg-muted"
+      },
+      "faq": {
+        "id": "faq",
+        "title": "FAQ",
+        "items": [
+          {
+            "question": "Is this the same as dark-pattern detectors?",
+            "answer": "Cousins only. Those tools hunt checkout tricks (fake timers, confirmshaming). This list is habit machinery on feeds."
+          },
+          {
+            "question": "Will more hooks appear here?",
+            "answer": "Yes — ranking chrome and variable-reward drip are stretch items after the Reddit twin demo is solid."
+          }
+        ]
+      },
+      "cta": {
+        "id": "cta",
+        "title": "See the product story",
+        "description": "HookLens landing explains Twin mode and the 90-second demo path.",
+        "buttons": [
+          {
+            "title": "Open HookLens",
+            "url": "/hooklens",
+            "icon": "Eye",
+            "variant": "default"
+          }
+        ],
+        "className": "bg-muted"
+      }
+    }
+  }
+}
