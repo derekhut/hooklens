@@ -26,5 +26,10 @@
   "severity_2": "2 — 中等",
   "severity_3": "3 — 强烈",
   "delete_annotation": "删除标注",
-  "coming_next": "下一步：根据这些标注生成可分享的 Addiction Report。"
+  "generate_report": "生成 Report",
+  "generating": "生成中…",
+  "report_need_image": "请先加载截图",
+  "report_need_annotations": "请至少画一个标注框",
+  "report_failed": "无法保存报告",
+  "coming_next": "演示版报告保存在本浏览器；跨设备分享链接稍后接入。"
 }

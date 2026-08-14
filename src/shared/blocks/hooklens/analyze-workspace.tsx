@@ -1,16 +1,24 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ImageIcon, Trash2, Upload, X } from 'lucide-react';
+import { FileText, ImageIcon, Loader2, Trash2, Upload, X } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
+import { toast } from 'sonner';
 
 import { getHookPattern, HOOK_PATTERNS } from '@/config/hooklens/hooks';
+import {
+  buildReportSummary,
+  createReportId,
+  persistImageForReport,
+  saveReport,
+} from '@/config/hooklens/report-storage';
 import { HOOKLENS_SAMPLES } from '@/config/hooklens/samples';
 import {
   Annotation,
   AnnotationRect,
   createAnnotationId,
 } from '@/config/hooklens/types';
+import { useRouter } from '@/core/i18n/navigation';
 import { ScreenshotAnnotator } from '@/shared/blocks/hooklens/screenshot-annotator';
 import { Badge } from '@/shared/components/ui/badge';
 import { Button } from '@/shared/components/ui/button';
@@ -36,6 +44,7 @@ export function AnalyzeWorkspace() {
   const t = useTranslations('hooklens.analyze');
   const locale = useLocale();
   const isZh = locale.startsWith('zh');
+  const router = useRouter();
   const inputRef = useRef<HTMLInputElement | null>(null);
   const objectUrlRef = useRef<string | null>(null);
 
@@ -43,6 +52,7 @@ export function AnalyzeWorkspace() {
   const [appName, setAppName] = useState('');
   const [annotations, setAnnotations] = useState<Annotation[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [generating, setGenerating] = useState(false);
 
   const selected = useMemo(
     () => annotations.find((a) => a.id === selectedId) ?? null,
@@ -137,6 +147,36 @@ export function AnalyzeWorkspace() {
     if (!selectedId) return;
     setAnnotations((prev) => prev.filter((a) => a.id !== selectedId));
     setSelectedId(null);
+  };
+
+  const generateReport = async () => {
+    if (!image) {
+      toast.error(t('report_need_image'));
+      return;
+    }
+    if (annotations.length < 1) {
+      toast.error(t('report_need_annotations'));
+      return;
+    }
+
+    setGenerating(true);
+    try {
+      const imageUrl = await persistImageForReport(image.url);
+      const id = createReportId();
+      saveReport({
+        id,
+        appName: appName.trim(),
+        imageUrl,
+        annotations,
+        summary: buildReportSummary(annotations, locale),
+        createdAt: new Date().toISOString(),
+      });
+      router.push(`/report/${id}`);
+    } catch {
+      toast.error(t('report_failed'));
+    } finally {
+      setGenerating(false);
+    }
   };
 
   const hookName = (id: string) => {
@@ -357,6 +397,20 @@ export function AnalyzeWorkspace() {
                 </Button>
               </div>
             )}
+
+            <Button
+              type="button"
+              className="w-full"
+              disabled={!image || annotations.length < 1 || generating}
+              onClick={generateReport}
+            >
+              {generating ? (
+                <Loader2 className="size-4 animate-spin" />
+              ) : (
+                <FileText className="size-4" />
+              )}
+              {generating ? t('generating') : t('generate_report')}
+            </Button>
           </div>
         </aside>
       </div>

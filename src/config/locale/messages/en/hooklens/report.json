@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "title": "Addiction Report — HookLens",
+    "description": "Read-only annotated addiction report."
+  },
+  "loading": "Loading report…",
+  "kicker": "HookLens Report",
+  "title": "{app} — Addiction Report",
+  "unnamed_app": "Untitled screenshot",
+  "hook_count": "{count} hooks marked",
+  "disclaimer": "Illustrative / informal audit — not a formal product safety review. Stored in this browser for demo.",
+  "findings": "Findings",
+  "severity": "Severity {level}",
+  "no_note": "No note provided.",
+  "cta_patterns": "Learn the patterns",
+  "cta_apps": "Cleaner alternatives",
+  "cta_again": "Analyze another",
+  "not_found_title": "Report not found",
+  "not_found_body": "This report is only available in the browser that created it (local demo storage).",
+  "back_analyze": "Back to Analyze"
+}

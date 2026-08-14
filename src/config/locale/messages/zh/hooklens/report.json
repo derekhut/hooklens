@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "title": "成瘾报告 — HookLens",
+    "description": "只读的截图成瘾标注报告。"
+  },
+  "loading": "加载报告…",
+  "kicker": "HookLens 报告",
+  "title": "{app} — 成瘾报告",
+  "unnamed_app": "未命名截图",
+  "hook_count": "标注了 {count} 处钩子",
+  "disclaimer": "示意 / 非正式审计 — 非正式产品安全评审。演示数据保存在本浏览器。",
+  "findings": "发现",
+  "severity": "严重度 {level}",
+  "no_note": "未填写说明。",
+  "cta_patterns": "了解钩子机制",
+  "cta_apps": "更干净的替代",
+  "cta_again": "再分析一张",
+  "not_found_title": "找不到报告",
+  "not_found_body": "该报告仅在创建它的浏览器中可用（本机演示存储）。",
+  "back_analyze": "返回分析"
+}

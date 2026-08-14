@@ -26,5 +26,10 @@
   "severity_2": "2 — Medium",
   "severity_3": "3 — Strong",
   "delete_annotation": "Delete box",
-  "coming_next": "Next: generate a shareable Addiction Report from these annotations."
+  "generate_report": "Generate Report",
+  "generating": "Generating…",
+  "report_need_image": "Load a screenshot first",
+  "report_need_annotations": "Add at least one annotation box",
+  "report_failed": "Could not save report",
+  "coming_next": "Report stays in this browser for the demo; shareable cloud links come later."
 }

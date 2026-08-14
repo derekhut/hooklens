@@ -191,8 +191,8 @@ Report        { id, app_name, image_url, annotations_json, summary, created_at, 
 
 1. [x] `/analyze` 页骨架（上传区 + 示例线框图 + 画布展示）  
 2. [x] 钩子常量 SSOT（`hooks.ts`）+ `ScreenshotAnnotator`：画框 + 侧栏编辑 + 列表  
-3. 预置 3–5 张示例截图（可先放 `public/imgs/hooklens/samples/` 或 picsum + 标题）  
-4. 生成 Report（DB 或 localStorage）+ `/report/[id]` 只读页  
+3. [x] 预置 3–5 张示例截图（线框）  
+4. [x] 生成 Report（localStorage）+ `/report/[id]` 只读页  
 5. 更新 `/hooklens` `/demo` CTA 与文案指向 `/analyze`  
 6. Header 增加 Analyze（及可选 Patterns/Apps/Demo）  
 

@@ -76,10 +76,11 @@ type ScreenshotAnnotatorProps = {
   imageUrl: string;
   imageAlt: string;
   annotations: Annotation[];
-  selectedId: string | null;
-  onSelect: (id: string | null) => void;
-  onCreate: (rect: AnnotationRect) => void;
-  drawHint: string;
+  selectedId?: string | null;
+  onSelect?: (id: string | null) => void;
+  onCreate?: (rect: AnnotationRect) => void;
+  drawHint?: string;
+  readOnly?: boolean;
   className?: string;
 };
 
@@ -87,10 +88,11 @@ export function ScreenshotAnnotator({
   imageUrl,
   imageAlt,
   annotations,
-  selectedId,
+  selectedId = null,
   onSelect,
   onCreate,
   drawHint,
+  readOnly = false,
   className,
 }: ScreenshotAnnotatorProps) {
   const wrapRef = useRef<HTMLDivElement | null>(null);
@@ -132,13 +134,13 @@ export function ScreenshotAnnotator({
   };
 
   const onPointerDown = (e: ReactPointerEvent<HTMLDivElement>) => {
-    if (e.button !== 0) return;
+    if (readOnly || e.button !== 0) return;
     const point = clientToNorm(e.clientX, e.clientY);
     if (!point) return;
     drawingRef.current = true;
     dragStartRef.current = point;
     setDraft({ x: point.x, y: point.y, w: 0, h: 0 });
-    onSelect(null);
+    onSelect?.(null);
     (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
   };
 
@@ -159,7 +161,7 @@ export function ScreenshotAnnotator({
     if (!point) return;
     const rect = normalizeRect(start, point);
     if (rect.w < 0.02 || rect.h < 0.02) return;
-    onCreate(rect);
+    onCreate?.(rect);
   };
 
   return (
@@ -189,10 +191,10 @@ export function ScreenshotAnnotator({
             width: box.width,
             height: box.height,
           }}
-          onPointerDown={onPointerDown}
-          onPointerMove={onPointerMove}
-          onPointerUp={onPointerUp}
-          onPointerCancel={onPointerUp}
+          onPointerDown={readOnly ? undefined : onPointerDown}
+          onPointerMove={readOnly ? undefined : onPointerMove}
+          onPointerUp={readOnly ? undefined : onPointerUp}
+          onPointerCancel={readOnly ? undefined : onPointerUp}
         >
           {annotations.map((ann, index) => {
             const selected = ann.id === selectedId;
@@ -201,8 +203,10 @@ export function ScreenshotAnnotator({
                 key={ann.id}
                 type="button"
                 aria-label={ann.label}
+                disabled={readOnly}
                 className={cn(
                   'absolute border-2 bg-amber-400/20 text-left transition-colors',
+                  readOnly && 'pointer-events-none',
                   selected
                     ? 'border-amber-500 ring-2 ring-amber-500/40'
                     : 'border-amber-500/80 hover:bg-amber-400/30'
@@ -215,7 +219,7 @@ export function ScreenshotAnnotator({
                 }}
                 onPointerDown={(e) => {
                   e.stopPropagation();
-                  onSelect(ann.id);
+                  if (!readOnly) onSelect?.(ann.id);
                 }}
               >
                 <span className="absolute -top-5 left-0 rounded bg-amber-500 px-1.5 py-0.5 text-[10px] font-medium text-white">
@@ -225,7 +229,7 @@ export function ScreenshotAnnotator({
             );
           })}
 
-          {draft && draft.w > 0 && draft.h > 0 && (
+          {!readOnly && draft && draft.w > 0 && draft.h > 0 && (
             <div
               className="pointer-events-none absolute border-2 border-dashed border-amber-500 bg-amber-400/15"
               style={{
@@ -239,9 +243,11 @@ export function ScreenshotAnnotator({
         </div>
       )}
 
-      <p className="text-muted-foreground pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-background/80 px-3 py-1 text-xs backdrop-blur">
-        {drawHint}
-      </p>
+      {drawHint ? (
+        <p className="text-muted-foreground pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-background/80 px-3 py-1 text-xs backdrop-blur">
+          {drawHint}
+        </p>
+      ) : null}
     </div>
   );
 }
