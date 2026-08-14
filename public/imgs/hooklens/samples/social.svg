@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844" role="img" aria-label="Wireframe social sample">
+  <rect width="390" height="844" fill="#fafafa"/>
+  <rect x="0" y="0" width="390" height="56" fill="#e4e4e7"/>
+  <circle cx="348" cy="28" r="14" fill="#fca5a5"/>
+  <circle cx="356" cy="18" r="8" fill="#ef4444"/>
+  <text x="352" y="22" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#fff">9+</text>
+  <text x="16" y="90" font-family="system-ui,sans-serif" font-size="14" fill="#71717a">Sample: Badges &amp; Alerts</text>
+  <rect x="16" y="110" width="358" height="64" rx="8" fill="#fee2e2"/>
+  <rect x="32" y="130" width="200" height="12" rx="2" fill="#f87171"/>
+  <rect x="32" y="150" width="140" height="10" rx="2" fill="#fca5a5"/>
+  <rect x="16" y="190" width="358" height="64" rx="8" fill="#e4e4e7"/>
+  <rect x="16" y="270" width="358" height="64" rx="8" fill="#e4e4e7"/>
+  <rect x="16" y="350" width="358" height="64" rx="8" fill="#fee2e2"/>
+  <rect x="16" y="430" width="170" height="170" rx="8" fill="#d4d4d8"/>
+  <rect x="204" y="430" width="170" height="170" rx="8" fill="#d4d4d8"/>
+  <rect x="16" y="620" width="170" height="170" rx="8" fill="#d4d4d8"/>
+  <rect x="204" y="620" width="170" height="170" rx="8" fill="#d4d4d8"/>
+  <text x="195" y="820" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#a1a1aa">wireframe · not a real app</text>
+</svg>

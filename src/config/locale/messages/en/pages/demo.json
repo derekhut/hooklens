@@ -1,0 +1,124 @@
+{
+  "metadata": {
+    "title": "HookLens demo — 90-second path & Demo Lock",
+    "description": "How to run the Reddit Twin demo safely: scripted path, Demo Lock checklist, and backup recording before any public show."
+  },
+  "page": {
+    "title": "Demo",
+    "show_sections": ["hero", "media", "steps", "faq", "cta"],
+    "sections": {
+      "hero": {
+        "id": "hero",
+        "title": "90 seconds to oh that's what got me",
+        "highlight_text": "90 seconds",
+        "description": "Live highlighter on Reddit, then Twin detox. Film a backup before you demo to friends or judges.",
+        "buttons": [
+          {
+            "title": "Product home",
+            "url": "/hooklens",
+            "icon": "Eye",
+            "variant": "default"
+          },
+          {
+            "title": "Hook dictionary",
+            "url": "/patterns",
+            "icon": "BookOpenText",
+            "variant": "outline"
+          }
+        ],
+        "show_avatars": false,
+        "image": {
+          "src": "https://picsum.photos/seed/hooklens-demo-hero/1200/800",
+          "alt": "demo",
+          "width": 1200,
+          "height": 800
+        }
+      },
+      "media": {
+        "block": "features-media",
+        "id": "media",
+        "title": "What you should see",
+        "description": "Placeholder visual until the real Twin recording ships. Labels on the feed, then Detoxed with a Feed pause best-effort banner.",
+        "image": {
+          "src": "https://picsum.photos/seed/hooklens-demo-media/1200/800",
+          "alt": "twin overlay placeholder"
+        }
+      },
+      "steps": {
+        "block": "features-step",
+        "id": "steps",
+        "title": "Scripted path + Demo Lock",
+        "description": "Only supported live path for v0. Fail any smoke check → play the backup recording.",
+        "image": {
+          "src": "https://picsum.photos/seed/hooklens-demo-steps/1200/800",
+          "alt": "steps"
+        },
+        "image_position": "left",
+        "text_align": "center",
+        "items": [
+          {
+            "title": "Load unpacked",
+            "description": "Same Chrome profile, logged into Reddit. Extension loaded after MV3 build.",
+            "image": {
+              "src": "https://picsum.photos/seed/demo-s1/800/600",
+              "alt": "load"
+            }
+          },
+          {
+            "title": "Home: infinite + badge",
+            "description": "Open reddit.com home. Confirm infinite scroll and inbox badge labels.",
+            "image": {
+              "src": "https://picsum.photos/seed/demo-s2/800/600",
+              "alt": "home"
+            }
+          },
+          {
+            "title": "Toggle Detoxed",
+            "description": "Badge hidden. Feed pause best-effort banner. Narrate if scroll still loads.",
+            "image": {
+              "src": "https://picsum.photos/seed/demo-s3/800/600",
+              "alt": "detox"
+            }
+          },
+          {
+            "title": "Pinned post + ask",
+            "description": "Open the pinned video/post URL for autoplay and related labels. Ask: which mode at 1am? Film backup of this whole path before any public show.",
+            "image": {
+              "src": "https://picsum.photos/seed/demo-s4/800/600",
+              "alt": "ask"
+            }
+          }
+        ],
+        "className": "bg-muted"
+      },
+      "faq": {
+        "id": "faq",
+        "title": "Demo Lock FAQ",
+        "items": [
+          {
+            "question": "Selectors broke this morning — what now?",
+            "answer": "Do not wing it live. Use the backup recording and re-pin selectors before the next show."
+          },
+          {
+            "question": "Is the Chrome extension on this site yet?",
+            "answer": "Not yet. This page documents the path; the MV3 package ships in a later feature."
+          }
+        ]
+      },
+      "cta": {
+        "id": "cta",
+        "title": "Browse cleaner apps",
+        "description": "While the extension lands, explore the illustrative clean-alternatives directory.",
+        "buttons": [
+          {
+            "title": "Open /apps",
+            "url": "/apps",
+            "icon": "Box",
+            "variant": "default"
+          }
+        ],
+        "className": "bg-muted"
+      }
+    }
+  }
+}

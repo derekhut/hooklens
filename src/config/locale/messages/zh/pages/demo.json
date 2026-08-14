@@ -1,0 +1,124 @@
+{
+  "metadata": {
+    "title": "HookLens 演示 — 90 秒路径与 Demo Lock",
+    "description": "如何安全跑 Reddit Twin 演示：脚本路径、Demo Lock 清单，以及公开演示前的备份录屏。"
+  },
+  "page": {
+    "title": "演示",
+    "show_sections": ["hero", "media", "steps", "faq", "cta"],
+    "sections": {
+      "hero": {
+        "id": "hero",
+        "title": "90 秒到「原来是这个勾住我」",
+        "highlight_text": "90 秒",
+        "description": "在 Reddit 上实时高亮，再切 Twin 排毒。给朋友或评委看之前，先录好备份。",
+        "buttons": [
+          {
+            "title": "产品首页",
+            "url": "/hooklens",
+            "icon": "Eye",
+            "variant": "default"
+          },
+          {
+            "title": "钩子词典",
+            "url": "/patterns",
+            "icon": "BookOpenText",
+            "variant": "outline"
+          }
+        ],
+        "show_avatars": false,
+        "image": {
+          "src": "https://picsum.photos/seed/hooklens-demo-hero/1200/800",
+          "alt": "demo",
+          "width": 1200,
+          "height": 800
+        }
+      },
+      "media": {
+        "block": "features-media",
+        "id": "media",
+        "title": "你应该看到什么",
+        "description": "真实 Twin 录屏上线前的占位图。信息流上的标注，以及排毒态下的「信息流暂停（尽力）」横幅。",
+        "image": {
+          "src": "https://picsum.photos/seed/hooklens-demo-media/1200/800",
+          "alt": "twin overlay placeholder"
+        }
+      },
+      "steps": {
+        "block": "features-step",
+        "id": "steps",
+        "title": "脚本路径 + Demo Lock",
+        "description": "v0 唯一支持的现场路径。任一冒烟失败 → 播放备份录屏。",
+        "image": {
+          "src": "https://picsum.photos/seed/hooklens-demo-steps/1200/800",
+          "alt": "steps"
+        },
+        "image_position": "left",
+        "text_align": "center",
+        "items": [
+          {
+            "title": "加载已解压扩展",
+            "description": "同一 Chrome 配置、已登录 Reddit。MV3 构建完成后加载扩展。",
+            "image": {
+              "src": "https://picsum.photos/seed/demo-s1/800/600",
+              "alt": "load"
+            }
+          },
+          {
+            "title": "首页：无限滚动 + 红点",
+            "description": "打开 reddit.com 首页，确认无限滚动与收件箱红点标注。",
+            "image": {
+              "src": "https://picsum.photos/seed/demo-s2/800/600",
+              "alt": "home"
+            }
+          },
+          {
+            "title": "切换排毒态",
+            "description": "红点隐藏，出现「信息流暂停（尽力）」横幅。若仍在加载，口头说明。",
+            "image": {
+              "src": "https://picsum.photos/seed/demo-s3/800/600",
+              "alt": "detox"
+            }
+          },
+          {
+            "title": "固定帖 + 提问",
+            "description": "打开固定视频/帖子看自动播放与相关推荐。问：凌晨一点开哪一版？公开演示前录完整路径备份。",
+            "image": {
+              "src": "https://picsum.photos/seed/demo-s4/800/600",
+              "alt": "ask"
+            }
+          }
+        ],
+        "className": "bg-muted"
+      },
+      "faq": {
+        "id": "faq",
+        "title": "Demo Lock 常见问题",
+        "items": [
+          {
+            "question": "今天早上选择器坏了怎么办？",
+            "answer": "不要现场硬撑。放备份录屏，下次演示前重新钉选择器。"
+          },
+          {
+            "question": "扩展已经在本站提供下载了吗？",
+            "answer": "还没有。本页先写清路径；MV3 包在后续功能交付。"
+          }
+        ]
+      },
+      "cta": {
+        "id": "cta",
+        "title": "逛逛更干净的应用",
+        "description": "扩展落地前，先看示意用的干净替代目录。",
+        "buttons": [
+          {
+            "title": "打开 /apps",
+            "url": "/apps",
+            "icon": "Box",
+            "variant": "default"
+          }
+        ],
+        "className": "bg-muted"
+      }
+    }
+  }
+}

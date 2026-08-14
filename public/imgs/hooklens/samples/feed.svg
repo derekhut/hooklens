@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844" role="img" aria-label="Wireframe feed sample">
+  <rect width="390" height="844" fill="#f4f4f5"/>
+  <rect x="0" y="0" width="390" height="56" fill="#e4e4e7"/>
+  <rect x="16" y="18" width="120" height="20" rx="4" fill="#a1a1aa"/>
+  <rect x="320" y="18" width="54" height="20" rx="10" fill="#ef4444"/>
+  <text x="16" y="90" font-family="system-ui,sans-serif" font-size="14" fill="#71717a">Sample: Infinite Feed</text>
+  <rect x="16" y="110" width="358" height="180" rx="8" fill="#d4d4d8"/>
+  <rect x="16" y="304" width="358" height="180" rx="8" fill="#d4d4d8"/>
+  <rect x="16" y="498" width="358" height="180" rx="8" fill="#d4d4d8"/>
+  <rect x="16" y="692" width="358" height="120" rx="8" fill="#d4d4d8"/>
+  <text x="195" y="820" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#a1a1aa">wireframe · not a real app</text>
+</svg>

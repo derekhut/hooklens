@@ -1,235 +1,243 @@
-# Spec: HookLens（成瘾标注）— ShipAny 复用优先
+# Spec: HookLens（成瘾标注）— 网页截图标注 + Report
 
-**Status:** DRAFT → ready for implementation planning  
+**Status:** REVISED (supersedes extension-first demo)  
 **Date:** 2026-08-14  
-**Sources:** office-hours design `frank-unknown-design-20260814-110700.md` (APPROVED) · eng plan `frank-unknown-eng-plan-20260814.md` (APPROVED)  
-**Workspace:** ShipAny Template Two (`shipany-template-two`)
+**Revision reason:** 最终演示形态改为**网页**，用**他人 App 截图**标注易上瘾区域并生成 **report**；浏览器扩展不再作为 demo 主路径。  
+**Workspace:** ShipAny Template Two  
+**Reuse principle:** 尽量复用 ShipAny theme / shared / shadcn；只新增「截图画布标注」与「报告页」所需的最少客户端 UI。
+
+---
+
+## 0. 变更摘要（相对上一版）
+
+| 旧目标 | 新目标 |
+|--------|--------|
+| Chrome MV3 扩展在真实 Reddit DOM 上叠标签 + Twin | **网页工具**：上传/选用 App 截图 → 标注成瘾区 → 输出 Report |
+| Demo Lock / Load unpacked | 浏览器打开站点即可演示 |
+| 扩展为 P1 核心交付 | **扩展降级为远期可选**；本 spec 的 P0/P1 全部在 ShipAny Web |
+
+**已上线、可保留的营销页（无需推翻）：** `/hooklens` `/patterns` `/apps` `/demo`（文案需改成「截图标注」叙事，见 §10）。
 
 ---
 
 ## 1. 一句话
 
-**Chrome 扩展**在 Reddit（v0）上标注成瘾机制并提供 Addicted ↔ Detoxed；**ShipAny 站点**负责对外讲故事、钩子百科、干净替代目录与后台内容运营——**站点侧尽量只拼现有 theme blocks / shared blocks，不新造设计系统。**
+用户打开 HookLens 网页，上传或选择某 App 的界面截图，在图上标注「容易让人上瘾」的区域（钩子类型 + 说明），系统汇总成一份可读的 **Addiction Report**（可分享链接 / 可打印），用于公众提示与后续「去掉这些钩子的对比目录」。
 
 ---
 
-## 2. 系统边界（必须分清）
-
-| 层 | 运行时 | 能否复用 ShipAny React 组件 | 交付物 |
-|----|--------|------------------------------|--------|
-| **A. 扩展** | Chrome MV3 content/popup | **否**（独立 DOM，不进 Next bundle） | `extension/`（见 eng plan） |
-| **B. 站点** | Next.js ShipAny | **是**（theme + shared + shadcn） | 动态页 JSON + 少量 admin 页 |
-| **C. 数据** | Drizzle / 现有 DB | 复用 ShipAny data 层模式 | `hooks` / `apps` / `annotations` 表（v1 可先 JSON/静态） |
-
-**原则：** 扩展按 eng plan 实现；本 spec 只规定 **B（+C）如何用 ShipAny 拼出来**，以及 A↔B 的衔接（下载、Demo Lock 说明、截图/录屏托管）。
-
----
-
-## 3. 产品信息架构（站点）
-
-### 3.1 对外路由（建议）
-
-| Route | Slug（locale JSON） | 目的 | 优先复用的 block |
-|-------|---------------------|------|------------------|
-| `/`（改品牌后）或 `/hooklens` | `pages/index` 改造 **或** 新页 `pages/hooklens` | 落地：认识陷阱 → 装扩展 / 看目录 | `hero` `logos` `features` `features-step` `stats` `faq` `cta` |
-| `/patterns` | `pages/patterns` | 成瘾钩子百科（taxonomy） | `features-list` 或 `features-accordion` + `faq` |
-| `/apps` | `pages/apps` | 「干净替代 / 对比」目录 | **`showcases`**（groups = 品类） |
-| `/demo` | `pages/demo` | 90s 演示说明 + 录屏/截图 | `features-media` + `features-step` + `cta` |
-| `/pricing` | 现有 `pages/pricing` | 可选：Pro（更多站点适配） | 现有 `pricing` |
-| `/blog/*` | 现有 blog | 深度文章（某 App 拆解） | `blog` / `blog-detail` |
-| `/docs/*` | 现有 docs（若启用） | 安装扩展、Demo Lock | fumadocs 现成 |
-
-**推荐 v1：** 新建动态页 `hooklens` / `patterns` / `apps` / `demo`，**先不动**现有 marketing `index`，避免和 ShipAny 模板首页冲突；域名指向后再把 `index` 换成品牌首页。
-
-### 3.2 对内 Admin（复用 dashboard）
-
-| Route | 能力 | 复用 |
-|-------|------|------|
-| `/admin/hooks` | 钩子词典 CRUD（id、文案、severity、detox 类型） | `Header` `Main` `MainHeader` + **`TableCard`** + **`FormCard`** |
-| `/admin/apps` | 应用/替代条目 CRUD（截图、分组、外链、「无哪些钩子」标签） | 同上 |
-| `/admin/demos` | Demo Lock 素材（录屏 URL、pinned post、选择器备注） | `FormCard` + `MarkdownEditor` / 现有 upload |
-
-Auth / RBAC / sidebar：走现有 `(admin)` 布局与权限，**不重写后台壳**。
-
----
-
-## 4. 页面规格（ShipAny blocks 映射）
-
-### 4.1 `/hooklens` — 产品落地页
-
-`show_sections` 建议：
-
-1. **hero** — 品牌名 HookLens；一句话：「标注成瘾机制，而不是再装一个 Screen Time」；CTA：`安装扩展说明` → `/demo`，次 CTA → `/apps`
-2. **logos**（可选）— 「不是这些」对比：Screen Time / 拦截类扩展（用文字 logo 或占位图）
-3. **introduce**（`features` / `features-media`）— 现场叠加标注的示意（占位图 → 之后换录屏截帧）
-4. **benefits**（`features-list`）— 三条：看见机制 · Twin 对比 · 指向干净产品
-5. **usage**（`features-step`）— ① Load unpacked ② 打开 Reddit ③ Twin 切换（对齐 eng 脚本）
-6. **stats**（可选）— 先占位，有数据再填
-7. **faq** — 与 Screen Time 区别、是否收集浏览数据（本地）、v0 仅 Reddit 等
-8. **cta** — 去 `/apps` 或订阅（现有 `subscribe`）
-
-**禁止 v1 新造：** 自定义 3D、复杂仪表盘、紫色 AI 光效英雄区。沿用 default theme 视觉。
-
-### 4.2 `/patterns` — 钩子百科
-
-- Block：`features-accordion`（每条钩子 = 一项：名称、一句话、detox 行为、示例 App）
-- 或 `features-list`（卡片网格）
-- 文案来源：eng plan 钩子表（infinite / badge / related / autoplay…）
-- CTA → `/demo`
-
-**数据：** v1 可写死在 locale JSON；v1.1 改为 admin `hooks` 表驱动同一 block 的 `items`。
-
-### 4.3 `/apps` — 干净替代 / 对比目录（对齐「排除成瘾功能的对比项目」）
-
-- Block：直接复用 **`showcases`**  
-  - `groups`：如 `social` / `video` / `news` / `tools`  
-  - `items[]`：`title` `description` `url` `image` `group`  
-  - `description` 约定格式：`无：无限滚动 · 无：自动播放` 等钩子标签文案
-- 顶部可用 `page` title + 短 description（`showcases` 已支持）
-- **不新造**对比表格组件；若要表格，用 admin 的 `Table` 类型在 **控制台页** 展示，公开展示仍用 showcases 卡片
-
-### 4.4 `/demo` — 演示与 Demo Lock
-
-- `features-media`：主视觉 = 录屏或 twin wireframe 截图（placeholder：`picsum` seed）
-- `features-step`：与 eng **Scripted demo path** + **Demo Lock** 六步清单一致
-- `cta`：链到 Chrome 扩展说明（GitHub Release / zip / 文档）
-- 可选 `faq`：选择器过期怎么办 → 放录屏
-
-### 4.5 Blog（可选但推荐）
-
-- 一篇：「Reddit 上的四种上瘾钩子」→ 内链 `/patterns` `/demo`
-- 复用现有 blog 流，**零新组件**
-
----
-
-## 5. UI 组件复用清单（实现时对照）
-
-### 5.1 Theme blocks（落地页 JSON）
-
-| Block 文件 | 用途 |
-|------------|------|
-| `themes/default/blocks/hero.tsx` | 首页英雄区 |
-| `features.tsx` / `features-list.tsx` / `features-step.tsx` / `features-media.tsx` / `features-accordion.tsx` | 介绍、步骤、百科 |
-| `showcases.tsx` | `/apps` 目录 |
-| `faq.tsx` / `cta.tsx` / `stats.tsx` / `logos.tsx` | 辅助区 |
-| `header.tsx` / `footer.tsx` | 全局（改文案/导航即可） |
-| `blog.tsx` / `blog-detail.tsx` | 内容营销 |
-
-### 5.2 Shared blocks（后台与通用）
-
-| Block | 用途 |
-|-------|------|
-| `shared/blocks/dashboard/*` | Admin 壳 |
-| `shared/blocks/table/TableCard` | hooks/apps 列表 |
-| `shared/blocks/form/FormCard` | 创建/编辑 |
-| `shared/blocks/common/PageHeader` `SectionHeader` `Empty` `LazyImage` | 内页标题与空态 |
-| `shared/blocks/common/MarkdownPreview` | 钩子长说明 |
-| `shared/blocks/sign/*` | 若要登录才能下扩展 Pro |
-
-### 5.3 shadcn UI（仅当拼自定义碎片时）
-
-优先：`Button` `Badge` `Card` `Tabs` `Dialog` `Table` `Tooltip`  
-**扩展 popup 不引用这些**（独立 HTML/CSS）。
-
-### 5.4 v1 **允许**的唯一新 UI（尽量延后）
-
-| 组件 | 何时才做 | 说明 |
-|------|----------|------|
-| `TwinPreview`（可选） | 仅当静态录屏不够「哇」 | Client 组件：Tabs Addicted/Detoxed，复用 `Tabs`+`Badge`；**不要**重写整套 design system |
-| 扩展仓库 | 按 eng plan | 与 ShipAny 解耦的目录 `extension/` |
-
-其余「看起来需要新页面」的需求，先映射到上表 blocks。
-
----
-
-## 6. 内容与文案约定（中英）
-
-- Locale：`en` + `zh` 双份 JSON（ShipAny `localeMessagesPaths`）
-- 品牌临时名：**HookLens** / 副标题「看见上瘾的设计」
-- 差异化一句话（已验证）：**不是 Screen Time，是给陷阱贴标签**
-- 钩子文案与扩展 `label` **同一套字典**（admin 为 SSOT 后扩展可导出 JSON）
-
----
-
-## 7. 数据模型（站点 v1.1；v1 可静态）
+## 2. 核心用户流程（Demo 必须跑通）
 
 ```
-HookPattern { id, name_en, name_zh, blurb, detox_type, page_kinds[], sort }
-AppListing  { id, title, url, image, group, missing_hooks[], description, published }
-DemoAsset   { pinned_urls, recording_url, selector_notes, updated_at }
+选截图 → 标注钩子 → 生成 Report → 分享/对比
 ```
 
-- ORM：沿用项目 Drizzle 模式（参考现有 `users` 等表风格）
-- v1：**locale JSON + showcases items** 即可上线站点；扩展仍用 eng plan 内联选择器
+1. **选图**：上传截图，或从预置图库点选（TikTok / Instagram / 小红书 / Reddit… 示意截图）  
+2. **标注**：在图片上画框或点选热点，为每块选择钩子类型（无限滚动、红点焦虑、自动播放、相关推荐…）并写一句「为什么上瘾」  
+3. **Report**：自动汇总钩子列表、严重度/数量、一句话结论；可选「若去掉这些钩子会怎样」指向 `/apps`  
+4. **分享**：只读报告页 URL（`/report/[id]`）
+
+**成功标准（演示）：** 评委/朋友在 **2 分钟内**看完「截图上的标注 + 报告页」，说出「原来这些是上瘾设计」。
 
 ---
 
-## 8. A↔B 衔接
+## 3. 系统边界
 
-| 扩展（A） | 站点（B） |
-|-----------|-----------|
-| README Demo Lock | `/demo` features-step 同步 |
-| 钩子 label 文案 | `/patterns` accordion 同步 |
-| 备份录屏文件 | `/demo` features-media + 可选 R2/本地 `public`（或外链） |
-| 安装方式 | CTA → docs 或 GitHub Release |
-| 好友金句（assignment） | 可进 testimonials（有真实引用后再加） |
+| 层 | 内容 | ShipAny 复用 |
+|----|------|----------------|
+| **Marketing** | `/hooklens` `/patterns` `/apps` `/demo` | 现有 theme blocks + locale JSON（已部分交付） |
+| **Workspace（核心）** | `/analyze`（或 `/studio`）：上传 + 画布标注 | `ImageUploader`、`Button` `Badge` `Card` `Dialog` `Select` `Textarea`；**新建** `ScreenshotAnnotator` |
+| **Report** | `/report/[id]` 只读报告 | `PageHeader`、`MarkdownPreview`/`Card`、`Badge`、可选 `Button` 分享 |
+| **Gallery（可选 v1）** | 预置截图列表 | `showcases` 或 `features-list` 卡片进 `/analyze?sample=` |
+| **Admin** | 钩子词典、预置截图、报告审核 | `TableCard` `FormCard` dashboard |
+| **Data / Storage** | 截图文件 + 标注 JSON + 报告 | 现有 `/api/storage/upload-image`、Drizzle 表 |
 
----
-
-## 9. 非目标（站点）
-
-- 站点内嵌「扫描任意网页」的通用检测器（那是扩展 10x）
-- 用 ShipAny 重写 content script
-- 新 theme / 新色彩体系
-- 首屏堆砌数据看板、多 CTA、卡片墙英雄区
+**不做（本 demo）：** Chrome 扩展、真实 DOM 注入、Twin 实时排毒、通用「扫描任意网页」。
 
 ---
 
-## 10. 实现分期
+## 4. 信息架构（路由）
 
-### P0 — 站点可演示（复用 blocks only）
+| Route | 角色 | 实现方式 |
+|-------|------|----------|
+| `/hooklens` | 产品故事 | 动态页 JSON（改文案：截图标注而非扩展） |
+| `/patterns` | 钩子词典（标注时下拉同源） | 动态页 + 日后 DB SSOT |
+| `/apps` | 去掉钩子后的对比目录 | `showcases`（已有） |
+| `/demo` | 如何演示本网页工具 | 改成「上传 → 标注 → Report」步骤，去掉 Load unpacked |
+| **`/analyze`** | **核心工具页** | **App Router 页面**（非纯 JSON block；组合 shared UI） |
+| **`/report/[id]`** | **报告页** | App Router + 读库/读 JSON |
+| `/admin/hooks` | 钩子 CRUD | dashboard 表单 |
+| `/admin/samples` | 预置截图 CRUD | dashboard + ImageUploader |
 
-1. `create_dynamic_page`：`hooklens` `patterns` `apps` `demo`（en/zh）  
-2. 注册 `localeMessagesPaths`  
-3. Header 导航链到上述页  
-4. 文案对齐 office-hours + eng plan  
-5. `/apps` 先放 4–6 条「干净/较干净」占位产品（可标注虚构/待核实）
-
-### P1 — 与扩展并行
-
-6. `extension/` 按 eng plan  
-7. `/demo` 换真实录屏  
-8. Demo Lock 文案冻结
-
-### P2 — 运营化
-
-9. Admin CRUD hooks/apps  
-10. showcases/patterns 改为读 DB  
-11. Blog 首更  
+导航建议：Header 保留 HookLens；增加 **Analyze**（核心 CTA）、Patterns、Apps、Demo。
 
 ---
 
-## 11. 验收标准（站点）
+## 5. `/analyze` 产品规格（核心）
 
-- [ ] 四个动态页均可在 `/{locale}/...` 打开，且 **未新增 theme block 文件**（P0）
-- [ ] `/apps` 仅用 `showcases` 即可理解「缺哪些钩子」
-- [ ] `/demo` 步骤与 eng Scripted path / Demo Lock 一致
-- [ ] 中英 JSON 齐全
-- [ ] 扩展仍可独立 Load unpacked（不依赖站点构建）
+### 5.1 布局（一屏可演示）
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  [上传截图] [选用示例]     当前 App 名（可选输入）        │
+├────────────────────────────┬────────────────────────────┤
+│                            │  钩子列表（侧栏）            │
+│   截图画布                  │  - 类型 Badge               │
+│   + 半透明标注框            │  - 说明                     │
+│   + 点击选中/编辑           │  [+ 添加标注]               │
+│                            │  [生成 Report]              │
+└────────────────────────────┴────────────────────────────┘
+```
+
+### 5.2 标注数据（每条）
+
+```ts
+Annotation {
+  id: string
+  hookId: string          // 对齐 /patterns：infinite | badge | related | autoplay | …
+  label: string           // 展示名（可从词典带出）
+  note: string            // 「为什么让人上瘾」一句人话
+  severity: 1 | 2 | 3     // 可选，默认 2
+  rect: { x: number; y: number; w: number; h: number }  // 相对图片 0–1 归一化
+}
+```
+
+坐标用 **相对比例（0–1）**，避免不同屏幕尺寸错位。
+
+### 5.3 交互
+
+- 上传：复用 `ImageUploader` → `/api/storage/upload-image`（无存储时 v0 可用本地 Object URL，仅当次会话）  
+- 示例图：点击预置卡片 → 加载 URL，清空或保留标注策略写死为「换图清空」  
+- 画框：mousedown-drag 创建矩形；选中后侧栏编辑 hook/note  
+- 删除标注；生成 Report 时至少 **1 条**标注  
+
+### 5.4 复用 vs 新建
+
+| 能力 | 复用 | 新建 |
+|------|------|------|
+| 上传 | `ImageUploader` | — |
+| 按钮/徽章/表单 | shadcn `Button` `Badge` `Select` `Textarea` `Card` | — |
+| 画布标注 | — | **`ScreenshotAnnotator`**（唯一必要新组件） |
+| 空态/页头 | `Empty` `PageHeader` | — |
 
 ---
 
-## 12. 开放问题
+## 6. Report 规格
 
-1. 品牌定名：HookLens 是否最终名？  
-2. 首页是替换 `pages/index` 还是子路径 `/hooklens`？  
-3. `/apps` 条目是否必须真实可点，还是 demo 可用「示意」？  
-4. 是否启用定价（复用 `/pricing`）还是完全免费？
+### 6.1 内容结构
+
+1. **标题**：`{App名或「未命名截图」} — Addiction Report`  
+2. **摘要**：钩子数量、最高严重度、一句话结论（模板生成即可，v0 不必 LLM）  
+3. **带标注的截图**：只读画布（同 Annotator 的 view 模式）  
+4. **发现列表**：每条 = 钩子名 + note + severity  
+5. **行动**：链到 `/patterns`（了解机制）、`/apps`（更干净的替代）  
+6. **元数据**：创建时间；可选「示意/非正式审计」免责声明  
+
+### 6.2 生成方式（v0）
+
+- 点击「生成 Report」→ `POST /api/hooklens/reports` 写入 `{ imageUrl, appName, annotations[], summary }` → 跳转 `/report/[id]`  
+- 无 DB 时：v0 可用 `localStorage` + 客户端路由 query（仅本机 demo）；**推荐尽快用 Drizzle 表**以便分享链接  
+
+### 6.3 摘要模板示例
+
+> 本截图标注了 **N** 处成瘾相关设计。最突出的是 **{topHook}**。这些模式利用（可变奖励 / 无终点滚动 / 社交压力等）延长使用时长，而非完成用户任务。
+
+---
+
+## 7. 数据模型（推荐）
+
+```
+HookPattern   { id, name_en, name_zh, blurb_en, blurb_zh, sort }
+SampleShot    { id, title, app_name, image_url, group, published }
+Report        { id, app_name, image_url, annotations_json, summary, created_at, is_public }
+```
+
+- `annotations_json`：`Annotation[]`  
+- 钩子词典与 `/patterns`、标注下拉 **同一 SSOT**（先常量文件 `src/config/hooklens/hooks.ts`，再迁 admin）
+
+---
+
+## 8. 与已有页面的文案对齐（必改点）
+
+| 页 | 应改成 |
+|----|--------|
+| `/hooklens` | CTA → `/analyze`；去掉「Load unpacked / 扩展」主叙事；强调截图标注 + Report |
+| `/demo` | 步骤改为：选示例截图 → 标注 2–3 处 → 打开 Report；删除 Demo Lock / MV3 |
+| `/patterns` | 说明「标注工具的下拉选项来自本词典」 |
+| Header | 增加 Analyze；Demo 指向新流程 |
+
+（实现时作为独立小功能逐页改，仍遵守「一次一个可验收功能」。）
+
+---
+
+## 9. 非目标
+
+- 浏览器扩展 / 真实网页 DOM 扫描（远期可选）  
+- 自动 CV/LLM 识别钩子（v0 **人工标注**即可；AI 自动识别为 P2）  
+- Twin 实时排毒切换  
+- 新 design system / 重做整站视觉  
+- 把 Report 做成复杂 BI 仪表盘  
+
+---
+
+## 10. 实现分期（更新）
+
+### 已完成（营销壳）
+
+- [x] `/hooklens` `/patterns` `/apps` + header HookLens  
+- [ ] `/demo` 已存在但文案仍偏扩展 → **改文案**记为后续功能  
+
+### P0 — 可演示的网页核心
+
+1. [x] `/analyze` 页骨架（上传区 + 示例线框图 + 画布展示；钩子 SSOT 随标注一并做）  
+2. `ScreenshotAnnotator`：画框 + 侧栏编辑 + 列表  
+3. 预置 3–5 张示例截图（可先放 `public/imgs/hooklens/samples/` 或 picsum + 标题）  
+4. 生成 Report（DB 或 localStorage）+ `/report/[id]` 只读页  
+5. 更新 `/hooklens` `/demo` CTA 与文案指向 `/analyze`  
+6. Header 增加 Analyze（及可选 Patterns/Apps/Demo）  
+
+### P1 — 完整一点
+
+7. Drizzle `reports` + 可分享公开链接  
+8. Admin：hooks / samples  
+9. Report 打印样式（`print:` Tailwind）  
+10. `/apps` 与报告「行动建议」深链  
+
+### P2 — 增强
+
+11. LLM 根据标注草拟更长报告（可选）  
+12. 批量多图报告  
+13. 扩展版（若仍需要）从报告导出「应在真实 DOM 查找的钩子」  
+
+---
+
+## 11. 验收标准（新 Demo）
+
+- [ ] 不安装任何扩展，仅用浏览器完成：示例图 → ≥2 条标注 → Report 页  
+- [ ] 标注框在缩放窗口后位置仍大致正确（归一化坐标）  
+- [ ] Report 含截图（带框）+ 列表 + 摘要 + 链到 `/patterns` 或 `/apps`  
+- [ ] 中英：工具页关键文案至少覆盖默认 locale；营销页保持 en/zh  
+- [ ] 新增 UI 仅限 Annotator + analyze/report 页面编排；营销仍用现有 blocks  
+
+---
+
+## 12. 已锁定决策（2026-08-14）
+
+1. 路由：`/analyze`  
+2. Report：v0 本机可演示即可（localStorage / 会话）；可分享链接进 P1（Drizzle）  
+3. 示例图：占位/线框示意（避免真实 App UI 版权问题）  
+4. 标注：仅矩形框（归一化坐标）  
 
 ---
 
 ## 13. 相关文档
 
-- Design: `~/.gstack/projects/shipany-template-two/frank-unknown-design-20260814-110700.md`
-- Eng: `~/.gstack/projects/shipany-template-two/frank-unknown-eng-plan-20260814.md`
-- Wireframe: `~/.gstack/projects/shipany-template-two/designs/twin-wireframe-sketch.html`
+- 旧 office-hours / eng（扩展 Twin）仍保留作历史；**demo 以本文为准**  
+- 已实现营销页与本仓库 `docs/specs/` 同步  
+- Wireframe（扩展 Twin）可弃用或改为「报告页线框」后续重画  
+
+---
+
+## 14. 推荐下一步（实现）
+
+在你确认本修订 spec 后，按 P0-1 开工：**可运行的 `/analyze` 骨架（上传或选示例图显示在页上）**，验收通过再 commit/push，然后再做画框标注。

@@ -1,0 +1,17 @@
+{
+  "metadata": {
+    "title": "Analyze — HookLens",
+    "description": "Upload or pick an app screenshot and prepare addiction annotations."
+  },
+  "title": "Analyze screenshot",
+  "description": "Upload a screenshot or pick a wireframe sample. Annotation tools come next.",
+  "upload": "Upload screenshot",
+  "upload_hint": "PNG or JPG, stays in this browser session",
+  "samples_heading": "Or pick a sample",
+  "canvas_empty": "No screenshot yet — upload or choose a sample",
+  "current_image": "Current image",
+  "app_name_label": "App name (optional)",
+  "app_name_placeholder": "e.g. Feed App",
+  "clear": "Clear",
+  "coming_next": "Next: draw boxes on addictive regions and generate a report."
+}

@@ -1,0 +1,17 @@
+{
+  "metadata": {
+    "title": "分析 — HookLens",
+    "description": "上传或选择 App 截图，准备标注成瘾区域。"
+  },
+  "title": "分析截图",
+  "description": "上传截图或选择线框示例。标注工具将在下一步加入。",
+  "upload": "上传截图",
+  "upload_hint": "PNG 或 JPG，仅保存在本次浏览器会话",
+  "samples_heading": "或选择示例",
+  "canvas_empty": "还没有截图 — 请上传或选择示例",
+  "current_image": "当前图片",
+  "app_name_label": "App 名称（可选）",
+  "app_name_placeholder": "例如：信息流 App",
+  "clear": "清空",
+  "coming_next": "下一步：在成瘾区域画框并生成 Report。"
+}
