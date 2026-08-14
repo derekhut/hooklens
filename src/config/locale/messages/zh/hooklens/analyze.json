@@ -4,7 +4,7 @@
     "description": "上传或选择 App 截图，并标注容易让人上瘾的界面区域。"
   },
   "title": "分析截图",
-  "description": "上传截图或选择线框示例，然后在成瘾区域拖拽画框。",
+  "description": "上传截图或选择线框示例；可用 AI 识别钩子，也可手动画框。",
   "upload": "上传截图",
   "upload_hint": "PNG 或 JPG，仅保存在本次浏览器会话",
   "samples_heading": "或选择示例",
@@ -17,7 +17,7 @@
   "annotations_heading": "标注列表",
   "annotations_count": "{count}",
   "annotations_need_image": "请先加载图片。",
-  "annotations_empty": "还没有框 — 请在截图上拖拽。",
+  "annotations_empty": "还没有框 — 可点「AI 识别钩子」或手动画框。",
   "hook_type": "钩子类型",
   "note_label": "为什么让人上瘾",
   "note_placeholder": "用一句话说明",
@@ -26,10 +26,14 @@
   "severity_2": "2 — 中等",
   "severity_3": "3 — 强烈",
   "delete_annotation": "删除标注",
+  "detect_ai": "AI 识别钩子",
+  "detecting": "识别中…",
+  "detect_success": "找到 {count} 处钩子 — 可再手动调整",
+  "detect_failed": "AI 识别失败 — 请重试或手动画框",
   "generate_report": "生成 Report",
   "generating": "生成中…",
   "report_need_image": "请先加载截图",
   "report_need_annotations": "请至少画一个标注框",
   "report_failed": "无法保存报告",
-  "coming_next": "演示版报告保存在本浏览器；跨设备分享链接稍后接入。"
+  "coming_next": "提示：先 AI 识别，再微调框，最后生成报告。"
 }

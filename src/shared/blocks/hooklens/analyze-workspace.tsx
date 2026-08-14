@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { FileText, ImageIcon, Loader2, Trash2, Upload, X } from 'lucide-react';
+import { FileText, ImageIcon, Loader2, Sparkles, Trash2, Upload, X } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { toast } from 'sonner';
 
@@ -32,6 +32,7 @@ import {
   SelectValue,
 } from '@/shared/components/ui/select';
 import { Textarea } from '@/shared/components/ui/textarea';
+import { imageUrlToJpegDataUrl } from '@/shared/lib/hooklens/image-data-url';
 import { cn } from '@/shared/lib/utils';
 
 type ActiveImage = {
@@ -53,6 +54,7 @@ export function AnalyzeWorkspace() {
   const [annotations, setAnnotations] = useState<Annotation[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [generating, setGenerating] = useState(false);
+  const [detecting, setDetecting] = useState(false);
 
   const selected = useMemo(
     () => annotations.find((a) => a.id === selectedId) ?? null,
@@ -149,6 +151,62 @@ export function AnalyzeWorkspace() {
     setSelectedId(null);
   };
 
+  const detectWithAi = async () => {
+    if (!image) {
+      toast.error(t('report_need_image'));
+      return;
+    }
+
+    setDetecting(true);
+    try {
+      const imageDataUrl = await imageUrlToJpegDataUrl(image.url);
+      const res = await fetch('/api/hooklens/detect', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          imageDataUrl,
+          locale,
+          appName: appName.trim(),
+        }),
+      });
+      const json = (await res.json()) as {
+        code: number;
+        message?: string;
+        data?: {
+          annotations?: Array<{
+            hookId: Annotation['hookId'];
+            label: string;
+            note: string;
+            severity: 1 | 2 | 3;
+            rect: AnnotationRect;
+          }>;
+        };
+      };
+
+      if (json.code !== 0 || !json.data?.annotations?.length) {
+        toast.error(json.message || t('detect_failed'));
+        return;
+      }
+
+      const next: Annotation[] = json.data.annotations.map((item) => ({
+        id: createAnnotationId(),
+        hookId: item.hookId,
+        label: item.label,
+        note: item.note,
+        severity: item.severity,
+        rect: item.rect,
+      }));
+
+      setAnnotations(next);
+      setSelectedId(next[0]?.id ?? null);
+      toast.success(t('detect_success', { count: next.length }));
+    } catch {
+      toast.error(t('detect_failed'));
+    } finally {
+      setDetecting(false);
+    }
+  };
+
   const generateReport = async () => {
     if (!image) {
       toast.error(t('report_need_image'));
@@ -210,6 +268,21 @@ export function AnalyzeWorkspace() {
               <Upload className="size-4" />
               {t('upload')}
             </Button>
+            {image && (
+              <Button
+                type="button"
+                variant="secondary"
+                disabled={detecting}
+                onClick={detectWithAi}
+              >
+                {detecting ? (
+                  <Loader2 className="size-4 animate-spin" />
+                ) : (
+                  <Sparkles className="size-4" />
+                )}
+                {detecting ? t('detecting') : t('detect_ai')}
+              </Button>
+            )}
             {image && (
               <Button type="button" variant="outline" onClick={clearAll}>
                 <X className="size-4" />

@@ -4,7 +4,7 @@
     "description": "Upload or pick an app screenshot and annotate addictive UI regions."
   },
   "title": "Analyze screenshot",
-  "description": "Upload a screenshot or pick a wireframe sample, then drag boxes onto addictive regions.",
+  "description": "Upload a screenshot or pick a wireframe sample. Detect hooks with AI, or draw boxes yourself.",
   "upload": "Upload screenshot",
   "upload_hint": "PNG or JPG, stays in this browser session",
   "samples_heading": "Or pick a sample",
@@ -17,7 +17,7 @@
   "annotations_heading": "Annotations",
   "annotations_count": "{count}",
   "annotations_need_image": "Load an image first.",
-  "annotations_empty": "No boxes yet — drag on the screenshot.",
+  "annotations_empty": "No boxes yet — Detect with AI or drag on the screenshot.",
   "hook_type": "Hook type",
   "note_label": "Why this is addictive",
   "note_placeholder": "One sentence in plain language",
@@ -26,10 +26,14 @@
   "severity_2": "2 — Medium",
   "severity_3": "3 — Strong",
   "delete_annotation": "Delete box",
+  "detect_ai": "Detect with AI",
+  "detecting": "Detecting…",
+  "detect_success": "Found {count} hooks — edit boxes if needed",
+  "detect_failed": "AI detect failed — try again or draw boxes manually",
   "generate_report": "Generate Report",
   "generating": "Generating…",
   "report_need_image": "Load a screenshot first",
   "report_need_annotations": "Add at least one annotation box",
   "report_failed": "Could not save report",
-  "coming_next": "Report stays in this browser for the demo; shareable cloud links come later."
+  "coming_next": "Tip: Detect with AI first, then tweak boxes before generating a report."
 }
