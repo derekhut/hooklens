@@ -1,0 +1,106 @@
+{
+  "metadata": {
+    "title": "Cleaner apps — products with fewer addiction hooks",
+    "description": "A starter directory of apps and sites that aim to do the job without infinite scroll, autoplay, or badge guilt. Placeholder listings for the HookLens demo."
+  },
+  "page": {
+    "title": "Cleaner apps",
+    "sections": {
+      "showcases": {
+        "id": "showcases",
+        "title": "Compare without the hooks",
+        "description": "Early directory for HookLens. Listings are illustrative — verify before you rely on them. Tags in the description mean hooks the product claims to avoid.",
+        "groups": [
+          {
+            "name": "all",
+            "title": "All"
+          },
+          {
+            "name": "social",
+            "title": "Social / feed"
+          },
+          {
+            "name": "video",
+            "title": "Video"
+          },
+          {
+            "name": "news",
+            "title": "News / reading"
+          },
+          {
+            "name": "tools",
+            "title": "Tools"
+          }
+        ],
+        "items": [
+          {
+            "title": "Example: Chronological social",
+            "description": "No: infinite algorithmic For You · No: streak guilt — placeholder listing",
+            "url": "/hooklens",
+            "target": "_self",
+            "image": {
+              "src": "https://picsum.photos/seed/clean-social/800/600",
+              "alt": "social"
+            },
+            "group": "social"
+          },
+          {
+            "title": "Example: Finite video queue",
+            "description": "No: autoplay next-up · No: infinite scroll — placeholder listing",
+            "url": "/hooklens",
+            "target": "_self",
+            "image": {
+              "src": "https://picsum.photos/seed/clean-video/800/600",
+              "alt": "video"
+            },
+            "group": "video"
+          },
+          {
+            "title": "Example: Reader without badges",
+            "description": "No: unread red badge anxiety · No: variable reward drip — placeholder listing",
+            "url": "/patterns",
+            "target": "_self",
+            "image": {
+              "src": "https://picsum.photos/seed/clean-news/800/600",
+              "alt": "news"
+            },
+            "group": "news"
+          },
+          {
+            "title": "Example: Focus tools",
+            "description": "No: related rabbit hole chrome — placeholder listing",
+            "url": "/patterns",
+            "target": "_self",
+            "image": {
+              "src": "https://picsum.photos/seed/clean-tools/800/600",
+              "alt": "tools"
+            },
+            "group": "tools"
+          },
+          {
+            "title": "HookLens itself",
+            "description": "Labels hooks instead of blocking — product home",
+            "url": "/hooklens",
+            "target": "_self",
+            "image": {
+              "src": "https://picsum.photos/seed/clean-hooklens/800/600",
+              "alt": "hooklens"
+            },
+            "group": "tools"
+          },
+          {
+            "title": "Pattern dictionary",
+            "description": "Shared taxonomy of addiction hooks",
+            "url": "/patterns",
+            "target": "_self",
+            "image": {
+              "src": "https://picsum.photos/seed/clean-patterns/800/600",
+              "alt": "patterns"
+            },
+            "group": "tools"
+          }
+        ]
+      }
+    }
+  }
+}

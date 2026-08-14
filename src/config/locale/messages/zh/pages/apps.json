@@ -1,0 +1,106 @@
+{
+  "metadata": {
+    "title": "更干净的应用 — 少上瘾钩子的产品对比",
+    "description": "HookLens 演示用的起步目录：尽量不做无限滚动、自动播放、红点愧疚的应用与站点。条目为示意，请自行核实。"
+  },
+  "page": {
+    "title": "更干净的应用",
+    "sections": {
+      "showcases": {
+        "id": "showcases",
+        "title": "去掉钩子再对比",
+        "description": "HookLens 早期目录。条目为示意——采纳前请自行核实。描述里的「无：…」表示该产品宣称避开的钩子。",
+        "groups": [
+          {
+            "name": "all",
+            "title": "全部"
+          },
+          {
+            "name": "social",
+            "title": "社交 / 信息流"
+          },
+          {
+            "name": "video",
+            "title": "视频"
+          },
+          {
+            "name": "news",
+            "title": "新闻 / 阅读"
+          },
+          {
+            "name": "tools",
+            "title": "工具"
+          }
+        ],
+        "items": [
+          {
+            "title": "示例：按时间线的社交",
+            "description": "无：算法 For You 无限流 · 无：连续打卡愧疚 — 示意条目",
+            "url": "/hooklens",
+            "target": "_self",
+            "image": {
+              "src": "https://picsum.photos/seed/clean-social/800/600",
+              "alt": "social"
+            },
+            "group": "social"
+          },
+          {
+            "title": "示例：有限视频队列",
+            "description": "无：自动连播 · 无：无限滚动 — 示意条目",
+            "url": "/hooklens",
+            "target": "_self",
+            "image": {
+              "src": "https://picsum.photos/seed/clean-video/800/600",
+              "alt": "video"
+            },
+            "group": "video"
+          },
+          {
+            "title": "示例：无红点阅读器",
+            "description": "无：未读红点焦虑 · 无：可变奖励滴灌 — 示意条目",
+            "url": "/patterns",
+            "target": "_self",
+            "image": {
+              "src": "https://picsum.photos/seed/clean-news/800/600",
+              "alt": "news"
+            },
+            "group": "news"
+          },
+          {
+            "title": "示例：专注工具",
+            "description": "无：相关推荐兔子洞 — 示意条目",
+            "url": "/patterns",
+            "target": "_self",
+            "image": {
+              "src": "https://picsum.photos/seed/clean-tools/800/600",
+              "alt": "tools"
+            },
+            "group": "tools"
+          },
+          {
+            "title": "HookLens 本站",
+            "description": "标注钩子而不是拦截 — 产品首页",
+            "url": "/hooklens",
+            "target": "_self",
+            "image": {
+              "src": "https://picsum.photos/seed/clean-hooklens/800/600",
+              "alt": "hooklens"
+            },
+            "group": "tools"
+          },
+          {
+            "title": "钩子词典",
+            "description": "成瘾机制共用分类",
+            "url": "/patterns",
+            "target": "_self",
+            "image": {
+              "src": "https://picsum.photos/seed/clean-patterns/800/600",
+              "alt": "patterns"
+            },
+            "group": "tools"
+          }
+        ]
+      }
+    }
+  }
+}
