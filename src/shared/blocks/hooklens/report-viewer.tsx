@@ -13,6 +13,7 @@ import {
 } from '@/config/hooklens/hooks';
 import {
   getReport,
+  saveReport,
   type HooklensReport,
 } from '@/config/hooklens/report-storage';
 import { Link } from '@/core/i18n/navigation';
@@ -20,17 +21,54 @@ import { ScreenshotAnnotator } from '@/shared/blocks/hooklens/screenshot-annotat
 import { Badge } from '@/shared/components/ui/badge';
 import { Button } from '@/shared/components/ui/button';
 
-export function ReportViewer({ reportId }: { reportId: string }) {
+export function ReportViewer({
+  reportId,
+  initialReport = null,
+}: {
+  reportId: string;
+  initialReport?: HooklensReport | null;
+}) {
   const t = useTranslations('hooklens.report');
   const locale = useLocale();
   const isZh = locale.startsWith('zh');
   const [report, setReport] = useState<HooklensReport | null | undefined>(
-    undefined
+    initialReport ?? undefined
   );
 
   useEffect(() => {
-    setReport(getReport(reportId));
-  }, [reportId]);
+    if (initialReport) {
+      setReport(initialReport);
+      saveReport(initialReport);
+      return;
+    }
+
+    let cancelled = false;
+
+    (async () => {
+      try {
+        const res = await fetch(`/api/hooklens/reports/${reportId}`);
+        const json = (await res.json()) as {
+          code: number;
+          data?: HooklensReport;
+        };
+        if (!cancelled && json.code === 0 && json.data) {
+          setReport(json.data);
+          saveReport(json.data);
+          return;
+        }
+      } catch {
+        // fall through to local cache
+      }
+
+      if (!cancelled) {
+        setReport(getReport(reportId));
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [reportId, initialReport]);
 
   const grouped = useMemo(() => {
     if (!report) return [];
@@ -87,7 +125,7 @@ export function ReportViewer({ reportId }: { reportId: string }) {
         <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">
           {t('title', { app: titleApp })}
         </h1>
-        <p className="text-muted-foreground max-w-2xl text-base">
+        <p className="text-muted-foreground max-w-2xl whitespace-pre-wrap text-base">
           {report.summary}
         </p>
         <div className="flex flex-wrap items-center gap-2 text-sm">
@@ -116,7 +154,8 @@ export function ReportViewer({ reportId }: { reportId: string }) {
           return (
             <div key={group.dimId} className="space-y-3">
               <h3 className="text-sm font-medium">
-                {group.dimId}. {dim ? (isZh ? dim.nameZh : dim.nameEn) : group.dimId}
+                {group.dimId}.{' '}
+                {dim ? (isZh ? dim.nameZh : dim.nameEn) : group.dimId}
               </h3>
               <ol className="space-y-3">
                 {group.items.map((ann) => {

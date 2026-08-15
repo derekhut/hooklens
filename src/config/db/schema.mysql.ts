@@ -515,3 +515,23 @@ export const chatMessage = table(
     index('idx_chat_message_user_id').on(table.userId, table.status),
   ]
 );
+
+/** Public HookLens addiction reports (shareable by id). */
+export const hooklensReport = table(
+  'hooklens_report',
+  {
+    id: varchar191('id').primaryKey(),
+    appName: varchar('app_name', { length: 255 }).notNull().default(''),
+    imageUrl: longtext('image_url').notNull(),
+    annotationsJson: longtext('annotations_json').notNull(),
+    summary: longtext('summary').notNull(),
+    locale: varchar('locale', { length: 20 }).notNull().default('en'),
+    isPublic: boolean('is_public').default(true).notNull(),
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+    updatedAt: timestamp('updated_at').defaultNow().onUpdateNow().notNull(),
+  },
+  (table) => [
+    index('idx_hooklens_report_created_at').on(table.createdAt),
+    index('idx_hooklens_report_public').on(table.isPublic),
+  ]
+);

@@ -13,10 +13,9 @@ import {
   patternsByDimension,
 } from '@/config/hooklens/hooks';
 import {
-  buildReportSummary,
-  createReportId,
   persistImageForReport,
   saveReport,
+  type HooklensReport,
 } from '@/config/hooklens/report-storage';
 import { HOOKLENS_SAMPLES } from '@/config/hooklens/samples';
 import {
@@ -228,16 +227,26 @@ export function AnalyzeWorkspace() {
     setGenerating(true);
     try {
       const imageUrl = await persistImageForReport(image.url);
-      const id = createReportId();
-      saveReport({
-        id,
-        appName: appName.trim(),
-        imageUrl,
-        annotations,
-        summary: buildReportSummary(annotations, locale),
-        createdAt: new Date().toISOString(),
+      const res = await fetch('/api/hooklens/reports', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          appName: appName.trim(),
+          imageUrl,
+          annotations,
+          locale,
+        }),
       });
-      router.push(`/report/${id}`);
+      const json = (await res.json()) as {
+        code: number;
+        message?: string;
+        data?: HooklensReport & { polished?: boolean };
+      };
+      if (json.code !== 0 || !json.data?.id) {
+        throw new Error(json.message || 'create failed');
+      }
+      saveReport(json.data);
+      router.push(`/report/${json.data.id}`);
     } catch {
       toast.error(t('report_failed'));
     } finally {

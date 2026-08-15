@@ -195,16 +195,16 @@ Report        { id, app_name, image_url, annotations_json, summary, created_at, 
 - Vision detect / Analyze / Patterns / Report 共用同一白名单
 
 
-### P1 — 完整一点
+### P1 — 演示与可信度（进行中 / 部分完成）
 
-7. Drizzle `reports` + 可分享公开链接  
-8. Admin：hooks / samples  
-9. Report 打印样式（`print:` Tailwind）  
-10. `/apps` 与报告「行动建议」深链  
+7. [x] Drizzle `hooklens_report` + `POST /api/hooklens/reports` + 公开 `/report/[id]`  
+8. [x] LLM 基于标注润色更长 summary（无 key 时回退模板）  
+9. Admin：hooks / samples  
+10. Report 打印样式（`print:` Tailwind）  
+11. `/apps` 与报告「行动建议」深链  
 
 ### P2 — 增强
 
-11. LLM 根据标注草拟更长报告（可选）  
 12. 批量多图报告  
 13. 扩展版（若仍需要）从报告导出「应在真实 DOM 查找的钩子」  
 
