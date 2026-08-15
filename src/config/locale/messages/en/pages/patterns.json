@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Hook patterns — addiction mechanisms labeled",
-    "description": "A short encyclopedia of attention hooks HookLens marks on feeds: infinite scroll, badges, related rabbit holes, autoplay."
+    "title": "Hook patterns — 5 dimensions, 11 modes",
+    "description": "HookLens taxonomy: boundary elimination, variable rewards, social traps, sunk cost, and attention hijacking — used when annotating screenshots."
   },
   "page": {
     "title": "Hook patterns",
@@ -9,9 +9,9 @@
     "sections": {
       "hero": {
         "id": "hero",
-        "title": "Name the hooks that keep you scrolling",
-        "highlight_text": "hooks",
-        "description": "These are attention / addiction mechanisms — not checkout dark patterns. HookLens labels them when you annotate screenshots; this page is the shared dictionary.",
+        "title": "A research-informed addiction taxonomy",
+        "highlight_text": "taxonomy",
+        "description": "Five core strategies and eleven secondary patterns — shared by Analyze, Vision detect, and Reports. Illustrative labels inspired by CHI / dark-pattern research (e.g. FoSIP-style thinking and Gray-style pattern families), not a formal compliance audit.",
         "buttons": [
           {
             "title": "Open Analyze",
@@ -37,44 +37,107 @@
       "patterns": {
         "block": "features-accordion",
         "id": "patterns",
-        "title": "Committed hooks (v0)",
+        "title": "Secondary patterns (A1–E2)",
         "label": "Taxonomy",
-        "description": "Same options as the Analyze annotation picker. Use these names when you mark a screenshot.",
+        "description": "Same IDs as the Analyze picker and AI detector. Grouped under dimensions A–E.",
         "items": [
           {
-            "title": "Infinite scroll",
-            "description": "No landing, no done — the feed keeps growing. On a screenshot: box the endless list or “loading more” chrome.",
+            "title": "A1 · Missing stopping cues",
+            "description": "Dimension A — Boundary elimination. Mechanism: cognitive breakpoint deprivation / auto-navigation. Look for: infinite scroll, autoplay / next-episode chrome.",
             "icon": "Infinity",
             "image": {
-              "src": "https://picsum.photos/seed/hook-infinite/800/600",
-              "alt": "infinite scroll"
+              "src": "https://picsum.photos/seed/hook-a1/800/600",
+              "alt": "A1"
             }
           },
           {
-            "title": "Unread / inbox badge",
-            "description": "Red counts and unread chrome that pull you back open. On a screenshot: box the badge or notification pill.",
+            "title": "A2 · Friction removal",
+            "description": "Dimension A — Boundary elimination. Mechanism: low cognitive resistance (Fogg-style triggers). Look for: one-tap buy, swipe-without-confirm loops.",
+            "icon": "Zap",
+            "image": {
+              "src": "https://picsum.photos/seed/hook-a2/800/600",
+              "alt": "A2"
+            }
+          },
+          {
+            "title": "B1 · Variable ratio rewards",
+            "description": "Dimension B — Uncertainty. Mechanism: Skinner-box intermittent rewards. Look for: pull-to-refresh, loot/unbox, opaque For You rails.",
+            "icon": "Dices",
+            "image": {
+              "src": "https://picsum.photos/seed/hook-b1/800/600",
+              "alt": "B1"
+            }
+          },
+          {
+            "title": "B2 · Curiosity gaps",
+            "description": "Dimension B — Uncertainty. Mechanism: Information Gap Theory. Look for: vague unread copy, red dots with no preview.",
             "icon": "Bell",
             "image": {
-              "src": "https://picsum.photos/seed/hook-badge/800/600",
-              "alt": "badge"
+              "src": "https://picsum.photos/seed/hook-b2/800/600",
+              "alt": "B2"
             }
           },
           {
-            "title": "Related / continue chrome",
-            "description": "Similar posts and continue modules that start another rabbit hole. On a screenshot: box the related rail.",
-            "icon": "GitBranch",
+            "title": "C1 · Social reciprocity exploitation",
+            "description": "Dimension C — Social traps. Mechanism: reciprocity norms / social pressure. Look for: forced read receipts, streak counters.",
+            "icon": "MessagesSquare",
             "image": {
-              "src": "https://picsum.photos/seed/hook-related/800/600",
-              "alt": "related"
+              "src": "https://picsum.photos/seed/hook-c1/800/600",
+              "alt": "C1"
             }
           },
           {
-            "title": "Autoplay / inline video",
-            "description": "Zero decision to continue watching. On a screenshot: box the autoplaying player or next-up strip.",
-            "icon": "Play",
+            "title": "C2 · Fabricated FOMO",
+            "description": "Dimension C — Social traps. Mechanism: loss aversion / bandwagon. Look for: Stories timers, “X also bought” social proof.",
+            "icon": "Timer",
             "image": {
-              "src": "https://picsum.photos/seed/hook-autoplay/800/600",
-              "alt": "autoplay"
+              "src": "https://picsum.photos/seed/hook-c2/800/600",
+              "alt": "C2"
+            }
+          },
+          {
+            "title": "C3 · Quantified approval",
+            "description": "Dimension C — Social traps. Mechanism: extrinsic motivation / self-worth projection. Look for: like leaderboards, huge public counters.",
+            "icon": "Trophy",
+            "image": {
+              "src": "https://picsum.photos/seed/hook-c3/800/600",
+              "alt": "C3"
+            }
+          },
+          {
+            "title": "D1 · Labor & asset accumulation",
+            "description": "Dimension D — Investment. Mechanism: IKEA effect / sunk cost. Look for: check-in trees, non-portable levels and medals.",
+            "icon": "TreePine",
+            "image": {
+              "src": "https://picsum.photos/seed/hook-d1/800/600",
+              "alt": "D1"
+            }
+          },
+          {
+            "title": "D2 · Exit guilt & loss triggers",
+            "description": "Dimension D — Investment. Mechanism: confirmshaming / guilt-tripping. Look for: cancel threats, streak-reset warnings.",
+            "icon": "HeartCrack",
+            "image": {
+              "src": "https://picsum.photos/seed/hook-d2/800/600",
+              "alt": "D2"
+            }
+          },
+          {
+            "title": "E1 · Artificial urgency",
+            "description": "Dimension E — Attention hijacking. Mechanism: scarcity heuristic. Look for: fake countdown timers, baseless low-stock alerts.",
+            "icon": "AlarmClock",
+            "image": {
+              "src": "https://picsum.photos/seed/hook-e1/800/600",
+              "alt": "E1"
+            }
+          },
+          {
+            "title": "E2 · Intrusive ping triggers",
+            "description": "Dimension E — Attention hijacking. Mechanism: orienting reflex / habit interruption. Look for: aggressive push chrome for trivial events.",
+            "icon": "Megaphone",
+            "image": {
+              "src": "https://picsum.photos/seed/hook-e2/800/600",
+              "alt": "E2"
             }
           }
         ],
@@ -85,19 +148,23 @@
         "title": "FAQ",
         "items": [
           {
-            "question": "Is this the same as dark-pattern detectors?",
-            "answer": "Cousins only. Those tools hunt checkout tricks (fake timers, confirmshaming). This list is habit machinery on feeds."
+            "question": "Is this a formal dark-pattern compliance list?",
+            "answer": "No. It is an illustrative taxonomy for education and screenshot labeling, informed by CHI / regulatory research themes — not a legal checklist."
           },
           {
-            "question": "Will more hooks appear here?",
-            "answer": "Yes — ranking chrome and variable-reward drip are stretch items after the screenshot demo is solid."
+            "question": "Why A1–E2 IDs?",
+            "answer": "Stable codes for Analyze, Vision detection, and Reports. Old labels (infinite/badge/…) map into this scheme automatically."
+          },
+          {
+            "question": "Does AI use the same list?",
+            "answer": "Yes. Detect with AI is prompted with this taxonomy and may only return these hookIds."
           }
         ]
       },
       "cta": {
         "id": "cta",
-        "title": "Use the dictionary in Analyze",
-        "description": "Pick a sample screenshot and label these hooks, then generate a report.",
+        "title": "Classify a screenshot",
+        "description": "Open Analyze, run Detect with AI or pick A1–E2 manually, then generate a report.",
         "buttons": [
           {
             "title": "Open Analyze",

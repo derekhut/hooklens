@@ -1,5 +1,9 @@
 import type { Annotation } from './types';
-import { getHookPattern } from './hooks';
+import {
+  getHookDimension,
+  getHookPattern,
+  migrateHookId,
+} from './hooks';
 
 export type HooklensReport = {
   id: string;
@@ -16,29 +20,49 @@ export function createReportId() {
   return `rpt-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
 }
 
+function migrateAnnotations(annotations: Annotation[]): Annotation[] {
+  return annotations.map((ann) => {
+    const hookId = migrateHookId(ann.hookId) ?? ann.hookId;
+    const hook = getHookPattern(String(hookId));
+    return {
+      ...ann,
+      hookId: hookId as Annotation['hookId'],
+      label: hook ? ann.label || hook.nameEn : ann.label,
+    };
+  });
+}
+
 export function buildReportSummary(
   annotations: Annotation[],
   locale: string
 ): string {
   const isZh = locale.startsWith('zh');
-  const n = annotations.length;
-  const top = [...annotations].sort((a, b) => b.severity - a.severity)[0];
-  const topHook = top
-    ? getHookPattern(top.hookId)
-    : undefined;
+  const migrated = migrateAnnotations(annotations);
+  const n = migrated.length;
+  const dimIds = new Set(
+    migrated
+      .map((a) => getHookPattern(a.hookId)?.dimensionId)
+      .filter(Boolean)
+  );
+  const top = [...migrated].sort((a, b) => b.severity - a.severity)[0];
+  const topHook = top ? getHookPattern(top.hookId) : undefined;
   const topName = topHook
-    ? isZh
-      ? topHook.nameZh
-      : topHook.nameEn
+    ? `${topHook.id} · ${isZh ? topHook.nameZh : topHook.nameEn}`
     : isZh
-      ? '未知钩子'
-      : 'unknown hook';
+      ? '未知模式'
+      : 'unknown pattern';
+  const dimNames = [...dimIds]
+    .map((id) => {
+      const d = getHookDimension(id!);
+      return d ? (isZh ? d.nameZh : d.nameEn) : id;
+    })
+    .join(isZh ? '、' : ', ');
 
   if (isZh) {
-    return `本截图标注了 ${n} 处成瘾相关设计。最突出的是 ${topName}。这些模式利用可变奖励、无终点滚动或社交压力等机制延长使用时长，而非完成用户任务。`;
+    return `本截图标注了 ${n} 处成瘾相关设计，覆盖 ${dimIds.size} 个一级维度（${dimNames || '—'}）。最突出的是 ${topName}。分类参考边界消除、可变酬赏、社交捆绑、沉没成本与注意力劫持等研究框架（示意用途）。`;
   }
 
-  return `This screenshot marks ${n} addiction-related design${n === 1 ? '' : 's'}. The most prominent is ${topName}. These patterns use variable rewards, endless feeds, or social pressure to extend session time rather than finish the user's task.`;
+  return `This screenshot marks ${n} addiction-related design${n === 1 ? '' : 's'} across ${dimIds.size} core dimension${dimIds.size === 1 ? '' : 's'} (${dimNames || '—'}). The most prominent is ${topName}. Taxonomy informed by boundary-elimination, variable-reward, social-trap, sunk-cost, and attention-hijack research (illustrative).`;
 }
 
 function readAll(): Record<string, HooklensReport> {
@@ -59,14 +83,22 @@ function writeAll(map: Record<string, HooklensReport>) {
 
 export function saveReport(report: HooklensReport) {
   const map = readAll();
-  map[report.id] = report;
+  map[report.id] = {
+    ...report,
+    annotations: migrateAnnotations(report.annotations),
+  };
   writeAll(map);
-  return report;
+  return map[report.id];
 }
 
 export function getReport(id: string): HooklensReport | null {
   const map = readAll();
-  return map[id] ?? null;
+  const report = map[id];
+  if (!report) return null;
+  return {
+    ...report,
+    annotations: migrateAnnotations(report.annotations),
+  };
 }
 
 /** Persist blob: uploads as data URLs so the report page can reload them. */

@@ -187,14 +187,13 @@ Report        { id, app_name, image_url, annotations_json, summary, created_at, 
 - [x] `/hooklens` `/patterns` `/apps` + header HookLens  
 - [ ] `/demo` 已存在但文案仍偏扩展 → **改文案**记为后续功能  
 
-### P0 — 可演示的网页核心
+### 钩子词典（SSOT）
 
-1. [x] `/analyze` 页骨架（上传区 + 示例线框图 + 画布展示）  
-2. [x] 钩子常量 SSOT（`hooks.ts`）+ `ScreenshotAnnotator`：画框 + 侧栏编辑 + 列表  
-3. [x] 预置 3–5 张示例截图（线框）  
-4. [x] 生成 Report（localStorage）+ `/report/[id]` 只读页  
-5. 更新 `/hooklens` `/demo` CTA 与文案指向 `/analyze`  
-6. Header 增加 Analyze（及可选 Patterns/Apps/Demo）  
+- 5 一级维度 A–E + 11 二级模式 A1–E2（学术示意分类）
+- 文件：`src/config/hooklens/hooks.ts`
+- 旧 id 映射：`infinite/autoplay→A1`，`related→B1`，`badge→B2`
+- Vision detect / Analyze / Patterns / Report 共用同一白名单
+
 
 ### P1 — 完整一点
 

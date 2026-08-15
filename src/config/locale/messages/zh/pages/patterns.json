@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "钩子百科 — 成瘾机制标注",
-    "description": "HookLens 标注截图时使用的注意力钩子词典：无限滚动、红点、相关推荐、自动播放。"
+    "title": "钩子百科 — 5 维 11 模式",
+    "description": "HookLens 分类体系：边界消除、可变酬赏、社交陷阱、沉没成本、注意力劫持——标注截图时共用。"
   },
   "page": {
     "title": "钩子百科",
@@ -9,9 +9,9 @@
     "sections": {
       "hero": {
         "id": "hero",
-        "title": "给让你继续滑的钩子起名字",
-        "highlight_text": "钩子",
-        "description": "这些是注意力 / 成瘾机制，不是结账页暗黑模式。HookLens 在你标注截图时使用它们；本页是共用词典。",
+        "title": "有研究依据的成瘾分类体系",
+        "highlight_text": "分类体系",
+        "description": "五大一级策略与十一个二级模式——分析页、Vision 识别与报告共用。示意标签参考 CHI / 暗黑模式研究脉络（如 FoSIP 思路与 Gray 式模式族），非正式合规审计。",
         "buttons": [
           {
             "title": "打开分析",
@@ -37,44 +37,107 @@
       "patterns": {
         "block": "features-accordion",
         "id": "patterns",
-        "title": "v0 承诺钩子",
+        "title": "二级模式（A1–E2）",
         "label": "分类",
-        "description": "与分析页标注下拉同源。在截图上标注时请用这些名称。",
+        "description": "与分析下拉、AI 识别相同的 ID。按一级维度 A–E 归类。",
         "items": [
           {
-            "title": "无限滚动",
-            "description": "没有终点——信息流持续增长。在截图上：框住无尽列表或「加载更多」区域。",
+            "title": "A1 · 停顿线缺失",
+            "description": "维度 A — 边界消除。机制：认知断点剥夺 / 自动导航。看：无限滚动、自动下一集/连播。",
             "icon": "Infinity",
             "image": {
-              "src": "https://picsum.photos/seed/hook-infinite/800/600",
-              "alt": "infinite scroll"
+              "src": "https://picsum.photos/seed/hook-a1/800/600",
+              "alt": "A1"
             }
           },
           {
-            "title": "未读 / 收件箱红点",
-            "description": "红色计数与未读样式把你拉回去点开。在截图上：框住红点或通知胶囊。",
+            "title": "A2 · 微交互摩擦消除",
+            "description": "维度 A — 边界消除。机制：极低认知阻力（Fogg 式触发）。看：一键购买、无确认连滑。",
+            "icon": "Zap",
+            "image": {
+              "src": "https://picsum.photos/seed/hook-a2/800/600",
+              "alt": "A2"
+            }
+          },
+          {
+            "title": "B1 · 随机多变酬赏",
+            "description": "维度 B — 不确定性。机制：斯金纳箱间歇酬赏。看：下拉刷新、盲盒、不透明推荐流。",
+            "icon": "Dices",
+            "image": {
+              "src": "https://picsum.photos/seed/hook-b1/800/600",
+              "alt": "B1"
+            }
+          },
+          {
+            "title": "B2 · 悬念式微触发",
+            "description": "维度 B — 不确定性。机制：信息差理论。看：模糊未读文案、无预览红点。",
             "icon": "Bell",
             "image": {
-              "src": "https://picsum.photos/seed/hook-badge/800/600",
-              "alt": "badge"
+              "src": "https://picsum.photos/seed/hook-b2/800/600",
+              "alt": "B2"
             }
           },
           {
-            "title": "相关 / 继续浏览",
-            "description": "相似帖与继续模块打开又一个兔子洞。在截图上：框住相关推荐栏。",
-            "icon": "GitBranch",
+            "title": "C1 · 社交亏欠与互惠",
+            "description": "维度 C — 社交陷阱。机制：互惠规范 / 社交压力。看：强制已读、连击火花。",
+            "icon": "MessagesSquare",
             "image": {
-              "src": "https://picsum.photos/seed/hook-related/800/600",
-              "alt": "related"
+              "src": "https://picsum.photos/seed/hook-c1/800/600",
+              "alt": "C1"
             }
           },
           {
-            "title": "自动播放 / 页内视频",
-            "description": "零决策继续看。在截图上：框住自动播放播放器或「下一条」条带。",
-            "icon": "Play",
+            "title": "C2 · 人造错失恐惧",
+            "description": "维度 C — 社交陷阱。机制：损失厌恶 / 从众。看：Stories 限时、「XX 也买了」。",
+            "icon": "Timer",
             "image": {
-              "src": "https://picsum.photos/seed/hook-autoplay/800/600",
-              "alt": "autoplay"
+              "src": "https://picsum.photos/seed/hook-c2/800/600",
+              "alt": "C2"
+            }
+          },
+          {
+            "title": "C3 · 社交认可量化",
+            "description": "维度 C — 社交陷阱。机制：外部动机 / 自我价值投射。看：点赞排行、巨幅公开计数。",
+            "icon": "Trophy",
+            "image": {
+              "src": "https://picsum.photos/seed/hook-c3/800/600",
+              "alt": "C3"
+            }
+          },
+          {
+            "title": "D1 · 劳力与资产累积",
+            "description": "维度 D — 沉没成本。机制：宜家效应 / 沉没成本。看：签到树、不可迁移等级勋章。",
+            "icon": "TreePine",
+            "image": {
+              "src": "https://picsum.photos/seed/hook-d1/800/600",
+              "alt": "D1"
+            }
+          },
+          {
+            "title": "D2 · 退出内疚与惩罚",
+            "description": "维度 D — 沉没成本。机制：确认羞辱 / 情绪勒索。看：注销威胁、连击重置警告。",
+            "icon": "HeartCrack",
+            "image": {
+              "src": "https://picsum.photos/seed/hook-d2/800/600",
+              "alt": "D2"
+            }
+          },
+          {
+            "title": "E1 · 假性紧迫感",
+            "description": "维度 E — 注意力劫持。机制：稀缺性启发式。看：虚假倒计时、无依据库存告急。",
+            "icon": "AlarmClock",
+            "image": {
+              "src": "https://picsum.photos/seed/hook-e1/800/600",
+              "alt": "E1"
+            }
+          },
+          {
+            "title": "E2 · 侵入式嗅探通知",
+            "description": "维度 E — 注意力劫持。机制：警戒反应 / 习惯打断。看：非核心强提醒条。",
+            "icon": "Megaphone",
+            "image": {
+              "src": "https://picsum.photos/seed/hook-e2/800/600",
+              "alt": "E2"
             }
           }
         ],
@@ -85,19 +148,23 @@
         "title": "常见问题",
         "items": [
           {
-            "question": "这和暗黑模式检测器一样吗？",
-            "answer": "只是近亲。那些工具抓结账骗局（假倒计时、羞辱式确认）。这份清单是信息流上的习惯机器。"
+            "question": "这是正式暗黑模式合规清单吗？",
+            "answer": "不是。这是用于教育与截图标注的示意分类，参考 CHI / 监管研究主题——不是法律清单。"
           },
           {
-            "question": "以后还会加更多钩子吗？",
-            "answer": "会。排序栏、可变奖励等是截图演示稳定后的延伸项。"
+            "question": "为什么用 A1–E2？",
+            "answer": "稳定编码，便于分析、Vision 与报告共用。旧标签（infinite/badge/…）会自动映射进来。"
+          },
+          {
+            "question": "AI 用同一套吗？",
+            "answer": "是。Detect with AI 的提示词包含本体系，且只能返回这些 hookId。"
           }
         ]
       },
       "cta": {
         "id": "cta",
-        "title": "在分析里用这本词典",
-        "description": "选一张示例截图，标上这些钩子，再生成报告。",
+        "title": "去给截图分类",
+        "description": "打开分析，用 AI 识别或手动选 A1–E2，再生成报告。",
         "buttons": [
           {
             "title": "打开分析",

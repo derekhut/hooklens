@@ -5,7 +5,13 @@ import { FileText, ImageIcon, Loader2, Sparkles, Trash2, Upload, X } from 'lucid
 import { useLocale, useTranslations } from 'next-intl';
 import { toast } from 'sonner';
 
-import { getHookPattern, HOOK_PATTERNS } from '@/config/hooklens/hooks';
+import {
+  formatHookOptionLabel,
+  getHookPattern,
+  HOOK_DIMENSIONS,
+  HOOK_PATTERNS,
+  patternsByDimension,
+} from '@/config/hooklens/hooks';
 import {
   buildReportSummary,
   createReportId,
@@ -27,7 +33,9 @@ import { Label } from '@/shared/components/ui/label';
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
+  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from '@/shared/components/ui/select';
@@ -240,7 +248,7 @@ export function AnalyzeWorkspace() {
   const hookName = (id: string) => {
     const hook = getHookPattern(id);
     if (!hook) return id;
-    return isZh ? hook.nameZh : hook.nameEn;
+    return formatHookOptionLabel(hook, locale);
   };
 
   return (
@@ -417,10 +425,17 @@ export function AnalyzeWorkspace() {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      {HOOK_PATTERNS.map((hook) => (
-                        <SelectItem key={hook.id} value={hook.id}>
-                          {isZh ? hook.nameZh : hook.nameEn}
-                        </SelectItem>
+                      {HOOK_DIMENSIONS.map((dim) => (
+                        <SelectGroup key={dim.id}>
+                          <SelectLabel>
+                            {dim.id}. {isZh ? dim.nameZh : dim.nameEn}
+                          </SelectLabel>
+                          {patternsByDimension(dim.id).map((hook) => (
+                            <SelectItem key={hook.id} value={hook.id}>
+                              {formatHookOptionLabel(hook, locale)}
+                            </SelectItem>
+                          ))}
+                        </SelectGroup>
                       ))}
                     </SelectContent>
                   </Select>
