@@ -1,6 +1,10 @@
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import bundleAnalyzer from '@next/bundle-analyzer';
 import { createMDX } from 'fumadocs-mdx/next';
 import createNextIntlPlugin from 'next-intl/plugin';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const withMDX = createMDX();
 
@@ -54,7 +58,11 @@ const nextConfig = {
       },
     ];
   },
+  // Parent ~/pnpm-lock.yaml otherwise becomes the inferred workspace root and
+  // Turbopack tries to read ~/Documents (blocked by macOS TCC).
+  outputFileTracingRoot: __dirname,
   turbopack: {
+    root: __dirname,
     resolveAlias: {
       // fs: {
       //   browser: './empty.ts', // We recommend to fix code imports before using this method

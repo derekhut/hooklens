@@ -485,7 +485,7 @@ export function LooplyDemoWorkspace() {
               'relative mt-6 flex items-center justify-center rounded-xl border border-dashed border-slate-200 py-4',
               showHotspots &&
                 selectedId === 'infinite' &&
-                'border-[#2F6BFF] bg-[#EEF3FF]/
+                'border-[#2F6BFF] bg-[#EEF3FF]',
               showHotspots && 'ring-offset-2'
             )}
           >

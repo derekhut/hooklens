@@ -30,8 +30,17 @@
       ],
       "@/.source": [
         "./.source/index.ts"
+      ],
+      "react": [
+        "./node_modules/@types/react"
+      ],
+      "react-dom": [
+        "./node_modules/@types/react-dom"
       ]
-    }
+    },
+    "typeRoots": [
+      "./node_modules/@types"
+    ]
   },
   "include": [
     "next-env.d.ts",
