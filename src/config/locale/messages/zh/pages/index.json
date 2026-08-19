@@ -8,22 +8,22 @@
         "highlight_text": "HookLens",
         "description": "上传 App 截图，标注成瘾界面区域，生成可读的成瘾报告。<br/>不是屏幕时间，也不是封锁工具——是给陷阱贴上的名牌。",
         "announcement": {
-          "badge": "演示",
-          "title": "网页工具：截图 → 标注 → 报告",
-          "url": "/analyze"
+          "badge": "Demo Day",
+          "title": "Looply：扫描 → 审计 → 低干扰",
+          "url": "/demo"
         },
         "buttons": [
           {
-            "title": "分析截图",
-            "icon": "ScanSearch",
-            "url": "/analyze",
+            "title": "打开 Demo Day",
+            "icon": "Play",
+            "url": "/demo",
             "target": "_self",
             "variant": "default"
           },
           {
-            "title": "钩子词典",
-            "icon": "BookOpenText",
-            "url": "/patterns",
+            "title": "截图分析",
+            "icon": "ScanSearch",
+            "url": "/analyze",
             "target": "_self",
             "variant": "outline"
           }
@@ -182,21 +182,21 @@
       },
       "cta": {
         "id": "cta",
-        "title": "今天标一处陷阱",
-        "description": "打开分析，框两个钩子，生成一份报告。",
+        "title": "先看 Demo Day",
+        "description": "扫描模拟 Looply 信息流，再用真截图分析。",
         "buttons": [
+          {
+            "title": "打开 Demo Day",
+            "url": "/demo",
+            "target": "_self",
+            "icon": "Play"
+          },
           {
             "title": "去分析",
             "url": "/analyze",
             "target": "_self",
-            "icon": "ScanSearch"
-          },
-          {
-            "title": "看演示路径",
-            "url": "/demo",
-            "target": "_self",
             "variant": "outline",
-            "icon": "Play"
+            "icon": "ScanSearch"
           }
         ],
         "className": "bg-muted"

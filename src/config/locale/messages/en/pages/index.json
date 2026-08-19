@@ -8,22 +8,22 @@
         "highlight_text": "HookLens",
         "description": "Upload an app screenshot, mark addictive UI regions, and get a readable Addiction Report.<br/>Not Screen Time. Not a blocker. A name tag on the trap.",
         "announcement": {
-          "badge": "Demo",
-          "title": "Web tool: screenshot → annotate → report",
-          "url": "/analyze"
+          "badge": "Demo Day",
+          "title": "Looply: scan → audit → low distraction",
+          "url": "/demo"
         },
         "buttons": [
           {
-            "title": "Analyze a screenshot",
-            "icon": "ScanSearch",
-            "url": "/analyze",
+            "title": "Open Demo Day",
+            "icon": "Play",
+            "url": "/demo",
             "target": "_self",
             "variant": "default"
           },
           {
-            "title": "Hook patterns",
-            "icon": "BookOpenText",
-            "url": "/patterns",
+            "title": "Screenshot analyze",
+            "icon": "ScanSearch",
+            "url": "/analyze",
             "target": "_self",
             "variant": "outline"
           }
@@ -182,21 +182,21 @@
       },
       "cta": {
         "id": "cta",
-        "title": "Mark one trap today",
-        "description": "Open Analyze, box two hooks, generate a report.",
+        "title": "See Demo Day first",
+        "description": "Scan a simulated Looply feed, then try real screenshot analyze.",
         "buttons": [
+          {
+            "title": "Open Demo Day",
+            "url": "/demo",
+            "target": "_self",
+            "icon": "Play"
+          },
           {
             "title": "Go to Analyze",
             "url": "/analyze",
             "target": "_self",
-            "icon": "ScanSearch"
-          },
-          {
-            "title": "Watch the demo path",
-            "url": "/demo",
-            "target": "_self",
             "variant": "outline",
-            "icon": "Play"
+            "icon": "ScanSearch"
           }
         ],
         "className": "bg-muted"

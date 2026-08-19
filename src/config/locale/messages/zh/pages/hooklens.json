@@ -21,21 +21,21 @@
         "description": "HookLens 帮你在截图上标注成瘾界面——无限滚动、红点、自动播放、相关推荐——并生成可读报告。<br/>不是屏幕时间，也不是封锁工具。",
         "announcement": {
           "badge": "网页",
-          "title": "演示路径：分析 → 标注 → 报告",
-          "url": "/analyze"
+          "title": "Demo Day：Looply 扫描 → 审计 → 低干扰",
+          "url": "/demo"
         },
         "buttons": [
           {
-            "title": "打开分析",
-            "icon": "ScanSearch",
-            "url": "/analyze",
+            "title": "打开 Demo Day",
+            "icon": "Play",
+            "url": "/demo",
             "target": "_self",
             "variant": "default"
           },
           {
-            "title": "如何演示",
-            "icon": "Play",
-            "url": "/demo",
+            "title": "截图分析",
+            "icon": "ScanSearch",
+            "url": "/analyze",
             "target": "_self",
             "variant": "outline"
           }
@@ -194,19 +194,19 @@
       },
       "cta": {
         "id": "cta",
-        "title": "试试工作台",
-        "description": "标两个钩子，生成一份报告。",
+        "title": "试试 Demo Day",
+        "description": "先扫模拟信息流，再用真截图分析。",
         "buttons": [
+          {
+            "title": "Demo Day",
+            "url": "/demo",
+            "icon": "Play",
+            "variant": "default"
+          },
           {
             "title": "分析",
             "url": "/analyze",
             "icon": "ScanSearch",
-            "variant": "default"
-          },
-          {
-            "title": "首页",
-            "url": "/",
-            "icon": "Home",
             "variant": "outline"
           }
         ],

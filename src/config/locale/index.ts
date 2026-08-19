@@ -60,4 +60,5 @@ export const localeMessagesPaths = [
   'pages/demo',
   'hooklens/analyze',
   'hooklens/report',
+  'hooklens/demo',
 ];

@@ -29,7 +29,7 @@
           "icon": "Box"
         },
         {
-          "title": "Demo",
+          "title": "Demo Day",
           "url": "/demo",
           "icon": "Play"
         }
@@ -83,7 +83,7 @@
               "target": "_self"
             },
             {
-              "title": "Demo",
+              "title": "Demo Day",
               "url": "/demo",
               "target": "_self"
             }

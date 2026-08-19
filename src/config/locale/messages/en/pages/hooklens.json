@@ -21,21 +21,21 @@
         "description": "HookLens helps you mark addictive UI on screenshots — infinite scroll, badges, autoplay, rabbit holes — then ships a readable report.<br/>Not Screen Time. Not a blocker.",
         "announcement": {
           "badge": "Web",
-          "title": "Demo path: Analyze → annotate → Report",
-          "url": "/analyze"
+          "title": "Demo Day: Looply scan → audit → low distraction",
+          "url": "/demo"
         },
         "buttons": [
           {
-            "title": "Open Analyze",
-            "icon": "ScanSearch",
-            "url": "/analyze",
+            "title": "Open Demo Day",
+            "icon": "Play",
+            "url": "/demo",
             "target": "_self",
             "variant": "default"
           },
           {
-            "title": "How to demo",
-            "icon": "Play",
-            "url": "/demo",
+            "title": "Screenshot analyze",
+            "icon": "ScanSearch",
+            "url": "/analyze",
             "target": "_self",
             "variant": "outline"
           }
@@ -194,19 +194,19 @@
       },
       "cta": {
         "id": "cta",
-        "title": "Try the workspace",
-        "description": "Mark two hooks and generate a report.",
+        "title": "Try Demo Day",
+        "description": "Scan a simulated feed, then try real screenshot analyze.",
         "buttons": [
+          {
+            "title": "Demo Day",
+            "url": "/demo",
+            "icon": "Play",
+            "variant": "default"
+          },
           {
             "title": "Analyze",
             "url": "/analyze",
             "icon": "ScanSearch",
-            "variant": "default"
-          },
-          {
-            "title": "Home",
-            "url": "/",
-            "icon": "Home",
             "variant": "outline"
           }
         ],

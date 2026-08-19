@@ -16,7 +16,9 @@
 | Demo Lock / Load unpacked | 浏览器打开站点即可演示 |
 | 扩展为 P1 核心交付 | **扩展降级为远期可选**；本 spec 的 P0/P1 全部在 ShipAny Web |
 
-**已上线、可保留的营销页（无需推翻）：** `/hooklens` `/patterns` `/apps` `/demo`（文案需改成「截图标注」叙事，见 §10）。
+**已上线、可保留的营销页（无需推翻）：** `/hooklens` `/patterns` `/apps`（文案随产品演进）。  
+
+**Demo Day 例外（`/demo`）：** 站内 **Looply 模拟信息流** 三态（标准 → 注意力审计 → 低干扰），用于演示「Twin 示意」。这与「不做浏览器扩展 / 真实 DOM Twin」不冲突——仅限本站假 App，不扫描真实第三方页面。截图标注工具仍在 `/analyze`。
 
 ---
 
@@ -174,7 +176,7 @@ Report        { id, app_name, image_url, annotations_json, summary, created_at, 
 
 - 浏览器扩展 / 真实网页 DOM 扫描（远期可选）  
 - 自动 CV/LLM 识别钩子（v0 **人工标注**即可；AI 自动识别为 P2）  
-- Twin 实时排毒切换  
+- **真实站点** Twin 实时排毒切换（**Demo Day `/demo` 的 Looply 站内三态示意除外**）  
 - 新 design system / 重做整站视觉  
 - 把 Report 做成复杂 BI 仪表盘  
 
@@ -182,10 +184,10 @@ Report        { id, app_name, image_url, annotations_json, summary, created_at, 
 
 ## 10. 实现分期（更新）
 
-### 已完成（营销壳）
+### 已完成（营销壳 + Demo Day）
 
 - [x] `/hooklens` `/patterns` `/apps` + header HookLens  
-- [ ] `/demo` 已存在但文案仍偏扩展 → **改文案**记为后续功能  
+- [x] `/demo` Looply 三态（标准 / 注意力审计 / 低干扰）；`/analyze` 旁路保留
 
 ### 钩子词典（SSOT）
 
