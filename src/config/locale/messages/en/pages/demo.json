@@ -11,7 +11,7 @@
         "id": "hero",
         "title": "Two minutes to oh that's what got me",
         "highlight_text": "Two minutes",
-        "description": "No extension. Open Analyze, mark a sample screenshot, generate a report — then ask which hooks felt most sticky.",
+        "description": "No extension. Open Analyze, mark a sample screenshot, generate a report.",
         "buttons": [
           {
             "title": "Start Analyze",
@@ -28,7 +28,7 @@
         ],
         "show_avatars": false,
         "image": {
-          "src": "/imgs/hooklens/samples/feed.svg",
+          "src": "/imgs/hooklens/samples/looply.png",
           "alt": "demo sample",
           "width": 390,
           "height": 844
@@ -38,9 +38,9 @@
         "block": "features-media",
         "id": "media",
         "title": "What you should see",
-        "description": "A wireframe sample on the canvas, amber boxes on addictive regions, then a report page with summary and findings.",
+        "description": "A screenshot on the canvas, blue boxes on addictive regions, then a report page with summary cards and findings.",
         "image": {
-          "src": "/imgs/hooklens/samples/social.svg",
+          "src": "/imgs/hooklens/samples/looply.png",
           "alt": "annotation sample"
         }
       },
@@ -50,7 +50,7 @@
         "title": "Scripted demo path",
         "description": "Keep this path for friends and judges. Skip anything that needs an install.",
         "image": {
-          "src": "/imgs/hooklens/samples/video.svg",
+          "src": "/imgs/hooklens/samples/looply.png",
           "alt": "steps"
         },
         "image_position": "left",
@@ -58,9 +58,9 @@
         "items": [
           {
             "title": "Open Analyze",
-            "description": "Go to /analyze. Pick Infinite feed or another sample from the sidebar.",
+            "description": "Go to /analyze. Pick the Looply sample or upload your own screenshot.",
             "image": {
-              "src": "/imgs/hooklens/samples/feed.svg",
+              "src": "/imgs/hooklens/samples/looply.png",
               "alt": "open"
             }
           },
@@ -74,7 +74,7 @@
           },
           {
             "title": "Generate Report",
-            "description": "Click Generate Report. Read the summary and findings list together.",
+            "description": "Click Generate Report. Read the summary cards and findings list together.",
             "image": {
               "src": "/imgs/hooklens/samples/video.svg",
               "alt": "report"
@@ -97,11 +97,11 @@
         "items": [
           {
             "question": "The report page says not found — why?",
-            "answer": "Demo reports live in this browser only. Generate again on the same device, or stick to the Analyze walkthrough."
+            "answer": "Generate the report again on this device, or open a shareable /report link after it is saved."
           },
           {
             "question": "Do I need Chrome Load unpacked?",
-            "answer": "No. This demo is entirely web-based."
+            "answer": "No. This demo is entirely web-based: screenshot in, report out."
           }
         ]
       },

@@ -8,22 +8,22 @@
         "highlight_text": "HookLens",
         "description": "Upload an app screenshot, mark addictive UI regions, and get a readable Addiction Report.<br/>Not Screen Time. Not a blocker. A name tag on the trap.",
         "announcement": {
-          "badge": "Demo Day",
-          "title": "Looply: scan → audit → low distraction",
-          "url": "/demo"
+          "badge": "Screenshot in",
+          "title": "Mark hooks → get a shareable report",
+          "url": "/analyze"
         },
         "buttons": [
           {
-            "title": "Open Demo Day",
-            "icon": "Play",
-            "url": "/demo",
+            "title": "Start analyzing",
+            "icon": "ScanSearch",
+            "url": "/analyze",
             "target": "_self",
             "variant": "default"
           },
           {
-            "title": "Screenshot analyze",
-            "icon": "ScanSearch",
-            "url": "/analyze",
+            "title": "Hook dictionary",
+            "icon": "BookOpenText",
+            "url": "/patterns",
             "target": "_self",
             "variant": "outline"
           }
@@ -31,8 +31,8 @@
         "show_avatars": false,
         "show_award": false,
         "image": {
-          "src": "/imgs/hooklens/samples/feed.svg",
-          "alt": "HookLens sample screenshot wireframe",
+            "src": "/imgs/hooklens/samples/looply.png",
+            "alt": "Looply sample screenshot",
           "width": 390,
           "height": 844
         },
@@ -54,7 +54,7 @@
         "items": [
           {
             "title": "Screenshot in",
-            "description": "Upload your own capture or pick a wireframe sample of a common feed pattern.",
+            "description": "Upload your own capture or pick a sample — including a Looply feed screenshot.",
             "icon": "Upload",
             "image": {
               "src": "/imgs/hooklens/samples/feed.svg",
@@ -72,7 +72,7 @@
           },
           {
             "title": "Report out",
-            "description": "Generate a summary plus findings list you can reopen on /report — demo storage stays in this browser.",
+            "description": "Generate a summary plus findings list you can reopen and share on /report.",
             "icon": "FileText",
             "image": {
               "src": "/imgs/hooklens/samples/video.svg",
@@ -132,7 +132,7 @@
         "items": [
           {
             "title": "1. Pick a screenshot",
-            "description": "Use a sample wireframe or upload a PNG/JPG from any app.",
+            "description": "Use the Looply sample or upload a PNG/JPG from any app.",
             "image": {
               "src": "/imgs/hooklens/samples/feed.svg",
               "alt": "step1"
@@ -176,27 +176,27 @@
           },
           {
             "question": "Are the sample images real apps?",
-            "answer": "No — they are wireframe placeholders to avoid trademark issues while you practice annotating."
+            "answer": "No — samples include a Looply feed capture and simple wireframes so you can practice without trademark issues."
           }
         ]
       },
       "cta": {
         "id": "cta",
-        "title": "See Demo Day first",
-        "description": "Scan a simulated Looply feed, then try real screenshot analyze.",
+        "title": "Screenshot in, report out",
+        "description": "Upload a capture, mark the hooks, share the report.",
         "buttons": [
           {
-            "title": "Open Demo Day",
-            "url": "/demo",
-            "target": "_self",
-            "icon": "Play"
-          },
-          {
-            "title": "Go to Analyze",
+            "title": "Start analyzing",
             "url": "/analyze",
             "target": "_self",
-            "variant": "outline",
             "icon": "ScanSearch"
+          },
+          {
+            "title": "Hook dictionary",
+            "url": "/patterns",
+            "target": "_self",
+            "variant": "outline",
+            "icon": "BookOpenText"
           }
         ],
         "className": "bg-muted"

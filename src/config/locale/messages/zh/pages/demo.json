@@ -11,7 +11,7 @@
         "id": "hero",
         "title": "两分钟到「原来是这个勾住我」",
         "highlight_text": "两分钟",
-        "description": "无需扩展。打开分析、标注示例截图、生成报告——再问哪些钩子最黏人。",
+        "description": "无需扩展。打开分析、标注示例截图、生成报告。",
         "buttons": [
           {
             "title": "开始分析",
@@ -28,7 +28,7 @@
         ],
         "show_avatars": false,
         "image": {
-          "src": "/imgs/hooklens/samples/feed.svg",
+          "src": "/imgs/hooklens/samples/looply.png",
           "alt": "演示示例",
           "width": 390,
           "height": 844
@@ -38,9 +38,9 @@
         "block": "features-media",
         "id": "media",
         "title": "你应该看到什么",
-        "description": "画布上的线框示例、成瘾区域上的琥珀色标注框，以及带摘要与发现列表的报告页。",
+        "description": "画布上的截图、成瘾区域上的蓝色标注框，以及带摘要卡与发现列表的报告页。",
         "image": {
-          "src": "/imgs/hooklens/samples/social.svg",
+          "src": "/imgs/hooklens/samples/looply.png",
           "alt": "标注示例"
         }
       },
@@ -50,7 +50,7 @@
         "title": "演示脚本路径",
         "description": "给朋友和评委固定走这条路径。跳过任何需要安装的步骤。",
         "image": {
-          "src": "/imgs/hooklens/samples/video.svg",
+          "src": "/imgs/hooklens/samples/looply.png",
           "alt": "步骤"
         },
         "image_position": "left",
@@ -58,9 +58,9 @@
         "items": [
           {
             "title": "打开分析",
-            "description": "进入 /analyze。在侧栏选择「无限信息流」或其他示例。",
+            "description": "进入 /analyze。选择 Looply 示例，或上传自己的截图。",
             "image": {
-              "src": "/imgs/hooklens/samples/feed.svg",
+              "src": "/imgs/hooklens/samples/looply.png",
               "alt": "打开"
             }
           },
@@ -74,7 +74,7 @@
           },
           {
             "title": "生成报告",
-            "description": "点击「生成 Report」。一起读摘要与发现列表。",
+            "description": "点击「生成报告」。一起读摘要卡与发现列表。",
             "image": {
               "src": "/imgs/hooklens/samples/video.svg",
               "alt": "报告"
@@ -97,11 +97,11 @@
         "items": [
           {
             "question": "报告页显示找不到——为什么？",
-            "answer": "演示报告只存在本浏览器。请在同一设备重新生成，或继续走分析流程演示。"
+            "answer": "请在同一设备重新生成，或打开已保存的可分享 /report 链接。"
           },
           {
             "question": "还需要 Chrome「加载已解压的扩展程序」吗？",
-            "answer": "不需要。本演示完全是网页路径。"
+            "answer": "不需要。本演示完全是网页路径：截图进，报告出。"
           }
         ]
       },

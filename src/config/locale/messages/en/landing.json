@@ -81,11 +81,6 @@
               "title": "Apps",
               "url": "/apps",
               "target": "_self"
-            },
-            {
-              "title": "Demo Day",
-              "url": "/demo",
-              "target": "_self"
             }
           ]
         },
@@ -124,8 +119,6 @@
     "show_theme": true,
     "show_locale": true
   }
-}
-
 }
 
 

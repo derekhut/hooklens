@@ -21,21 +21,21 @@
         "description": "HookLens helps you mark addictive UI on screenshots — infinite scroll, badges, autoplay, rabbit holes — then ships a readable report.<br/>Not Screen Time. Not a blocker.",
         "announcement": {
           "badge": "Web",
-          "title": "Demo Day: Looply scan → audit → low distraction",
-          "url": "/demo"
+          "title": "Screenshot in → report out",
+          "url": "/analyze"
         },
         "buttons": [
           {
-            "title": "Open Demo Day",
-            "icon": "Play",
-            "url": "/demo",
+            "title": "Start analyzing",
+            "icon": "ScanSearch",
+            "url": "/analyze",
             "target": "_self",
             "variant": "default"
           },
           {
-            "title": "Screenshot analyze",
-            "icon": "ScanSearch",
-            "url": "/analyze",
+            "title": "Hook dictionary",
+            "icon": "BookOpenText",
+            "url": "/patterns",
             "target": "_self",
             "variant": "outline"
           }
@@ -66,7 +66,7 @@
         "items": [
           {
             "title": "Screenshot workspace",
-            "description": "Upload a capture or pick a wireframe sample — no extension required for the demo.",
+            "description": "Upload a capture or pick a sample — including a Looply feed screenshot. No extension required.",
             "icon": "Upload",
             "image": {
               "src": "/imgs/hooklens/samples/feed.svg",
@@ -194,19 +194,19 @@
       },
       "cta": {
         "id": "cta",
-        "title": "Try Demo Day",
-        "description": "Scan a simulated feed, then try real screenshot analyze.",
+        "title": "Screenshot in, report out",
+        "description": "Upload a capture, mark the hooks, share the report.",
         "buttons": [
           {
-            "title": "Demo Day",
-            "url": "/demo",
-            "icon": "Play",
+            "title": "Start analyzing",
+            "url": "/analyze",
+            "icon": "ScanSearch",
             "variant": "default"
           },
           {
-            "title": "Analyze",
-            "url": "/analyze",
-            "icon": "ScanSearch",
+            "title": "Hook dictionary",
+            "url": "/patterns",
+            "icon": "BookOpenText",
             "variant": "outline"
           }
         ],

@@ -168,7 +168,7 @@ export function ScreenshotAnnotator({
     <div
       ref={wrapRef}
       className={cn(
-        'bg-background relative flex min-h-[420px] items-center justify-center overflow-hidden rounded-xl border',
+        'relative flex min-h-[420px] items-center justify-center overflow-hidden rounded-xl border border-slate-200 bg-white',
         className
       )}
     >
@@ -205,11 +205,11 @@ export function ScreenshotAnnotator({
                 aria-label={ann.label}
                 disabled={readOnly}
                 className={cn(
-                  'absolute border-2 bg-amber-400/20 text-left transition-colors',
+                  'absolute border-2 bg-[#2F6BFF]/15 text-left transition-colors',
                   readOnly && 'pointer-events-none',
                   selected
-                    ? 'border-amber-500 ring-2 ring-amber-500/40'
-                    : 'border-amber-500/80 hover:bg-amber-400/30'
+                    ? 'border-[#2F6BFF] ring-2 ring-[#2F6BFF]/40'
+                    : 'border-[#2F6BFF]/80 hover:bg-[#2F6BFF]/25'
                 )}
                 style={{
                   left: `${ann.rect.x * 100}%`,
@@ -222,7 +222,7 @@ export function ScreenshotAnnotator({
                   if (!readOnly) onSelect?.(ann.id);
                 }}
               >
-                <span className="absolute -top-5 left-0 rounded bg-amber-500 px-1.5 py-0.5 text-[10px] font-medium text-white">
+                <span className="absolute -top-5 left-0 rounded-full bg-[#2F6BFF] px-1.5 py-0.5 text-[10px] font-semibold text-white">
                   {index + 1}
                 </span>
               </button>
@@ -231,7 +231,7 @@ export function ScreenshotAnnotator({
 
           {!readOnly && draft && draft.w > 0 && draft.h > 0 && (
             <div
-              className="pointer-events-none absolute border-2 border-dashed border-amber-500 bg-amber-400/15"
+              className="pointer-events-none absolute border-2 border-dashed border-[#2F6BFF] bg-[#2F6BFF]/10"
               style={{
                 left: `${draft.x * 100}%`,
                 top: `${draft.y * 100}%`,

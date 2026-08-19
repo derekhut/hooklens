@@ -1,10 +1,17 @@
 import type { HookPatternId } from './hooks';
 
-export type DemoMode = 'standard' | 'audit' | 'calm';
+export type DemoBadgeTone = 'orange' | 'purple' | 'blue';
 
-export type DemoSeverity = 'high' | 'medium';
-
-export type DemoHotspotId = 'autoplay' | 'infinite' | 'streak';
+export type DemoHotspotId =
+  | 'hero'
+  | 'autoplay'
+  | 'cards'
+  | 'streak'
+  | 'trending'
+  | 'readlater'
+  | 'notify'
+  | 'bookmark'
+  | 'infinite';
 
 export type DemoArticle = {
   id: string;
@@ -20,16 +27,13 @@ export type DemoArticle = {
 
 export type DemoHotspot = {
   id: DemoHotspotId;
+  n: number;
+  tone: DemoBadgeTone;
   hookId: HookPatternId;
-  severity: DemoSeverity;
   titleZh: string;
   titleEn: string;
-  evidenceZh: string;
-  evidenceEn: string;
-  impactZh: string;
-  impactEn: string;
-  suggestionZh: string;
-  suggestionEn: string;
+  blurbZh: string;
+  blurbEn: string;
 };
 
 export const DEMO_NAV = [
@@ -102,65 +106,98 @@ export const DEMO_READ_LATER = {
   minutes: 5,
 };
 
-/** Scripted attention hotspots for the 2-minute Demo Day path. */
+/** Scripted markers — no model calls. Numbers match the mock report. */
 export const DEMO_HOTSPOTS: DemoHotspot[] = [
   {
-    id: 'autoplay',
-    hookId: 'A1',
-    severity: 'high',
-    titleZh: '自动连续播放',
-    titleEn: 'Auto-play next',
-    evidenceZh: '视频区显示「5秒后自动播放下一条」，默认连播。',
-    evidenceEn:
-      'Player shows “auto-play next in 5s” — continuous playback by default.',
-    impactZh: '削弱「这一条看完就停」的主动决策，延长会话。',
-    impactEn:
-      'Weakens the conscious choice to stop after one item and extends sessions.',
-    suggestionZh: '默认关闭自动连播；需要时由用户主动开启。',
-    suggestionEn: 'Default autoplay off; let users opt in intentionally.',
+    id: 'hero',
+    n: 1,
+    tone: 'orange',
+    hookId: 'E2',
+    titleZh: '大幅动态内容',
+    titleEn: 'Large motion hero',
+    blurbZh: '全屏画面抢占第一视觉焦点，还没选择就开始看。',
+    blurbEn: 'Full-bleed motion seizes the first glance before you choose.',
   },
   {
-    id: 'infinite',
+    id: 'autoplay',
+    n: 2,
+    tone: 'orange',
     hookId: 'A1',
-    severity: 'high',
-    titleZh: '自动加载内容',
-    titleEn: 'Auto-load content',
-    evidenceZh: '信息流底部「正在加载更多内容…」，没有停顿点。',
-    evidenceEn:
-      'Feed footer says “Loading more…” with no explicit stopping cue.',
-    impactZh: '消除自然边界，让人难以感知「已经看够了」。',
-    impactEn:
-      'Removes natural boundaries so “enough for now” is hard to feel.',
-    suggestionZh: '改为「加载更多」按钮，让继续浏览需要一次主动点击。',
-    suggestionEn: 'Replace with a Load more button that requires an intentional tap.',
+    titleZh: '5秒自动切换',
+    titleEn: '5s auto-advance',
+    blurbZh: '倒计时默认连播，削弱「看完这一条就停」的决策。',
+    blurbEn: 'A countdown auto-plays the next item, weakening the choice to stop.',
+  },
+  {
+    id: 'cards',
+    n: 3,
+    tone: 'orange',
+    hookId: 'B1',
+    titleZh: '图文卡片 + 阅读时长',
+    titleEn: 'Cards + read time',
+    blurbZh: '缩略图、摘要与分钟数组成可变奖励，诱使点开下一张。',
+    blurbEn: 'Thumbnails, blurbs and minute counts form a variable-reward loop.',
   },
   {
     id: 'streak',
+    n: 4,
+    tone: 'purple',
     hookId: 'C1',
-    severity: 'medium',
-    titleZh: '持续召回提示',
-    titleEn: 'Persistent recall prompts',
-    evidenceZh: '右侧「连续浏览 7 天」与通知角标制造回访压力。',
-    evidenceEn:
-      '“7-day streak” widget and notification badge pressure return visits.',
-    impactZh: '用社交/承诺压力把注意力拉回产品。',
-    impactEn: 'Uses social/commitment pressure to pull attention back.',
-    suggestionZh: '降低角标视觉强度；去掉惩罚式连胜文案。',
-    suggestionEn: 'Lower badge intensity; drop guilt-framed streak copy.',
+    titleZh: '连续浏览 7 天',
+    titleEn: '7-day streak',
+    blurbZh: '用连胜压力把回访包装成必须完成的任务。',
+    blurbEn: 'A streak frames coming back as a task you must not break.',
+  },
+  {
+    id: 'trending',
+    n: 5,
+    tone: 'purple',
+    hookId: 'C2',
+    titleZh: '正在热门',
+    titleEn: 'Trending now',
+    blurbZh: '排行制造错失恐惧，暗示「别人都在看」。',
+    blurbEn: 'Ranked lists invent FOMO — everyone else is already watching.',
+  },
+  {
+    id: 'readlater',
+    n: 6,
+    tone: 'purple',
+    hookId: 'D1',
+    titleZh: '稍后阅读',
+    titleEn: 'Read later',
+    blurbZh: '未读清单变成沉没成本，让人觉得必须回来清空。',
+    blurbEn: 'A unread pile becomes sunk cost you feel obliged to clear.',
+  },
+  {
+    id: 'notify',
+    n: 7,
+    tone: 'blue',
+    hookId: 'B2',
+    titleZh: '未读红点',
+    titleEn: 'Unread badge',
+    blurbZh: '角标只给悬念不给内容，迫使点开消除不确定。',
+    blurbEn: 'A badge teases without content, forcing a tap to resolve it.',
+  },
+  {
+    id: 'bookmark',
+    n: 8,
+    tone: 'blue',
+    hookId: 'A2',
+    titleZh: '一键收藏',
+    titleEn: 'One-tap save',
+    blurbZh: '几乎零阻力的收藏，把「以后再看」变成无尽待办。',
+    blurbEn: 'Near-zero-friction save turns “later” into an endless backlog.',
+  },
+  {
+    id: 'infinite',
+    n: 9,
+    tone: 'purple',
+    hookId: 'A1',
+    titleZh: '持续加载更多',
+    titleEn: 'Keep loading',
+    blurbZh: '没有停顿点，会话感觉永远不会结束。',
+    blurbEn: 'No stopping cue — the session never feels finished.',
   },
 ];
 
-export const DEMO_REDUCTIONS = [
-  {
-    zh: '已关闭自动连续播放',
-    en: 'Autoplay next turned off',
-  },
-  {
-    zh: '已增加内容停止点',
-    en: 'Added a content stopping point',
-  },
-  {
-    zh: '已降低通知视觉强度',
-    en: 'Reduced notification visual intensity',
-  },
-] as const;
+export const DEMO_STRONG_HOOKS = [1, 2, 4] as const;

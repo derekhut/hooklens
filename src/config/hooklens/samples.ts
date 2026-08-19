@@ -7,8 +7,16 @@ export type HooklensSample = {
   titleZh: string;
 };
 
-/** Wireframe placeholders only — not real app UI. */
+/** Sample screenshots for Analyze. Looply is a captured feed UI, not a live app. */
 export const HOOKLENS_SAMPLES: HooklensSample[] = [
+  {
+    id: 'looply',
+    imageUrl: '/imgs/hooklens/samples/looply.png',
+    appNameEn: 'Looply',
+    appNameZh: 'Looply',
+    titleEn: 'Feed with autoplay & streaks',
+    titleZh: '自动播放与连续浏览',
+  },
   {
     id: 'feed',
     imageUrl: '/imgs/hooklens/samples/feed.svg',

@@ -1,7 +1,15 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { FileText, ImageIcon, Loader2, Sparkles, Trash2, Upload, X } from 'lucide-react';
+import {
+  FileText,
+  ImageIcon,
+  Loader2,
+  Sparkles,
+  Trash2,
+  Upload,
+  X,
+} from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { toast } from 'sonner';
 
@@ -48,6 +56,17 @@ type ActiveImage = {
   sampleId?: string;
 };
 
+const primaryBtn =
+  'rounded-xl bg-[#2F6BFF] text-white hover:bg-[#2458d9]';
+const ghostBtn =
+  'rounded-xl border-slate-200 bg-white text-slate-800 hover:bg-slate-50';
+
+function severityTone(level: 1 | 2 | 3) {
+  if (level === 3) return 'border-rose-300 text-rose-600';
+  if (level === 2) return 'border-amber-300 text-amber-700';
+  return 'border-slate-300 text-slate-600';
+}
+
 export function AnalyzeWorkspace() {
   const t = useTranslations('hooklens.analyze');
   const locale = useLocale();
@@ -62,6 +81,7 @@ export function AnalyzeWorkspace() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [generating, setGenerating] = useState(false);
   const [detecting, setDetecting] = useState(false);
+  const [dragging, setDragging] = useState(false);
 
   const selected = useMemo(
     () => annotations.find((a) => a.id === selectedId) ?? null,
@@ -260,28 +280,34 @@ export function AnalyzeWorkspace() {
     return formatHookOptionLabel(hook, locale);
   };
 
-  return (
-    <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-6 py-10 md:py-14">
-      <header className="space-y-2">
-        <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">
-          {t('title')}
-        </h1>
-        <p className="text-muted-foreground max-w-2xl text-base">
-          {t('description')}
-        </p>
-      </header>
+  const acceptFile = (file: File | undefined) => onFileChange(file);
 
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px]">
-        <div className="space-y-4">
-          <div className="flex flex-wrap items-center gap-3">
+  return (
+    <div className="min-h-[calc(100vh-4rem)] bg-[#F4F6FA]">
+      <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-5 px-4 py-6 md:px-6 md:py-8">
+        <header className="flex flex-wrap items-end justify-between gap-4">
+          <div className="space-y-1">
+            <p className="text-xs font-medium tracking-wide text-[#2F6BFF] uppercase">
+              {t('kicker')}
+            </p>
+            <h1 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
+              {t('title')}
+            </h1>
+            <p className="max-w-2xl text-sm text-slate-500">{t('description')}</p>
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
             <input
               ref={inputRef}
               type="file"
               accept="image/png,image/jpeg,image/webp,image/gif"
               className="hidden"
-              onChange={(e) => onFileChange(e.target.files?.[0])}
+              onChange={(e) => acceptFile(e.target.files?.[0])}
             />
-            <Button type="button" onClick={() => inputRef.current?.click()}>
+            <Button
+              type="button"
+              className={primaryBtn}
+              onClick={() => inputRef.current?.click()}
+            >
               <Upload className="size-4" />
               {t('upload')}
             </Button>
@@ -289,6 +315,7 @@ export function AnalyzeWorkspace() {
               <Button
                 type="button"
                 variant="secondary"
+                className={ghostBtn}
                 disabled={detecting}
                 onClick={detectWithAi}
               >
@@ -301,49 +328,24 @@ export function AnalyzeWorkspace() {
               </Button>
             )}
             {image && (
-              <Button type="button" variant="outline" onClick={clearAll}>
+              <Button
+                type="button"
+                variant="outline"
+                className={ghostBtn}
+                onClick={clearAll}
+              >
                 <X className="size-4" />
                 {t('clear')}
               </Button>
             )}
-            <span className="text-muted-foreground text-sm">
-              {t('upload_hint')}
-            </span>
           </div>
+        </header>
 
-          {image ? (
-            <ScreenshotAnnotator
-              imageUrl={image.url}
-              imageAlt={t('current_image')}
-              annotations={annotations}
-              selectedId={selectedId}
-              onSelect={setSelectedId}
-              onCreate={onCreate}
-              drawHint={t('draw_hint')}
-            />
-          ) : (
-            <div className="bg-muted/40 flex min-h-[420px] flex-col items-center justify-center gap-3 rounded-xl border border-dashed px-6 text-center">
-              <ImageIcon className="text-muted-foreground size-10 opacity-50" />
-              <p className="text-muted-foreground">{t('canvas_empty')}</p>
-            </div>
-          )}
-
-          <p className="text-muted-foreground text-sm">{t('coming_next')}</p>
-        </div>
-
-        <aside className="space-y-6">
-          <div className="space-y-2">
-            <Label htmlFor="hooklens-app-name">{t('app_name_label')}</Label>
-            <Input
-              id="hooklens-app-name"
-              value={appName}
-              onChange={(e) => setAppName(e.target.value)}
-              placeholder={t('app_name_placeholder')}
-            />
-          </div>
-
-          <div className="space-y-3">
-            <h2 className="text-sm font-medium">{t('samples_heading')}</h2>
+        <div className="grid gap-4 lg:grid-cols-[220px_minmax(0,1fr)_320px]">
+          <aside className="space-y-3 rounded-xl border border-slate-200 bg-white p-3">
+            <h2 className="px-1 text-sm font-medium text-slate-900">
+              {t('samples_heading')}
+            </h2>
             <ul className="space-y-2">
               {HOOKLENS_SAMPLES.map((sample) => {
                 const isSelected = image?.sampleId === sample.id;
@@ -353,21 +355,23 @@ export function AnalyzeWorkspace() {
                       type="button"
                       onClick={() => selectSample(sample.id)}
                       className={cn(
-                        'hover:bg-muted/60 flex w-full items-center gap-3 rounded-lg border p-2 text-left transition-colors',
-                        isSelected && 'border-primary bg-muted/40'
+                        'flex w-full items-center gap-3 rounded-xl border p-2 text-left transition',
+                        isSelected
+                          ? 'border-[#2F6BFF] bg-[#EEF3FF]'
+                          : 'border-slate-200 bg-white hover:border-slate-300'
                       )}
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={sample.imageUrl}
                         alt=""
-                        className="bg-muted h-16 w-10 shrink-0 rounded object-cover object-top"
+                        className="h-14 w-12 shrink-0 rounded-md bg-slate-100 object-cover object-top"
                       />
                       <span className="min-w-0">
-                        <span className="block truncate text-sm font-medium">
+                        <span className="block truncate text-sm font-medium text-slate-800">
                           {isZh ? sample.appNameZh : sample.appNameEn}
                         </span>
-                        <span className="text-muted-foreground block truncate text-xs">
+                        <span className="block truncate text-xs text-slate-500">
                           {isZh ? sample.titleZh : sample.titleEn}
                         </span>
                       </span>
@@ -376,50 +380,124 @@ export function AnalyzeWorkspace() {
                 );
               })}
             </ul>
-          </div>
+          </aside>
 
-          <div className="space-y-3 border-t pt-4">
+          <section
+            onDragOver={(e) => {
+              e.preventDefault();
+              setDragging(true);
+            }}
+            onDragLeave={() => setDragging(false)}
+            onDrop={(e) => {
+              e.preventDefault();
+              setDragging(false);
+              acceptFile(e.dataTransfer.files?.[0]);
+            }}
+          >
+            {image ? (
+              <ScreenshotAnnotator
+                imageUrl={image.url}
+                imageAlt={t('current_image')}
+                annotations={annotations}
+                selectedId={selectedId}
+                onSelect={setSelectedId}
+                onCreate={onCreate}
+                drawHint={t('draw_hint')}
+              />
+            ) : (
+              <button
+                type="button"
+                onClick={() => inputRef.current?.click()}
+                className={cn(
+                  'flex min-h-[480px] w-full flex-col items-center justify-center gap-3 rounded-xl border border-dashed px-6 text-center transition',
+                  dragging
+                    ? 'border-[#2F6BFF] bg-[#EEF3FF]'
+                    : 'border-slate-300 bg-white hover:border-[#2F6BFF]/60'
+                )}
+              >
+                <ImageIcon className="size-10 text-slate-300" />
+                <p className="text-base font-medium text-slate-800">
+                  {t('dropzone_title')}
+                </p>
+                <p className="max-w-sm text-sm text-slate-500">
+                  {t('dropzone_hint')}
+                </p>
+              </button>
+            )}
+          </section>
+
+          <aside className="flex flex-col gap-4 rounded-xl border border-slate-200 bg-white p-4">
+            <div className="space-y-2">
+              <Label htmlFor="hooklens-app-name">{t('app_name_label')}</Label>
+              <Input
+                id="hooklens-app-name"
+                value={appName}
+                onChange={(e) => setAppName(e.target.value)}
+                placeholder={t('app_name_placeholder')}
+                className="rounded-xl"
+              />
+            </div>
+
             <div className="flex items-center justify-between gap-2">
-              <h2 className="text-sm font-medium">{t('annotations_heading')}</h2>
-              <Badge variant="secondary">
+              <div>
+                <p className="text-xs font-medium tracking-wide text-[#2F6BFF] uppercase">
+                  {t('output_heading')}
+                </p>
+                <h2 className="text-sm font-semibold text-slate-900">
+                  {t('annotations_heading')}
+                </h2>
+              </div>
+              <Badge
+                variant="outline"
+                className="rounded-full border-[#2F6BFF]/30 text-[#2F6BFF]"
+              >
                 {t('annotations_count', { count: annotations.length })}
               </Badge>
             </div>
 
             {!image && (
-              <p className="text-muted-foreground text-xs">
-                {t('annotations_need_image')}
-              </p>
+              <p className="text-sm text-slate-500">{t('output_body')}</p>
             )}
 
             {image && annotations.length === 0 && (
-              <p className="text-muted-foreground text-xs">
-                {t('annotations_empty')}
-              </p>
+              <p className="text-sm text-slate-500">{t('annotations_empty')}</p>
             )}
 
-            <ul className="max-h-40 space-y-1 overflow-y-auto">
+            <ul className="max-h-44 space-y-2 overflow-y-auto">
               {annotations.map((ann, index) => (
                 <li key={ann.id}>
                   <button
                     type="button"
                     onClick={() => setSelectedId(ann.id)}
                     className={cn(
-                      'hover:bg-muted/60 flex w-full items-center gap-2 rounded-md border px-2 py-1.5 text-left text-sm',
-                      selectedId === ann.id && 'border-primary bg-muted/50'
+                      'flex w-full items-center gap-3 rounded-xl border px-3 py-2.5 text-left transition',
+                      selectedId === ann.id
+                        ? 'border-[#2F6BFF] bg-[#EEF3FF]'
+                        : 'border-slate-200 bg-white hover:border-slate-300'
                     )}
                   >
-                    <span className="bg-amber-500 flex size-5 shrink-0 items-center justify-center rounded text-[10px] font-medium text-white">
+                    <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-[#2F6BFF] text-xs font-semibold text-white">
                       {index + 1}
                     </span>
-                    <span className="truncate">{hookName(ann.hookId)}</span>
+                    <span className="min-w-0 flex-1 truncate text-sm font-medium text-slate-800">
+                      {hookName(ann.hookId)}
+                    </span>
+                    <Badge
+                      variant="outline"
+                      className={cn(
+                        'shrink-0 text-[10px]',
+                        severityTone(ann.severity)
+                      )}
+                    >
+                      {t('severity_short', { level: ann.severity })}
+                    </Badge>
                   </button>
                 </li>
               ))}
             </ul>
 
             {selected && (
-              <div className="space-y-3 rounded-lg border p-3">
+              <div className="space-y-3 rounded-xl border border-slate-200 bg-white p-3">
                 <div className="space-y-2">
                   <Label>{t('hook_type')}</Label>
                   <Select
@@ -430,7 +508,7 @@ export function AnalyzeWorkspace() {
                       })
                     }
                   >
-                    <SelectTrigger className="w-full">
+                    <SelectTrigger className="w-full rounded-xl">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -458,6 +536,7 @@ export function AnalyzeWorkspace() {
                     onChange={(e) => updateSelected({ note: e.target.value })}
                     placeholder={t('note_placeholder')}
                     rows={3}
+                    className="rounded-xl"
                   />
                 </div>
 
@@ -471,7 +550,7 @@ export function AnalyzeWorkspace() {
                       })
                     }
                   >
-                    <SelectTrigger className="w-full">
+                    <SelectTrigger className="w-full rounded-xl">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -486,7 +565,7 @@ export function AnalyzeWorkspace() {
                   type="button"
                   variant="outline"
                   size="sm"
-                  className="w-full"
+                  className={cn('w-full', ghostBtn)}
                   onClick={removeSelected}
                 >
                   <Trash2 className="size-4" />
@@ -495,21 +574,24 @@ export function AnalyzeWorkspace() {
               </div>
             )}
 
-            <Button
-              type="button"
-              className="w-full"
-              disabled={!image || annotations.length < 1 || generating}
-              onClick={generateReport}
-            >
-              {generating ? (
-                <Loader2 className="size-4 animate-spin" />
-              ) : (
-                <FileText className="size-4" />
-              )}
-              {generating ? t('generating') : t('generate_report')}
-            </Button>
-          </div>
-        </aside>
+            <div className="mt-auto space-y-2 pt-2">
+              <p className="text-xs text-slate-400">{t('coming_next')}</p>
+              <Button
+                type="button"
+                className={cn('w-full', primaryBtn)}
+                disabled={!image || annotations.length < 1 || generating}
+                onClick={generateReport}
+              >
+                {generating ? (
+                  <Loader2 className="size-4 animate-spin" />
+                ) : (
+                  <FileText className="size-4" />
+                )}
+                {generating ? t('generating') : t('generate_report')}
+              </Button>
+            </div>
+          </aside>
+        </div>
       </div>
     </div>
   );

@@ -8,22 +8,22 @@
         "highlight_text": "HookLens",
         "description": "上传 App 截图，标注成瘾界面区域，生成可读的成瘾报告。<br/>不是屏幕时间，也不是封锁工具——是给陷阱贴上的名牌。",
         "announcement": {
-          "badge": "Demo Day",
-          "title": "Looply：扫描 → 审计 → 低干扰",
-          "url": "/demo"
+          "badge": "截图进",
+          "title": "标出钩子 → 得到可分享报告",
+          "url": "/analyze"
         },
         "buttons": [
           {
-            "title": "打开 Demo Day",
-            "icon": "Play",
-            "url": "/demo",
+            "title": "开始分析",
+            "icon": "ScanSearch",
+            "url": "/analyze",
             "target": "_self",
             "variant": "default"
           },
           {
-            "title": "截图分析",
-            "icon": "ScanSearch",
-            "url": "/analyze",
+            "title": "钩子词典",
+            "icon": "BookOpenText",
+            "url": "/patterns",
             "target": "_self",
             "variant": "outline"
           }
@@ -31,8 +31,8 @@
         "show_avatars": false,
         "show_award": false,
         "image": {
-          "src": "/imgs/hooklens/samples/feed.svg",
-          "alt": "HookLens 示例线框截图",
+            "src": "/imgs/hooklens/samples/looply.png",
+            "alt": "Looply 示例截图",
           "width": 390,
           "height": 844
         },
@@ -54,7 +54,7 @@
         "items": [
           {
             "title": "导入截图",
-            "description": "上传自己的截图，或选择常见信息流模式的线框示例。",
+            "description": "上传自己的截图，或选择示例——含一张 Looply 信息流截图。",
             "icon": "Upload",
             "image": {
               "src": "/imgs/hooklens/samples/feed.svg",
@@ -72,7 +72,7 @@
           },
           {
             "title": "输出报告",
-            "description": "生成摘要与发现列表，可在 /report 再次打开——演示数据保存在本浏览器。",
+            "description": "生成摘要与发现列表，可在 /report 再次打开并分享。",
             "icon": "FileText",
             "image": {
               "src": "/imgs/hooklens/samples/video.svg",
@@ -132,7 +132,7 @@
         "items": [
           {
             "title": "1. 选择截图",
-            "description": "用线框示例，或上传任意 App 的 PNG/JPG。",
+            "description": "用 Looply 示例，或上传任意 App 的 PNG/JPG。",
             "image": {
               "src": "/imgs/hooklens/samples/feed.svg",
               "alt": "步骤1"
@@ -176,27 +176,27 @@
           },
           {
             "question": "示例图是真实 App 吗？",
-            "answer": "不是——是线框占位，方便练习标注并避免商标问题。"
+            "answer": "不完全是——示例包含一张 Looply 信息流截图和线框占位，方便练习标注并避免商标问题。"
           }
         ]
       },
       "cta": {
         "id": "cta",
-        "title": "先看 Demo Day",
-        "description": "扫描模拟 Looply 信息流，再用真截图分析。",
+        "title": "截图进，报告出",
+        "description": "上传截图，标出钩子，分享报告。",
         "buttons": [
           {
-            "title": "打开 Demo Day",
-            "url": "/demo",
-            "target": "_self",
-            "icon": "Play"
-          },
-          {
-            "title": "去分析",
+            "title": "开始分析",
             "url": "/analyze",
             "target": "_self",
-            "variant": "outline",
             "icon": "ScanSearch"
+          },
+          {
+            "title": "钩子词典",
+            "url": "/patterns",
+            "target": "_self",
+            "variant": "outline",
+            "icon": "BookOpenText"
           }
         ],
         "className": "bg-muted"

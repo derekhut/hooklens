@@ -21,21 +21,21 @@
         "description": "HookLens 帮你在截图上标注成瘾界面——无限滚动、红点、自动播放、相关推荐——并生成可读报告。<br/>不是屏幕时间，也不是封锁工具。",
         "announcement": {
           "badge": "网页",
-          "title": "Demo Day：Looply 扫描 → 审计 → 低干扰",
-          "url": "/demo"
+          "title": "截图进 → 报告出",
+          "url": "/analyze"
         },
         "buttons": [
           {
-            "title": "打开 Demo Day",
-            "icon": "Play",
-            "url": "/demo",
+            "title": "开始分析",
+            "icon": "ScanSearch",
+            "url": "/analyze",
             "target": "_self",
             "variant": "default"
           },
           {
-            "title": "截图分析",
-            "icon": "ScanSearch",
-            "url": "/analyze",
+            "title": "钩子词典",
+            "icon": "BookOpenText",
+            "url": "/patterns",
             "target": "_self",
             "variant": "outline"
           }
@@ -66,7 +66,7 @@
         "items": [
           {
             "title": "截图工作台",
-            "description": "上传截图或选线框示例——演示无需安装扩展。",
+            "description": "上传截图或选示例（含 Looply 信息流截图）——无需安装扩展。",
             "icon": "Upload",
             "image": {
               "src": "/imgs/hooklens/samples/feed.svg",
@@ -194,19 +194,19 @@
       },
       "cta": {
         "id": "cta",
-        "title": "试试 Demo Day",
-        "description": "先扫模拟信息流，再用真截图分析。",
+        "title": "截图进，报告出",
+        "description": "上传截图，标出钩子，分享报告。",
         "buttons": [
           {
-            "title": "Demo Day",
-            "url": "/demo",
-            "icon": "Play",
+            "title": "开始分析",
+            "url": "/analyze",
+            "icon": "ScanSearch",
             "variant": "default"
           },
           {
-            "title": "分析",
-            "url": "/analyze",
-            "icon": "ScanSearch",
+            "title": "钩子词典",
+            "url": "/patterns",
+            "icon": "BookOpenText",
             "variant": "outline"
           }
         ],
